@@ -177,12 +177,12 @@
                                 <textarea name="curr_procedure"></textarea>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        {{-- <div class="col-lg-6">
                             <div class="group-input">
                                 <label for="Deviation Description"> Deviation Description </label>
                                 <textarea name="text"></textarea>
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- <div class="col-lg-6">
                             <div class="group-input">
                                 <label for="Nature of Deviation"> Nature of Deviation </label>

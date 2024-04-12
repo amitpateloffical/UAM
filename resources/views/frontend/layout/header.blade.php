@@ -751,13 +751,14 @@
                         <strong>Remarks :&nbsp;</strong>
                         Mention additional comments if any.
                     </div>
-                  
+                   
+
                 </div>
 
             </div>
         </div>
     </div>
-    <!-- -------------------------------- -->
+    <!-- --------------no 2------------------ -->
     <div class="modal fade" id="document-details-field-instruction-modal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -768,26 +769,126 @@
                 </div>
 
                 <div class="modal-body">
+                 <div class="mb-2">
+                        <strong>Membership Allocation Type:&nbsp;</strong>
+                    Please specify the time frame for Membership Allocation Type.   
+                 </div>
+
+                 <div class="mb-2">
+                        <strong>Site Name :&nbsp;</strong>
+                        Kindly select the site name.
+                    </div>
+
+                <div class="mb-2">
+                        <strong>Module :&nbsp;</strong>
+                        Kindly specify the module name.
+                    </div>
 
                     <div class="mb-2">
-                        <strong>Number :&nbsp;</strong>
-                        Please specify document number related to grid.
+                        <strong>Module (Others) :&nbsp;</strong>
+                        Kindly specify the module name if chosen others.
+                    </div>
+                    
+                   
+                    
+                    
+                    
+                    <div class="mb-2">
+                        <strong>User Roles/Group Category :&nbsp;</strong>
+                        Please specify the User Role/Group Category
+                    </div>
+                     <div class="mb-2">
+                        <strong>Others :&nbsp;</strong>
+                        Mention the user role values if selected others.
                     </div>
                     <div class="mb-2">
-                        <strong>Reference Document Name :</strong>
-                        Specify document name in the data field.
+                        <strong>Process Title :&nbsp;</strong>
+                        Please specify the Process Title.
+                    </div>
+                    
+                    <div class="mb-2">
+                        <strong>Application :&nbsp;</strong>
+                        Please mention the application name.
+                    </div>
+                    
+                                     
+                    <div class="mb-2">
+                        <strong>Role :&nbsp;</strong>
+                        Please specify the role.
+                    </div>
+
+                    
+                    <div class="mb-2">
+                        <strong>Training Completed :&nbsp;</strong>
+                        Please specify the time-frame of training.
+                    </div>
+
+                    <div class="mb-2">
+                        <strong>Training Certificate :&nbsp;</strong>
+                        Please attach the training certificate if recieved.
+                    </div>
+                    
+                    <div class="mb-2">
+                        <strong>Period :&nbsp;</strong>
+                        Please specify the time frame for user access.
+                    </div>
+
+                    <div class="mb-2">
+                        <strong>Access Provided By :&nbsp;</strong>
+                        Please mention the name of the access provider.
+                    </div>
+
+                    <div class="mb-2">
+                        <strong>Access Provided On :&nbsp;</strong>
+                        Please specify the dates.
+                    </div>
+
+                    <div class="mb-2">
+                        <strong>Remarks :</strong>
+                        Additional remarks if any.
+                    </div> 
+                    <div class="mb-2">
+                        <strong>Access Revoked By :&nbsp;</strong>
+                         Please mention the name who revoked the access.
                     </div>
                     <div class="mb-2">
-                        <strong>Remarks :&nbsp;</strong>
-                        Mention additional comments if any.
+                        <strong>Access Revoked On :&nbsp;</strong>
+                        Please specify the dates.
                     </div>
-                    
-                    
-                    
-                    
 
                 </div>
 
+            </div>
+        </div>
+    </div>
+    {{-- --------------------------------------no  1------------------------------------ --}}
+    <div class="modal fade" id="document-details_details-field-instruction-modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 style="margin-left: 60px;" class="modal-title">Explanation of Data Fields</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                    {{-- <div class="mb-2">
+                        <strong>Others :&nbsp;</strong>
+                        Mention the user role values if selected others.
+                    </div> --}}
+                    
+                    <div class="mb-2">
+                        <strong>Number :&nbsp;</strong>
+                        Please specify the number.
+                    </div>
+                    
+                    <div class="mb-2">
+                        <strong>Reference Document Name :&nbsp;</strong>
+                        Please specify the mandatory document name.
+                    
+                    <div class="mb-2">
+                        <strong>Remarks :&nbsp;</strong>
+                        Additional remarks if any.
+                    </div>
+                </div>
             </div>
         </div>
     </div>

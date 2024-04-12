@@ -458,6 +458,9 @@ $users = DB::table('users')
                 <button class="cctablinks" onclick="openCity(event, 'CCForm4')">QA Final Review</button>
                 <button class="cctablinks" onclick="openCity(event, 'CCForm5')">QAH/Designee Approval</button>
                 <button class="cctablinks" onclick="openCity(event, 'CCForm6')">Activity Log</button>
+                <button class="cctablinks" onclick="openCity(event, 'CCForm09')">Access Matrix</button>
+
+
             </div>
 
             <form  action="{{ route('deviationupdate', $data->id) }}" method="post" enctype="multipart/form-data">
@@ -670,7 +673,7 @@ $users = DB::table('users')
                                     <textarea name="short_description"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}   id="docname" type="text"    maxlength="255" required  {{ $data->stage == 0 || $data->stage == 6 ? "disabled" : "" }}>{{ $data->short_description }}</textarea>
                                  </div>
                                 </div>  
-                                <div class="col-lg-6 new-date-data-field">
+                                {{-- <div class="col-lg-6 new-date-data-field">
                                     <div class="group-input input-date">
                                         <label for="Short Description required">Nature of Repeat?</label>
                                         <select name="short_description_required"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="short_description_required" onchange="checkRecurring(this)" value="{{ $data->short_description_required }}">
@@ -679,13 +682,13 @@ $users = DB::table('users')
                                             <option value="Non_Recurring" @if ($data->short_description_required == 'Non_Recurring') selected @endif>Non Recurring</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
+                                </div> --}}
+                                {{-- <div class="col-lg-6">
                                     <div class="group-input" id="nature_of_repeat">
                                         <label for="nature_of_repeat">Repeat Nature @if($data->short_description_required == 'Recurring')<span class="text-danger">*</span>@endif</label>
                                         <textarea name="nature_of_repeat"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="nature_of_repeat" class="nature_of_repeat">{{ $data->nature_of_repeat }}</textarea>
                                     </div>
-                                </div>
+                                </div> --}}
                                 
                                 <script>
                                     function checkRecurring(selectElement) {
@@ -697,19 +700,19 @@ $users = DB::table('users')
                                         }
                                     }
                                 </script>
-                             <div class="col-6" >
+                             {{-- <div class="col-6" >
                                     <div class="group-input">
                                         <label for="severity-level">Deviation Observed On</label>
                                         <!-- <span class="text-primary">Severity levels in a QMS record gauge issue seriousness, guiding priority for corrective actions. Ranging from low to high, they ensure quality standards and mitigate critical risks.</span> -->
                                        <input type="date" id="Deviation_date" name="Deviation_date"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="{{ $data->Deviation_date }}">
                                     </div>
-                                </div>
-                                <div class="col-lg-6 new-time-data-field">
+                                </div> --}}
+                                {{-- <div class="col-lg-6 new-time-data-field">
                                     <div class="group-input input-time">
                                         <label for="deviation_time">Deviation Observed On (Time)</label>
                                         <input type="text" name="deviation_time"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}  id="deviation_time" value="{{ $data->deviation_time }}">
                                     </div>
-                                </div>
+                                </div> --}}
                                 
                                 <script>
                                     flatpickr("#deviation_time", {
@@ -785,7 +788,7 @@ $users = DB::table('users')
                                     </div>
                                 </div> 
                                <div>  --}}
-                                <div class="col-lg-6">
+                                {{-- <div class="col-lg-6">
                                     <div class="group-input">
                                         @php
                                             $users = DB::table('users')->get();
@@ -798,22 +801,22 @@ $users = DB::table('users')
                                             @endforeach                                           
                                         </select>
                                     </div>
-                                </div> 
-                                <div class="col-lg-6">
+                                </div>  --}}
+                                {{-- <div class="col-lg-6">
                                     <div class="group-input">
                                         <label for="Initiator Group">Deviation Reported On</label>
                                         <!-- <div><small class="text-primary">Please select related information</small></div> -->
                                         <input type="date"id="Deviation_reported_date" name="Deviation_reported_date"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="{{ $data->Deviation_reported_date }}" >
                                     </div>
-                                </div>
+                                </div> --}}
                                 
                              
-                                <div class="col-lg-6">
+                                {{-- <div class="col-lg-6">
                                     <div class="group-input">
                                         <label for="audit type">Deviation Related To</label>
                                         <select multiple name="audit_type[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="audit_type">
                                             {{-- <option value="">Enter Your Selection Here</option> --}}
-                                            <option value="Facility"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} {{ strpos($data->audit_type, 'Facility') !== false ? 'selected' : '' }}>Facility</option>
+                                           {{-- <option value="Facility"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} {{ strpos($data->audit_type, 'Facility') !== false ? 'selected' : '' }}>Facility</option>
                                             <option value="Equipment/Instrument" {{ strpos($data->audit_type, 'Equipment/Instrument') !== false ? 'selected' : '' }}>Equipment/Instrument</option>
                                             <option value="Documentationerror" {{ strpos($data->audit_type, 'Documentationerror') !== false ? 'selected' : '' }}>Documentation error</option>
                                             <option value="STP/ADS_instruction" {{ strpos($data->audit_type, 'STP/ADS_instruction') !== false ? 'selected' : '' }}>STP/ADS instruction</option>
@@ -829,14 +832,14 @@ $users = DB::table('users')
                                         </select>
                                     </div>
                                 </div>
+                                 --}}
                                 
-                                
-                                <div class="col-lg-6">
+                                {{-- <div class="col-lg-6">
                                     <div class="group-input">
                                         <label for="others">Others </label>
                                         <input type="text" name="others" {{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="others" value="{{ $data->others }}">
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <script>
                                     function checkDeviationRelated(selectElement) {
