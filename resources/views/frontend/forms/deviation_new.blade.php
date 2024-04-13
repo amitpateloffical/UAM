@@ -606,44 +606,44 @@ $users = DB::table('users')
 
                                 <div class="col-lg-6">
                                     <div class="group-input">
-                                        <label for="Initiator Group"><b>Department</b><span
+                                        <label for="deparment"><b>Department</b><span
                                             class="text-danger">*</span></label> 
-                                        <select name="Initiator_Group" id="initiator_group" required>
+                                        <select name="deparment" id="departmentSelect" required>
                                             <option value="">-- Select --</option>
-                                            <option value="CQA" @if (old('Initiator_Group') == 'CQA') selected @endif>
+                                            <option value="CQA" @if (old('deparment') == 'CQA') selected @endif>
                                                 Corporate Quality Assurance</option>
-                                            <option value="QAB" @if (old('Initiator_Group') == 'QAB') selected @endif>Quality
+                                            <option value="QAB" @if (old('deparment') == 'QAB') selected @endif>Quality
                                                 Assurance Biopharma</option>
-                                            <option value="CQC" @if (old('Initiator_Group') == 'CQC') selected @endif>Central
+                                            <option value="CQC" @if (old('deparment') == 'CQC') selected @endif>Central
                                                 Quality Control</option>
-                                            <option value="MANU" @if (old('Initiator_Group') == 'MANU') selected @endif>
+                                            <option value="MANU" @if (old('deparment') == 'MANU') selected @endif>
                                                 Manufacturing</option>
-                                            <option value="PSG" @if (old('Initiator_Group') == 'PSG') selected @endif>Plasma
+                                            <option value="PSG" @if (old('deparment') == 'PSG') selected @endif>Plasma
                                                 Sourcing Group</option>
-                                            <option value="CS" @if (old('Initiator_Group') == 'CS') selected @endif>Central
+                                            <option value="CS" @if (old('deparment') == 'CS') selected @endif>Central
                                                 Stores</option>
-                                            <option value="ITG" @if (old('Initiator_Group') == 'ITG') selected @endif>
+                                            <option value="ITG" @if (old('deparment') == 'ITG') selected @endif>
                                                 Information Technology Group</option>
-                                            <option value="MM" @if (old('Initiator_Group') == 'MM') selected @endif>
+                                            <option value="MM" @if (old('deparment') == 'MM') selected @endif>
                                                 Molecular Medicine</option>
-                                            <option value="CL" @if (old('Initiator_Group') == 'CL') selected @endif>Central
+                                            <option value="CL" @if (old('deparment') == 'CL') selected @endif>Central
                                                 Laboratory</option>
 
-                                            <option value="TT" @if (old('Initiator_Group') == 'TT') selected @endif>Tech
+                                            <option value="TT" @if (old('deparment') == 'TT') selected @endif>Tech
                                                 team</option>
-                                            <option value="QA" @if (old('Initiator_Group') == 'QA') selected @endif>
+                                            <option value="QA" @if (old('deparment') == 'QA') selected @endif>
                                                 Quality Assurance</option>
-                                            <option value="QM" @if (old('Initiator_Group') == 'QM') selected @endif>
+                                            <option value="QM" @if (old('deparment') == 'QM') selected @endif>
                                                 Quality Management</option>
-                                            <option value="IA" @if (old('Initiator_Group') == 'IA') selected @endif>IT
+                                            <option value="IA" @if (old('deparment') == 'IA') selected @endif>IT
                                                 Administration</option>
-                                            <option value="ACC" @if (old('Initiator_Group') == 'ACC') selected @endif>
+                                            <option value="ACC" @if (old('deparment') == 'ACC') selected @endif>
                                                 Accounting</option>
-                                            <option value="LOG" @if (old('Initiator_Group') == 'LOG') selected @endif>
+                                            <option value="LOG" @if (old('deparment') == 'LOG') selected @endif>
                                                 Logistics</option>
-                                            <option value="SM" @if (old('Initiator_Group') == 'SM') selected @endif>
+                                            <option value="SM" @if (old('deparment') == 'SM') selected @endif>
                                                 Senior Management</option>
-                                            <option value="BA" @if (old('Initiator_Group') == 'BA') selected @endif>
+                                            <option value="BA" @if (old('deparment') == 'BA') selected @endif>
                                                 Business Administration</option>
                                         </select>
                                         @error('Initiator_Group')
@@ -653,8 +653,8 @@ $users = DB::table('users')
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="group-input">
-                                        <label for="Initiator Group Code">Department Code</label>
-                                        <input type="text" name="initiator_group_code" id="initiator_group_code"
+                                        <label for="deparment">Department Code</label>
+                                        <input type="text" name="deparment" id="deparmentCode"
                                             value="" readonly>
                                     </div>
                                 </div>
@@ -681,14 +681,14 @@ $users = DB::table('users')
                                     <div class="group-input">
                                         
                                         <label for="Employee Code/NT ID">Employee Code</label>                                     
-                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" >
                                     </div>
                                 </div>  
 
                                  <div class="col-12">
                                     <div class="group-input">
                                         <label for="Email ID">Email ID</label>                                     
-                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                        <input id="docname" type="text" name="email" maxlength="255" >
                                     </div>
                                 </div>  
 
@@ -716,27 +716,27 @@ $users = DB::table('users')
                                  <div class="col-12">
                                     <div class="group-input">
                                         <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
-                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                        <input id="docname" type="text" name="name_reporting_person" maxlength="255">
                                     </div>
                                 </div>  
 
                                  <div class="col-12">
                                     <div class="group-input">
-                                        <label for="Emp.Code of Reporting Person">Emp.Code of Reporting Person</label>                                     
-                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                        <label for="employee_Code">Emp.Code of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code_reporting_person" maxlength="255" >
                                     </div>
                                 </div>
                                  <div class="col-12">
                                     <div class="group-input">
-                                        <label for="Email ID of Reporting Person">Email ID of Reporting Person</label>                                     
-                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                        <label for="name_reporting_person">Email ID of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="email_reporting_person" maxlength="255">
                                     </div>
                                 </div>
 
                              <div class="col-12">
                                     <div class="group-input">                                
-                         <label for="is_Help_Desk">Is Help Desk?</label>
-                            <select id="is_Help_Desk" name="is_Help_Desk">
+                         <label for="is_help_desk">Is Help Desk?</label>
+                            <select id="is_help_desk    " name="is_help_desk">
                                 <option value="Select">Select</option>
                                 <option value="yes">Yes</option>    
                                 <option value="no">No</option>
@@ -760,7 +760,7 @@ $users = DB::table('users')
 
                                  <div class="col-lg-6">
                                     <div class="group-input">
-                                        <label for="Production person">Production Person</label>
+                                        <label for="Production_person">Production Person</label>
                                         <select name="Production_person" id="Production_person">
                                             <option value="">-- Select --</option>
                                             @foreach ($users as $user)
@@ -791,10 +791,10 @@ $users = DB::table('users')
 
                                  <div class="col-md-12 mb-3">
                                     <div class="group-input">
-                                        <label for="Requestor/User Comments">Requestor/User Comments <span
+                                        <label for="Requestor_User_Comments">Requestor/User Comments <span
                                             class="text-danger">*</span></label>
                                         <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
-                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                        <textarea class="summernote" name="Requestor_User_Comments[]" id="summernote-1" required>
                                     </textarea>
                                     </div>
                                 </div>
@@ -824,7 +824,7 @@ $users = DB::table('users')
 
                                  <div class="col-lg-12">
                                     <div class="group-input">
-                                        <label for="Audit Attachments">Reference Attachments</label>
+                                        <label for="audit_ttachments">Reference Attachments</label>
                                         <div class="file-attachment-field">
                                             <div class="file-attachment-list" id="Audit_file"></div>
                                             <div class="add-btn">
@@ -839,20 +839,20 @@ $users = DB::table('users')
 
                                 <div class="col-md-12 mb-3">
                                     <div class="group-input">
-                                        <label for="Requestor/User Comments">No Training Justification<span
+                                        <label for="no_training_justification">No Training Justification<span
                                             class="text-danger">*</span></label>
                                         <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
-                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                        <textarea class="summernote" name="no_training_justification[]" id="summernote-1" required>
                                     </textarea>
                                     </div>
                                 </div>
                                 
                                 <div class="col-md-12 mb-3">
                                     <div class="group-input">
-                                        <label for="Requestor/User Comments">Access Description<span
+                                        <label for="access_description*">Access Description<span
                                             class="text-danger">*</span></label>
                                         <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
-                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                        <textarea class="summernote" name="access_description[]" id="summernote-1" required>
                                     </textarea>
                                     </div>
                                 </div>
@@ -1154,9 +1154,9 @@ $users = DB::table('users')
                                     </script>
                                     <div class="col-lg-12">
                                     <div class="group-input">
-                                        <label for="Document Details Required">Document Details Required?<span
+                                        <label for="document_details_required">Document Details Required?<span
                                             class="text-danger">*</span></label>
-                                        <select name=" Document_Details_Required" id="Document_Details_Required">
+                                        <select name=" document_details_required" id="Document_Details_Required">
                                             <option value="">--Select --</option>
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
@@ -1398,7 +1398,7 @@ $users = DB::table('users')
                                
                                 <div class="col-md-12 mb-3">
                                     <div class="group-input">
-                                        <label for="HOD Remarks">HOD Remarks</label>
+                                        <label for="HOD_Remarks">HOD Remarks</label>
                                         <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
                                         <textarea class="summernote" name="HOD_Remarks" id="summernote-4">
                                     </textarea>
@@ -1423,7 +1423,7 @@ $users = DB::table('users')
                             </div>
                             <div class="button-block">
                                 <button type="submit" class="saveButton">Save</button>
-<a href="/rcms/qms-dashboard">
+                                    <a href="/rcms/qms-dashboard">
                                         <button type="button" class="backButton">Back</button>
                                     </a>
                                 <button type="button" class="nextButton" onclick="nextStep()">Next</button>
@@ -1438,7 +1438,7 @@ $users = DB::table('users')
                                
                                  <div class="col-md-12 mb-3">
                                     <div class="group-input">
-                                        <label for="QA Initial Comments">QA Initial Comments</label>
+                                        <label for="QA_Initial_Comments">QA Initial Comments</label>
                                         <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
                                         <textarea class="QA_Initial_Comments" name="QA_Initial_Comments" id="QA_Initial_Comments">
                                     </textarea>
@@ -1492,7 +1492,7 @@ $users = DB::table('users')
                                  --}}
                                 <div class="col-lg-12">
                                     <div class="group-input">
-                                        <label for="Investigation required">Investigation  Required ?</label>
+                                        <label for="Investigation_required">Investigation  Required ?</label>
                                         <select name="Investigation_required" id="Investigation_required">
                                             <option value="0">-- Select --</option>
                                             <option value="yes">Yes</option>
@@ -1510,9 +1510,9 @@ $users = DB::table('users')
                                 </div> --}}
                                 <div class="col-md-12 mb-3">
                                     <div class="group-input" id="Investigations_details">
-                                        <label for="Investigation Details">Investigation Details<span class="text-danger">*</span></label>
+                                        <label for="Investigation_Details">Investigation Details<span class="text-danger">*</span></label>
                                         <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
-                                        <textarea class="summernote Investigation_Details" name="Investigation_Details" id="summernote-6">
+                                        <textarea class="summernote Investigation_Details" name="Investigation_Details[]" id="summernote-6">
                                     </textarea>
                                     </div>
                                 </div>
@@ -1602,7 +1602,7 @@ $users = DB::table('users')
                                             <div class="file-attachment-list" id="Initial_attachment"></div>
                                             <div class="add-btn">
                                                 <div>Add</div>
-                                                <input type="file" id="myfile" name="Initial_attachment[]"
+                                                <input type="file" id="myfile" name="Initial_attachments[]"
                                                     oninput="addMultipleFiles(this, 'Initial_attachment')" multiple>
                                             </div>
                                         </div>
@@ -1611,7 +1611,7 @@ $users = DB::table('users')
                             </div>
                             <div class="button-block">
                                 <button type="submit" class="saveButton">Save</button>
-<a href="/rcms/qms-dashboard">
+                                    <a href="/rcms/qms-dashboard">
                                         <button type="button" class="backButton">Back</button>
                                     </a>
                                 <button type="button" class="nextButton" onclick="nextStep()">Next</button>
@@ -3266,7 +3266,7 @@ $users = DB::table('users')
                                 </div> --}}
                                 <div class="col-md-12 mb-3">
                                     <div class="group-input">
-                                        <label for="Investigation Summary">Investigation Summary</label>
+                                        <label for="Investigation_Summary">Investigation Summary</label>
                                         <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
                                         <textarea class="summernote" name="Investigation_Summary" id="summernote-8">
                                     </textarea>
@@ -3426,7 +3426,7 @@ $users = DB::table('users')
                             
                             <div class="button-block">
                                 <button type="submit" class="saveButton">Save</button>
-<a href="/rcms/qms-dashboard">
+                                        <a href="/rcms/qms-dashboard">
                                         <button type="button" class="backButton">Back</button>
                                     </a>
                                 <button type="button" class="nextButton" onclick="nextStep()">Next</button>
@@ -5253,9 +5253,9 @@ const saveButton = document.getElementById("ChangeSaveButton001");
         // }); --}}
     
     <script>
-        document.getElementById('initiator_group').addEventListener('change', function() {
+        document.getElementById('departmentSelect').addEventListener('change', function() {
             var selectedValue = this.value;
-            document.getElementById('initiator_group_code').value = selectedValue;
+            document.getElementById('deparmentCode').value = selectedValue;
         });
     </script>
     

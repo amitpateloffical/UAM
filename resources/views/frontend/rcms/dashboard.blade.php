@@ -177,7 +177,7 @@
                                         {{-- <th>Parent ID</th> --}}
                                         <th style="width: 10%">Division</th>
                                         <th>Process</th>
-                                        <th style="width: 25%" class="td_desc">Short Description</th>
+                                        <th style="width: 25% max-width:40vw !important" class="td_desc">Short Description</th>
                                         <th style="width: 12%">Date Opened</th>
                                         <th>Originator</th>
                                         <th> Due Date</th>
@@ -414,7 +414,7 @@
                                                 data-bs-target="#record-modal">
                                                 {{ $datas->type }}
                                             </td>
-                                            <td class="viewdetails" data-id="{{ $datas->id }}"
+                                            <td class="viewdetails" style="width: 25%; max-width:200px; overflow:hidden;" data-id="{{ $datas->id }}"
                                                 data-type="{{ $datas->type }}" data-bs-toggle="modal"
                                                 data-bs-target="#record-modal">
                                                 {{ $datas->short_description }}
