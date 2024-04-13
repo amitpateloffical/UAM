@@ -74,69 +74,99 @@ class DeviationController extends Controller
         }
 
         $deviation = new Deviation();
-        $deviation->form_type = "Deviation";
+        //$deviation->form_type = "Deviation";
         $deviation->record = ((RecordNumber::first()->value('counter')) + 1);
         $deviation->initiator_id = Auth::user()->id;
 
         # -------------new-----------
         //  $deviation->record_number = $request->record_number;
         $deviation->division_id = $request->division_id;
-        $deviation->assign_to = $request->assign_to;
-        $deviation->due_date = $request->due_date;
+        $deviation->assign_to = $request->assigned_to;
+        //$deviation->due_date = $request->due_date;
         $deviation->intiation_date = $request->intiation_date;
-        $deviation->Initiator_Group = $request->Initiator_Group;
-        $deviation->due_date = $request->due_date;
-        $deviation->initiator_group_code = $request->initiator_group_code;
+        //--------------------------------------------------------------
+       $deviation->salutation = $request->salutation;
+        $deviation->assign_to = $request->Assigned_to;
         $deviation->short_description = $request->short_description;
-        $deviation->Deviation_date = $request->Deviation_date;
-        $deviation->deviation_time = $request->deviation_time;
-        $deviation->Deviation_reported_date = $request->Deviation_reported_date;
-        $deviation->Facility = implode(',', $request->Facility);
-        // $deviation->Observed_by = $request->Observed_by;
-        $deviation->audit_type = implode(',', $request->audit_type);
-        $deviation->short_description_required = $request->short_description_required;
-        $deviation->nature_of_repeat = $request->nature_of_repeat;
-        $deviation->others = $request->others;
+        $deviation->department = $request->deparment;
+        $deviation->employee_Code = $request->employee_Code;
+        $deviation->email = $request->email;
+        $deviation->designation = $request->designation;
+        $deviation->name_reporting_person = $request->name_reporting_person;
+        $deviation->employee_Code_reporting_person = $request->employee_Code_reporting_person;
+        $deviation->email_reporting_person = $request->email_reporting_person;
+        $deviation->is_help_desk = $request->is_help_desk;
+        $deviation->is_local_admin = $request->is_local_admin;
 
-        $deviation->Product_Batch = $request->Product_Batch;
-
-
-
-
-        $deviation->Description_Deviation = implode(',', $request->Description_Deviation);
-
-        $deviation->Related_Records1 =  implode(',', $request->related_records);
-        $deviation->Immediate_Action = implode(',', $request->Immediate_Action);
-        $deviation->Preliminary_Impact = implode(',', $request->Preliminary_Impact);
-        $deviation->Product_Details_Required = $request->Product_Details_Required;
-
+        $deviation->Production_person = $request->Production_person;
+        $deviation->Manager = $request->Manager;
+        $deviation->Requestor_User_Comments =  implode(',', $request->Requestor_User_Comments);//implode
+        $deviation->training_required = $request->training_required;
+        $deviation->training_reference_number = $request->training_reference_number;
+        $deviation->no_training_justification = implode(',',$request->no_training_justification) ;//impode
+         //hod----------------------------------
         $deviation->HOD_Remarks = $request->HOD_Remarks;
-        $deviation->Deviation_category = $request->Deviation_category;
-        if($request->Deviation_category=='')
-        $deviation->Justification_for_categorization = $request->Justification_for_categorization;
+        //Qa intial view
+        $deviation->QA_Initial_Comments = $request->QA_Initial_Comments;
+        //$deviation->Initial_attachment = $request->Initial_attachment;//file
         $deviation->Investigation_required = $request->Investigation_required;
 
 
-        $deviation->Investigation_Details = $request->Investigation_Details;
-        $deviation->Customer_notification = $request->Customer_notification;
-        $deviation->customers = $request->customers;
-        $deviation->QAInitialRemark = $request->QAInitialRemark;
+        $deviation->Investigation_Details = is_array($request->Investigation_Details) ? implode(',', $request->Investigation_Details) : $request->Investigation_Details;
+        $deviation->related_records = is_array($request->related_records) ? implode(',', $request->related_records) : $request->related_records;
+        
 
-
-        $deviation->Investigation_Summary = $request->Investigation_Summary;
-        $deviation->Impact_assessment = $request->Impact_assessment;
-        $deviation->Root_cause = $request->Root_cause;
-        // $deviation->due_date_extension = $request->due_date_extension; 
+        $deviation->QAInitialRemark = $request->QAInitialRemark;//summer
+        //--------capa--------------------
+        $deviation->Investigation_Summary = $request->Investigation_Summary;//summer
+        $deviation->Impact_assessment = $request->Impact_assessment;//summer
+        $deviation->Root_cause = $request->Root_cause;//summer
         $deviation->CAPA_Rquired = $request->CAPA_Rquired;
         $deviation->capa_type = $request->capa_type;
-        $deviation->CAPA_Description = $request->CAPA_Description;
+        $deviation->CAPA_Description = is_array($request->CAPA_Description) ? implode(',', $request->CAPA_Description) : $request->CAPA_Description;
+        
         $deviation->Post_Categorization = $request->Post_Categorization;
         $deviation->Investigation_Of_Review = $request->Investigation_Of_Review;
+       
+        $deviation->Capa_attachment = $request->Capa_attachment;//file
+//----------------QA final view-----------------------------------------------
         $deviation->QA_Feedbacks = $request->QA_Feedbacks;
-        $deviation->Closure_Comments = $request->Closure_Comments;
-        $deviation->Disposition_Batch = $request->Disposition_Batch;
-        $deviation->Facility_Equipment = $request->Facility_Equipment;
-        $deviation->Document_Details_Required = $request->Document_Details_Required;
+        $deviation->QA_attachments = $request->QA_attachments;//file
+//QAH/desinee approval----------------------------------------
+        $deviation->Closure_Comments = is_array($request->Closure_Comments) ? implode(',', $request->Closure_Comments) : $request->Closure_Comments;
+      //  $deviation->Closure_Comments = implode(',', $request->Closure_Comments);//summer
+        $deviation->closure_attachment =  $request->closure_attachment;//file
+        // $deviation->Immediate_Action = implode(',', $request->Immediate_Action);
+        // $deviation->Preliminary_Impact = implode(',', $request->Preliminary_Impact);
+        // $deviation->Product_Details_Required = $request->Product_Details_Required;
+
+        // $deviation->HOD_Remarks = $request->HOD_Remarks;
+        // $deviation->Deviation_category = $request->Deviation_category;
+        // if($request->Deviation_category=='')
+        // $deviation->Justification_for_categorization = $request->Justification_for_categorization;
+        // $deviation->Investigation_required = $request->Investigation_required;
+
+
+        // $deviation->Investigation_Details = $request->Investigation_Details;
+        // $deviation->Customer_notification = $request->Customer_notification;
+        // $deviation->customers = $request->customers;
+        // $deviation->QAInitialRemark = $request->QAInitialRemark;
+
+
+        // $deviation->Investigation_Summary = $request->Investigation_Summary;
+        // $deviation->Impact_assessment = $request->Impact_assessment;
+        // $deviation->Root_cause = $request->Root_cause;
+        // // $deviation->due_date_extension = $request->due_date_extension; 
+        // $deviation->CAPA_Rquired = $request->CAPA_Rquired;
+        // $deviation->capa_type = $request->capa_type;
+        // $deviation->CAPA_Description = $request->CAPA_Description;
+        // $deviation->Post_Categorization = $request->Post_Categorization;
+        // $deviation->Investigation_Of_Review = $request->Investigation_Of_Review;
+        // $deviation->QA_Feedbacks = $request->QA_Feedbacks;
+        // $deviation->Closure_Comments = $request->Closure_Comments;
+        // $deviation->Disposition_Batch = $request->Disposition_Batch;
+        // $deviation->Facility_Equipment = $request->Facility_Equipment;
+        // $deviation->Document_Details_Required = $request->Document_Details_Required;
         //$deviation->production_byy = $request->CFT_Review_Complete_By;
 
         
