@@ -100,7 +100,7 @@ class DeviationController extends Controller
 
         $deviation->Production_person = $request->Production_person;
         $deviation->Manager = $request->Manager;
-        $deviation->Requestor_User_Comments =  implode(',', $request->Requestor_User_Comments);//implode
+        $deviation->https =  implode(',', $request->https);//implode
         $deviation->training_required = $request->training_required;
         $deviation->training_reference_number = $request->training_reference_number;
         $deviation->no_training_justification = implode(',',$request->no_training_justification) ;//impode
