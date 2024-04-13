@@ -468,6 +468,7 @@ $users = DB::table('users')
                 
                 <div id="step-form">
 
+                  
                     <!-- General information content -->
                     <div id="CCForm1" class="inner-block cctabcontent">
                         <div class="inner-block-content">
@@ -499,15 +500,8 @@ $users = DB::table('users')
                                         {{-- <div class="static">QMS-EMEA/CAPA/{{ date('Y') }}/{{ $record_number }}</div> 
                                     </div>
                                 </div> --}}
-                                <div class="col-lg-6">
-                                    <div class="group-input">
-                                        <label for="Division Code"><b>Site/Location Code</b></label>
-                                        <input readonly type="text" name="division_code"
-                                            value="{{ $divisionName }}">
-                                        <input type="hidden" name="division_id" value="{{ session()->get('division') }}">
-                                        {{-- <div class="static">QMS-North America</div> --}}
-                                    </div>
-                                </div>
+
+                                {{-- intiator added --}}
                                 <div class="col-lg-6">
                                     <div class="group-input">
                                         <label for="Initiator"><b>Initiator</b></label>
@@ -516,19 +510,9 @@ $users = DB::table('users')
 
                                     </div>
                                 </div>
-                                {{-- <?php
-                                // Calculate the due date (30 days from the initiation date)
-                                $initiationDate = date('Y-m-d'); // Current date as initiation date
-                                $dueDate = date('Y-m-d', strtotime($initiationDate . '+30 days')); // Due date
-                                ?> --}}
+                                {{-- intiator added --}}
 
-                                {{-- <div class="col-lg-6">
-                                    <div class="group-input">
-                                        <label for="Date of Initiation"><b>Date of Initiation</b></label>
-                                        <input readonly type="text" value="{{ date('d-M-Y') }}" name="initiation_date" id="initiation_date">
-                                        <input type="hidden" value="{{ date('Y-m-d') }}" name="initiation_date_hidden">
-                                    </div>
-                                </div> --}}
+                                {{-- initiation date --}}
                                 <div class="col-lg-6">
                                     <div class="group-input">
                                         <label for="Date Due">Date of Initiation</label>
@@ -538,6 +522,75 @@ $users = DB::table('users')
 
                                     </div>
                                 </div>
+                                {{-- initiation date --}}
+
+                                <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Division Code"><b>Site/Location Code</b></label>
+                                        <input readonly type="text" name="division_code"
+                                            value="{{ $divisionName }}">
+                                        <input type="hidden" name="division_id" value="{{ session()->get('division') }}">
+                                        {{-- <div class="static">QMS-North America</div> --}}
+                                    </div>
+                                </div>
+
+
+                                {{-- saluation added --}}
+                                
+
+                                {{-- saluation added --}}
+                                
+                                <div class="col-12">
+                                    <div class="group-input">
+                                    <label for="salutation">Salutation</label>
+                                    <select id="salutation" name="salutation">
+                                <option value="Select">Select</option>
+                                <option value="Mr">Mr.</option>
+                                <option value="Mrs">Mrs.</option>
+                                <option value="Miss">Miss</option>
+
+                            </select>
+                        </div>
+                    </div>  {{-- assigned to code added --}}
+
+                                <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Production person">Assigned to</label>
+                                        <select name="Production_person" id="Production_person">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                                               {{-- assigned to code added --}}
+
+                                                               {{-- short description  --}}
+
+                                                               <div class="col-12">
+                                                                <div class="group-input">
+                                                                    <label for="Short Description">Short Description<span
+                                                                        class="text-danger"> *</span></label><span id="rchars">255</span>characters remaining
+                                                                <input type="textarea"  name="short_description"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}   id="docname" type="text"    maxlength="255" required  {{ $data->stage == 0 || $data->stage == 6 ? "disabled" : "" }}>{{ $data->short_description }}>
+                                                             </div>
+                                                            </div>
+                                                               {{-- short description --}}
+                               
+                                {{-- <?php
+                                // Calculate the due date (30 days from the initiation date)
+                                $initiationDate = date('Y-m-d'); // Current date as initiation date
+                                $dueDate = date('Y-m-d', strtotime($initiationDate . '+30 days')); // Due date
+                                ?> 
+
+                                {{-- <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Date of Initiation"><b>Date of Initiation</b></label>
+                                        <input readonly type="text" value="{{ date('d-M-Y') }}" name="initiation_date" id="initiation_date">
+                                        <input type="hidden" value="{{ date('Y-m-d') }}" name="initiation_date_hidden">
+                                    </div>
+                                </div> --}}
+                               
 
                                 {{-- <div class="col-lg-12 new-date-data-field">
                                     <div class="group-input input-date">
@@ -549,7 +602,10 @@ $users = DB::table('users')
                                         </div>
                                     </div>
                                 </div> --}}
-                                <div class="col-md-12">
+                               
+                                {{-- Due Date --}}
+
+                                {{-- <div class="col-md-12">
                                     <div class="group-input">
                                         <label for="due-date">Due Date <span class="text-danger"></span></label>
                                         <div><small class="text-primary">If revising Due Date, kindly mention revision reason in "Due Date Extension Justification" data field.</small></div>
@@ -557,7 +613,9 @@ $users = DB::table('users')
                                             value="{{ Helpers::getdateFormat($data->due_date) }}"
                                             name="due_date"{{ $data->stage == 0 || $data->stage == 6 ? 'disabled' : '' }}>
                                     </div>
-                                </div>
+                                </div> --}}
+
+                                {{-- Due Date --}}
 
                                 {{-- <script>
                                     // Format the due date to DD-MM-YYYY
@@ -665,14 +723,192 @@ $users = DB::table('users')
 
                                     </div>
                                 </div>
+                                
+                                </div>
+
+                                
+                                <div class="sub-head">
+                                    Employee 
+                                   </div>
+        
+                                        <div class="col-12">
+                                            <div class="group-input">
+                                                
+                                                <label for="Employee Code/NT ID">Employee Code</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>  
+        
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Email ID">Email ID</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>  
+        
+        
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                          <label for="designation">Designation</label>
+                                          <select id="designation" name="designation">
+                                        <option value="Select">Select</option>
+                                        <option value="Administrator">Administrator</option>
+                                        <option value="Quality Assurance (QA) Manager">Quality Assurance (QA) Manager</option>
+                                        <option value="Quality Control (QC) Analyst">Quality Control (QC) Analyst</option>
+                                        <option value="Regulatory Affairs Specialist">Regulatory Affairs Specialist</option>
+                                        <option value="Research & Development (R&D) Scientist">Research & Development (R&D) Scientist</option>
+                                        <option value="Production Supervisor">Production Supervisor</option>
+                                        <option value="Pharmacist">Pharmacist</option>
+                                        <option value="Clinical Research Coordinator">Clinical Research Coordinator</option>
+                                        <option value="Auditor">Auditor</option>
+                                        <option value="Other">Other</option>                                
+                                    </select>
+                                     </div>
+                                        </div> 
+                                    
                             
-                                <div class="col-12">
-                                    <div class="group-input">
-                                        <label for="Short Description">Short Description<span
-                                            class="text-danger"> *</span></label><span id="rchars">255</span>characters remaining
-                                    <textarea name="short_description"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}   id="docname" type="text"    maxlength="255" required  {{ $data->stage == 0 || $data->stage == 6 ? "disabled" : "" }}>{{ $data->short_description }}</textarea>
-                                 </div>
-                                </div>  
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>  
+        
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Emp.Code of Reporting Person">Emp.Code of Reporting Person</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Email ID of Reporting Person">Email ID of Reporting Person</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>
+        
+                                     <div class="col-12">
+                                            <div class="group-input">                                
+                                 <label for="is_Help_Desk">Is Help Desk?</label>
+                                    <select id="is_Help_Desk" name="is_Help_Desk">
+                                        <option value="Select">Select</option>
+                                        <option value="yes">Yes</option>    
+                                        <option value="no">No</option>
+                                    </select>
+                                     </div>
+                                        </div>
+                                <!-- Is Local Admin -->
+                                 <div class="col-12">
+                                            <div class="group-input">
+                                    <label for="is_local_admin">Is Local Admin?</label>
+                                    <select id="is_local_admin" name="is_local_admin">
+                                        <option value="Select">Select</option>
+                                        <option value="yes">Yes</option>    
+                                        <option value="no">No</option>
+                                    </select>
+                                     </div>
+                                        </div>
+        
+                                    <!-- Administrator -->
+        
+        
+                                         <div class="col-lg-6">
+                                            <div class="group-input">
+                                                <label for="Production person">Production Person</label>
+                                                <select name="Production_person" id="Production_person">
+                                                    <option value="">-- Select --</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+        
+                                             <div class="col-lg-6">
+                                            <div class="group-input">
+                                                <label for="Manager">Manager</label>
+                                                <select name="Manager" id="Manager">
+                                                    <option value="">-- Select --</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div> 
+                                        
+                                        {{-- request user /comments --}}
+{{-- 
+                                        <div class="col-md-12 mb-3">
+                                            <div class="group-input">
+                                                <label for="Requestor/User Comments">Requestor/User Comments <span
+                                                    class="text-danger">*</span></label>
+                                                <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                                <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                            </textarea>
+                                            </div>
+                                        </div> --}}
+                                        {{-- request user /comments --}}
+
+                                        {{-- training evidence --}}
+                                        <!-- Training Evidences Required -->
+                             <div class="col-12">
+                                <div class="group-input">
+                        <label for="training_required">Training Evidences Required?</label>
+                        <select id="training_required" name="training_required">
+                            <option value="Select">Select</option>
+
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select> </div>
+                            </div>
+
+                        <!-- Training Reference Number -->
+                         <div class="col-12">
+                                <div class="group-input">
+                        <label for="training_reference_number">Training Reference Number</label>
+                        <input type="text" id="training_reference_number" name="training_reference_number">
+                            </div>
+                            </div>
+                        <!-- Reference Attachments -->
+                         
+
+                             <div class="col-lg-12">
+                                <div class="group-input">
+                                    <label for="Audit Attachments">Reference Attachments</label>
+                                    <div class="file-attachment-field">
+                                        <div class="file-attachment-list" id="Audit_file"></div>
+                                        <div class="add-btn">
+                                            <div>Add</div>
+                                            <input type="file" id="HOD_Attachments" name="Audit_file[]"
+                                                oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         
+
+                            <div class="col-md-12 mb-3">
+                                <div class="group-input">
+                                    <label for="Requestor/User Comments">No Training Justification<span
+                                        class="text-danger">*</span></label>
+                                    <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                    <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                </textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12 mb-3">
+                                <div class="group-input">
+                                    <label for="Requestor/User Comments">Access Description<span
+                                        class="text-danger">*</span></label>
+                                    <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                    <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                </textarea>
+                                </div>
+                            </div>
+{{-- training evidence --}}
+                            
+                                 
                                 {{-- <div class="col-lg-6 new-date-data-field">
                                     <div class="group-input input-date">
                                         <label for="Short Description required">Nature of Repeat?</label>
@@ -795,6 +1031,8 @@ $users = DB::table('users')
                                             $selectedFacilities = explode(',', $data->Facility); // Convert to array if it's not already
                                         @endphp
                                         <label for="If Other">Deviation Observed By<span class="text-danger d-none">*</span></label>
+                                        
+                                        
                                         <select multiple name="Facility[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} placeholder="Select Facility Name" data-search="false" data-silent-initial-value-set="true" id="Facility">
                                             @foreach ($users as $user)
                                                 <option {{ in_array($user->id, $selectedFacilities) ? 'selected' : '' }} value="{{ $user->id }}">{{ $user->name }}</option>
@@ -851,7 +1089,130 @@ $users = DB::table('users')
                                         }
                                     }
                                 </script>
+
+
+
+                                {{-- document details required --}}
                                 <div class="col-lg-12">
+                                    <div class="group-input">
+                                        <label for="Document Details Required">Document Details Required?<span
+                                            class="text-danger">*</span></label>
+                                        <select name=" Document_Details_Required" id="Document_Details_Required">
+                                            <option value="">--Select --</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                {{-- document details required --}}
+
+
+                                {{-- document details --}}
+                                <div class="group-input">
+                                    <label for="audit-agenda-grid">
+                                     Document Details
+                                        <button type="button" name="audit-agenda-grid"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="audit-agenda-grid"
+                                            id="ReferenceDocument">+</button>
+                                        <span class="text-primary" data-bs-toggle="modal"
+                                            data-bs-target="#document-details-field-instruction-modal"
+                                            style="font-size: 0.8rem; font-weight: 400; cursor: pointer;">
+                                            (Launch Instruction)
+                                        </span>
+                                    </label>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="ReferenceDocument_details"
+                                            style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 4%">Row#</th>
+                                                    <th style="width: 12%">Number</th>
+                                                    
+                                                    <th style="width: 16%"> Reference Document Name</th>
+                                                    <th style="width: 16%"> Remarks</th>
+                                                                                                     
+                                                </tr>
+                                            </thead>
+                                        <tbody>
+                                            @if ($grid_data1->ReferenceDocumentName)
+                                                @foreach (unserialize($grid_data1->ReferenceDocumentName) as $key => $temps)
+                                                    <tr>
+                                                      <td><input disabled type="text" name="serial[]"{{ $data->stage == 0 || $data->stage == 6 ? 'disabled' : '' }} value="{{ $key + 1 }}"></td>
+                                                        <td><input type="text" name="Number[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="{{ unserialize($grid_data1->Number)[$key] ? unserialize($grid_data1->Number)[$key] : '' }}"></td>
+                                                        <td><input type="text" name="ReferenceDocumentName[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="{{ unserialize($grid_data1->ReferenceDocumentName)[$key] ? unserialize($grid_data1->ReferenceDocumentName)[$key] : '' }}"></td>
+                                                        <td><input type="text" name="Document_Remarks[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="{{ unserialize($grid_data1->Document_Remarks)[$key] ? unserialize($grid_data1->Document_Remarks)[$key] : '' }}"></td>
+                                                    </tr>           
+                                                @endforeach
+                                           @endif
+                                         </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                              
+                            {{-- <div class="col-lg-12">
+                                <div class="group-input" id="external_agencies_req">
+                                    <label for="others">Name of Product & Batch No<span class="text-danger d-none">*</span></label>
+                                    <input type="text" value="{{$data->Product_Batch}}" name="Product_Batch"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}>
+                                    
+                                        <!-- <p class="text-danger">this field is required</p> -->
+                                
+                                </div>
+                  </div> --}}
+                           
+                            {{-- <div class="col-6">
+                                <div class="group-input">
+                                    <label for="Description Deviation">Description of Deviation</label>
+                                    <textarea class="summernote"  name="Description_Deviation[]" value="{{$data->Description_Deviation}}"></textarea>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="col-md-12">
+                                <div class="group-input">
+                                    <label for="Description Deviation">Description of Deviation</label>
+                                    <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                    <textarea class="summernote" name="Description_Deviation[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="summernote-1">{{ $data->Description_Deviation }}</textarea>
+                                </div>
+                            </div> --}}
+                            <!-- <div class="col-md-12 mb-3">
+                                <div class="group-input">
+                                    <label for="Production feedback">Production Feedback</label>
+                                    <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                    <textarea class="summernote" name="Production_feedback" id="summernote-18">{{ $data1->Production_feedback }}
+                                </textarea>
+                                </div>
+                            </div> -->
+                            {{-- <div class="col-6">
+                            <div class="group-input">
+                                    <label for="Initial Comments">Immediate Action (if any)</label>
+                                    <textarea class="summernote" name="Immediate_Action[]" value="{{$data->Immediate_Action}}"></textarea>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="col-md-12">
+                                <div class="group-input">
+                                    <label for="Immediate Action">Immediate Action (if any)</label>
+                                    <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                    <textarea class="summernote" name="Immediate_Action[]" {{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="summernote-2">{{ $data->Immediate_Action }}</textarea>
+                                </div>
+                            </div> --}}
+                           
+                            {{-- <div class="col-6">
+                            <div class="group-input">
+                                    <label for="Initial Comments">Preliminary Impact of Deviation</label>
+                                    <textarea class="summernote" name="Preliminary_Impact[]" value="{{$data->Preliminary_Impact}}"></textarea>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="col-md-12">
+                                <div class="group-input">
+                                    <label for="Preliminary Impact">Preliminary Impact of Deviation</label>
+                                    <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                    <textarea class="summernote" name="Preliminary_Impact[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="summernote-3">{{ $data->Preliminary_Impact }}</textarea>
+                                </div>
+                            </div>
+                            
+                        </div> --}}
+                                {{-- document details --}}
+
+                                {{-- <div class="col-lg-12">
                                     <div class="group-input">
                                         <label for="Facility/Equipment"> Facility/ Equipment/ Instrument/ System Details Required?</label>
                                         <select name="Facility_Equipment" {{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="Facility_Equipment"  value="{{ $data->Facility_Equipment }}" >
@@ -862,8 +1223,8 @@ $users = DB::table('users')
                                             value="no">No</option>>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="group-input">
+                                </div> --}}
+                                {{-- <div class="group-input">
                                         <label for="audit-agenda-grid">
                                             Facility/ Equipment/ Instrument/ System Details
                                             <button type="button" name="audit-agenda-grid"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="audit-agenda-grid"
@@ -873,7 +1234,7 @@ $users = DB::table('users')
                                                 style="font-size: 0.8rem; font-weight: 400; cursor: pointer;">
                                                 (Launch Instruction)
                                             </span>
-                                        </label>
+                                        </label> --}}
                                         {{-- <div class="table-responsive">
                                             <table class="table table-bordered" id="onservation-field-table"
                                                 style="width: 100%;">
@@ -942,7 +1303,7 @@ $users = DB::table('users')
                                         </div>
                                         
                                     </div>
-                                    <div class="col-lg-12">
+                                    {{-- <div class="col-lg-12">
                                     <div class="group-input">
                                         <label for="Document Details Required">Document Details Required?</label>
                                         <select name="Document_Details_Required"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="Document_Details_Required"  value="{{ $data->Document_Details_Required }}" >
@@ -953,108 +1314,8 @@ $users = DB::table('users')
                                             value="no">No</option>>
                                         </select>
                                     </div>
-                                </div> 
-                                    <div class="group-input">
-                                        <label for="audit-agenda-grid">
-                                         Document Details
-                                            <button type="button" name="audit-agenda-grid"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="audit-agenda-grid"
-                                                id="ReferenceDocument">+</button>
-                                            <span class="text-primary" data-bs-toggle="modal"
-                                                data-bs-target="#document-details-field-instruction-modal"
-                                                style="font-size: 0.8rem; font-weight: 400; cursor: pointer;">
-                                                (Launch Instruction)
-                                            </span>
-                                        </label>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="ReferenceDocument_details"
-                                                style="width: 100%;">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="width: 4%">Row#</th>
-                                                        <th style="width: 12%">Number</th>
-                                                        
-                                                        <th style="width: 16%"> Reference Document Name</th>
-                                                        <th style="width: 16%"> Remarks</th>
-                                                                                                         
-                                                    </tr>
-                                                </thead>
-                                            <tbody>
-                                                @if ($grid_data1->ReferenceDocumentName)
-                                                    @foreach (unserialize($grid_data1->ReferenceDocumentName) as $key => $temps)
-                                                        <tr>
-                                                          <td><input disabled type="text" name="serial[]"{{ $data->stage == 0 || $data->stage == 6 ? 'disabled' : '' }} value="{{ $key + 1 }}"></td>
-                                                            <td><input type="text" name="Number[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="{{ unserialize($grid_data1->Number)[$key] ? unserialize($grid_data1->Number)[$key] : '' }}"></td>
-                                                            <td><input type="text" name="ReferenceDocumentName[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="{{ unserialize($grid_data1->ReferenceDocumentName)[$key] ? unserialize($grid_data1->ReferenceDocumentName)[$key] : '' }}"></td>
-                                                            <td><input type="text" name="Document_Remarks[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} value="{{ unserialize($grid_data1->Document_Remarks)[$key] ? unserialize($grid_data1->Document_Remarks)[$key] : '' }}"></td>
-                                                        </tr>           
-                                                    @endforeach
-                                               @endif
-                                             </tbody>
-
-                                            </table>
-                                        </div>
-                                    </div>
+                                </div>  --}}
                                   
-                                <div class="col-lg-12">
-                                    <div class="group-input" id="external_agencies_req">
-                                        <label for="others">Name of Product & Batch No<span class="text-danger d-none">*</span></label>
-                                        <input type="text" value="{{$data->Product_Batch}}" name="Product_Batch"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}>
-                                        
-                                            <!-- <p class="text-danger">this field is required</p> -->
-                                    
-                                    </div>
-                      </div>
-                               
-                                {{-- <div class="col-6">
-                                    <div class="group-input">
-                                        <label for="Description Deviation">Description of Deviation</label>
-                                        <textarea class="summernote"  name="Description_Deviation[]" value="{{$data->Description_Deviation}}"></textarea>
-                                    </div>
-                                </div> --}}
-                                <div class="col-md-12">
-                                    <div class="group-input">
-                                        <label for="Description Deviation">Description of Deviation</label>
-                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
-                                        <textarea class="summernote" name="Description_Deviation[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="summernote-1">{{ $data->Description_Deviation }}</textarea>
-                                    </div>
-                                </div>
-                                <!-- <div class="col-md-12 mb-3">
-                                    <div class="group-input">
-                                        <label for="Production feedback">Production Feedback</label>
-                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
-                                        <textarea class="summernote" name="Production_feedback" id="summernote-18">{{ $data1->Production_feedback }}
-                                    </textarea>
-                                    </div>
-                                </div> -->
-                                {{-- <div class="col-6">
-                                <div class="group-input">
-                                        <label for="Initial Comments">Immediate Action (if any)</label>
-                                        <textarea class="summernote" name="Immediate_Action[]" value="{{$data->Immediate_Action}}"></textarea>
-                                    </div>
-                                </div> --}}
-                                <div class="col-md-12">
-                                    <div class="group-input">
-                                        <label for="Immediate Action">Immediate Action (if any)</label>
-                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
-                                        <textarea class="summernote" name="Immediate_Action[]" {{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="summernote-2">{{ $data->Immediate_Action }}</textarea>
-                                    </div>
-                                </div>
-                               
-                                {{-- <div class="col-6">
-                                <div class="group-input">
-                                        <label for="Initial Comments">Preliminary Impact of Deviation</label>
-                                        <textarea class="summernote" name="Preliminary_Impact[]" value="{{$data->Preliminary_Impact}}"></textarea>
-                                    </div>
-                                </div> --}}
-                                <div class="col-md-12">
-                                    <div class="group-input">
-                                        <label for="Preliminary Impact">Preliminary Impact of Deviation</label>
-                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
-                                        <textarea class="summernote" name="Preliminary_Impact[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="summernote-3">{{ $data->Preliminary_Impact }}</textarea>
-                                    </div>
-                                </div>
-                                
-                            </div>
                             <div class="button-block">
                                 <button type="submit"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="ChangesaveButton" class="saveButton">Save</button>
                                 <button type="button"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="ChangeNextButton" class="nextButton">Next</button>
@@ -1111,6 +1372,7 @@ $users = DB::table('users')
                                 
                                     <div class="col-md-12">
                                         @if($data->stage == 2)
+                                        
                                             <div class="group-input">
                                                 <label for="HOD Remarks">HOD Remarks <span class="text-danger">*</span></label>
                                                 <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
@@ -1177,6 +1439,237 @@ $users = DB::table('users')
                                         </div>
                                     </div>
                                 </div>
+                                {{-- employee page --}}
+
+                                <div class="sub-head">
+                                    Employee 
+                                   </div>
+        
+                                        <div class="col-12">
+                                            <div class="group-input">
+                                                
+                                                <label for="Employee Code/NT ID">Employee Code</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>  
+        
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Email ID">Email ID</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>  
+        
+        
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                          <label for="designation">Designation</label>
+                                          <select id="designation" name="designation">
+                                        <option value="Select">Select</option>
+                                        <option value="Administrator">Administrator</option>
+                                        <option value="Quality Assurance (QA) Manager">Quality Assurance (QA) Manager</option>
+                                        <option value="Quality Control (QC) Analyst">Quality Control (QC) Analyst</option>
+                                        <option value="Regulatory Affairs Specialist">Regulatory Affairs Specialist</option>
+                                        <option value="Research & Development (R&D) Scientist">Research & Development (R&D) Scientist</option>
+                                        <option value="Production Supervisor">Production Supervisor</option>
+                                        <option value="Pharmacist">Pharmacist</option>
+                                        <option value="Clinical Research Coordinator">Clinical Research Coordinator</option>
+                                        <option value="Auditor">Auditor</option>
+                                        <option value="Other">Other</option>                                
+                                    </select>
+                                     </div>
+                                        </div> 
+                                    
+                            
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>  
+        
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Emp.Code of Reporting Person">Emp.Code of Reporting Person</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Email ID of Reporting Person">Email ID of Reporting Person</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>
+        
+                                     <div class="col-12">
+                                            <div class="group-input">                                
+                                 <label for="is_Help_Desk">Is Help Desk?</label>
+                                    <select id="is_Help_Desk" name="is_Help_Desk">
+                                        <option value="Select">Select</option>
+                                        <option value="yes">Yes</option>    
+                                        <option value="no">No</option>
+                                    </select>
+                                     </div>
+                                        </div>
+                                <!-- Is Local Admin -->
+                                 <div class="col-12">
+                                            <div class="group-input">
+                                    <label for="is_local_admin">Is Local Admin?</label>
+                                    <select id="is_local_admin" name="is_local_admin">
+                                        <option value="Select">Select</option>
+                                        <option value="yes">Yes</option>    
+                                        <option value="no">No</option>
+                                    </select>
+                                     </div>
+                                        </div>
+        
+                                    <!-- Administrator -->
+        
+        
+                                         <div class="col-lg-6">
+                                            <div class="group-input">
+                                                <label for="Production person">Production Person</label>
+                                                <select name="Production_person" id="Production_person">
+                                                    <option value="">-- Select --</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+        
+                                             <div class="col-lg-6">
+                                            <div class="group-input">
+                                                <label for="Manager">Manager</label>
+                                                <select name="Manager" id="Manager">
+                                                    <option value="">-- Select --</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        {{-- employee page --}}
+
+                                        {{-- requestor/comment page --}}
+                                        <div class="col-md-12 mb-3">
+                                            <div class="group-input">
+                                                <label for="Requestor/User Comments">Requestor/User Comments <span
+                                                    class="text-danger">*</span></label>
+                                                <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                                <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                            </textarea>
+                                            </div>
+                                        </div>
+                                        {{-- requestor /comment page --}}
+                                         <!-- Training Evidences Required -->
+                             <div class="col-12">
+                                <div class="group-input">
+                        <label for="training_required">Training Evidences Required?</label>
+                        <select id="training_required" name="training_required">
+                            <option value="Select">Select</option>
+
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select> </div>
+                            </div>
+
+                        <!-- Training Reference Number -->
+                         <div class="col-12">
+                                <div class="group-input">
+                        <label for="training_reference_number">Training Reference Number</label>
+                        <input type="text" id="training_reference_number" name="training_reference_number">
+                            </div>
+                            </div>
+                        <!-- Reference Attachments -->
+                         
+
+                             <div class="col-lg-12">
+                                <div class="group-input">
+                                    <label for="Audit Attachments">Reference Attachments</label>
+                                    <div class="file-attachment-field">
+                                        <div class="file-attachment-list" id="Audit_file"></div>
+                                        <div class="add-btn">
+                                            <div>Add</div>
+                                            <input type="file" id="HOD_Attachments" name="Audit_file[]"
+                                                oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         
+
+                            <div class="col-md-12 mb-3">
+                                <div class="group-input">
+                                    <label for="Requestor/User Comments">No Training Justification<span
+                                        class="text-danger">*</span></label>
+                                    <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                    <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                </textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12 mb-3">
+                                <div class="group-input">
+                                    <label for="Requestor/User Comments">Access Description<span
+                                        class="text-danger">*</span></label>
+                                    <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                    <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                </textarea>
+                                </div>
+                            </div>
+{{-- 
+                            
+                            <div class="col-lg-12">
+                                <div class="group-input">
+                                    <label for="Document Details Required">Document Details Required?<span
+                                        class="text-danger">*</span></label>
+                                    <select name=" Document_Details_Required" id="Document_Details_Required">
+                                        <option value="">--Select --</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            document details --}}
+                            <div class="group-input">
+                                <label for="audit-agenda-grid">
+                                 Document Details <span id="asteriskInviDetails" style="display: none" class="text-danger">*</span>
+                                    <button type="button" name="audit-agenda-grid"
+                                        id="Document_Details">+</button>
+                                    <span class="text-primary" data-bs-toggle="modal"
+                                        data-bs-target="#document-details_details-field-instruction-modal"
+                                        style="font-size: 0.8rem; font-weight: 400; cursor: pointer;">
+                                        (Launch Instruction)
+                                    </span>
+                                </label>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="Document_Details_Details"
+                                        style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 4%">Row#</th>
+                                                <th style="width: 12%">Number</th>
+                                                <th style="width: 16%"> Reference Document Name</th>
+                                                <th style="width: 16%"> Remarks</th>
+                                               
+                                                                                                 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                <td><input disabled type="text" name="serial[]" value="1"></td>
+                                <td><input type="text" class="numberDetail" name="Number[]"></td>
+                                <td><input type="text" class="ReferenceDocumentName" name="ReferenceDocumentName[]"></td>
+                                <td><input type="text" class="Document_Remarks" name="Document_Remarks[]"></td>
+               
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+
+
                                 
                                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                                     <script>
@@ -1436,6 +1929,7 @@ $users = DB::table('users')
                             </div>
                             
                             @else
+
                             <div class="row">
                                 <div style="margin-bottom: 0px;" class="col-lg-12 new-date-data-field ">
                                     <div class="group-input input-date">
@@ -1451,6 +1945,190 @@ $users = DB::table('users')
                                                 value="critical">Critical</option>
                                             </select>
                                             @else
+                                            {{-- employee page --}}
+
+                                            <div class="sub-head">
+                                                Employee 
+                                               </div>
+                    
+                                                    <div class="col-12">
+                                                        <div class="group-input">
+                                                            
+                                                            <label for="Employee Code/NT ID">Employee Code</label>                                     
+                                                            <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                                        </div>
+                                                    </div>  
+                    
+                                                     <div class="col-12">
+                                                        <div class="group-input">
+                                                            <label for="Email ID">Email ID</label>                                     
+                                                            <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                                        </div>
+                                                    </div>  
+                    
+                    
+                                                     <div class="col-12">
+                                                        <div class="group-input">
+                                                      <label for="designation">Designation</label>
+                                                      <select id="designation" name="designation">
+                                                    <option value="Select">Select</option>
+                                                    <option value="Administrator">Administrator</option>
+                                                    <option value="Quality Assurance (QA) Manager">Quality Assurance (QA) Manager</option>
+                                                    <option value="Quality Control (QC) Analyst">Quality Control (QC) Analyst</option>
+                                                    <option value="Regulatory Affairs Specialist">Regulatory Affairs Specialist</option>
+                                                    <option value="Research & Development (R&D) Scientist">Research & Development (R&D) Scientist</option>
+                                                    <option value="Production Supervisor">Production Supervisor</option>
+                                                    <option value="Pharmacist">Pharmacist</option>
+                                                    <option value="Clinical Research Coordinator">Clinical Research Coordinator</option>
+                                                    <option value="Auditor">Auditor</option>
+                                                    <option value="Other">Other</option>                                
+                                                </select>
+                                                 </div>
+                                                    </div> 
+                                                
+                                        
+                                                     <div class="col-12">
+                                                        <div class="group-input">
+                                                            <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
+                                                            <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                                        </div>
+                                                    </div>  
+                    
+                                                     <div class="col-12">
+                                                        <div class="group-input">
+                                                            <label for="Emp.Code of Reporting Person">Emp.Code of Reporting Person</label>                                     
+                                                            <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-12">
+                                                        <div class="group-input">
+                                                            <label for="Email ID of Reporting Person">Email ID of Reporting Person</label>                                     
+                                                            <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                                        </div>
+                                                    </div>
+                    
+                                                 <div class="col-12">
+                                                        <div class="group-input">                                
+                                             <label for="is_Help_Desk">Is Help Desk?</label>
+                                                <select id="is_Help_Desk" name="is_Help_Desk">
+                                                    <option value="Select">Select</option>
+                                                    <option value="yes">Yes</option>    
+                                                    <option value="no">No</option>
+                                                </select>
+                                                 </div>
+                                                    </div>
+                                                                            <!-- Is Local Admin -->
+                         <div class="col-12">
+                            <div class="group-input">
+                    <label for="is_local_admin">Is Local Admin?</label>
+                    <select id="is_local_admin" name="is_local_admin">
+                        <option value="Select">Select</option>
+                        <option value="yes">Yes</option>    
+                        <option value="no">No</option>
+                    </select>
+                     </div>
+                        </div>
+
+                    <!-- Administrator -->
+
+
+                         <div class="col-lg-6">
+                            <div class="group-input">
+                                <label for="Production person">Production Person</label>
+                                <select name="Production_person" id="Production_person">
+                                    <option value="">-- Select --</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                             <div class="col-lg-6">
+                            <div class="group-input">
+                                <label for="Manager">Manager</label>
+                                <select name="Manager" id="Manager">
+                                    <option value="">-- Select --</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        {{-- manager --}}
+                                                    {{-- end employee page --}}
+
+
+                                                    {{-- here --}}
+
+                                                    <div class="col-md-12 mb-3">
+                                                        <div class="group-input">
+                                                            <label for="Requestor/User Comments">Requestor/User Comments <span
+                                                                class="text-danger">*</span></label>
+                                                            <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                                            <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                                        </textarea>
+                                                        </div>
+                                                    </div>
+                                                <!-- Requestor/User Comments -->
+                                                 
+                                                <!-- Training Evidences Required -->
+                                                 <div class="col-12">
+                                                        <div class="group-input">
+                                                <label for="training_required">Training Evidences Required?</label>
+                                                <select id="training_required" name="training_required">
+                                                    <option value="Select">Select</option>
+                    
+                                                    <option value="yes">Yes</option>
+                                                    <option value="no">No</option>
+                                                </select> </div>
+                                                    </div>
+                    
+                                                <!-- Training Reference Number -->
+                                                 <div class="col-12">
+                                                        <div class="group-input">
+                                                <label for="training_reference_number">Training Reference Number</label>
+                                                <input type="text" id="training_reference_number" name="training_reference_number">
+                                                    </div>
+                                                    </div>
+                                                <!-- Reference Attachments -->
+                                                 
+                    
+                                                     <div class="col-lg-12">
+                                                        <div class="group-input">
+                                                            <label for="Audit Attachments">Reference Attachments</label>
+                                                            <div class="file-attachment-field">
+                                                                <div class="file-attachment-list" id="Audit_file"></div>
+                                                                <div class="add-btn">
+                                                                    <div>Add</div>
+                                                                    <input type="file" id="HOD_Attachments" name="Audit_file[]"
+                                                                        oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                 
+                    
+                                                    <div class="col-md-12 mb-3">
+                                                        <div class="group-input">
+                                                            <label for="Requestor/User Comments">No Training Justification<span
+                                                                class="text-danger">*</span></label>
+                                                            <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                                            <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                                        </textarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-12 mb-3">
+                                                        <div class="group-input">
+                                                            <label for="Requestor/User Comments">Access Description<span
+                                                                class="text-danger">*</span></label>
+                                                            <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                                            <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                                        </textarea>
+                                                        </div>
+                                                    </div>
+                                                    {{-- end there --}}
                                             <div class="group-input">
                                                 <label for="Deviation category">Initial Deviation category</label>
                                                 <select readonly id="Deviation_category" name="Deviation_category"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}  value="{{ $data->Deviation_category }}" >
@@ -1673,6 +2351,197 @@ $users = DB::table('users')
                     
                     <!-- CFT -->
                     <div id="CCForm7" class="inner-block cctabcontent">
+
+                        {{-- employee page --}}
+                        
+                        <div class="sub-head">
+                            Employee 
+                           </div>
+
+                                <div class="col-12">
+                                    <div class="group-input">
+                                        
+                                        <label for="Employee Code/NT ID">Employee Code</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Email ID">Email ID</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                  <label for="designation">Designation</label>
+                                  <select id="designation" name="designation">
+                                <option value="Select">Select</option>
+                                <option value="Administrator">Administrator</option>
+                                <option value="Quality Assurance (QA) Manager">Quality Assurance (QA) Manager</option>
+                                <option value="Quality Control (QC) Analyst">Quality Control (QC) Analyst</option>
+                                <option value="Regulatory Affairs Specialist">Regulatory Affairs Specialist</option>
+                                <option value="Research & Development (R&D) Scientist">Research & Development (R&D) Scientist</option>
+                                <option value="Production Supervisor">Production Supervisor</option>
+                                <option value="Pharmacist">Pharmacist</option>
+                                <option value="Clinical Research Coordinator">Clinical Research Coordinator</option>
+                                <option value="Auditor">Auditor</option>
+                                <option value="Other">Other</option>                                
+                            </select>
+                             </div>
+                                </div> 
+                            
+                    
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Emp.Code of Reporting Person">Emp.Code of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Email ID of Reporting Person">Email ID of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>
+
+                             <div class="col-12">
+                                    <div class="group-input">                                
+                         <label for="is_Help_Desk">Is Help Desk?</label>
+                            <select id="is_Help_Desk" name="is_Help_Desk">
+                                <option value="Select">Select</option>
+                                <option value="yes">Yes</option>    
+                                <option value="no">No</option>
+                            </select>
+                             </div>
+                                </div>
+                        <!-- Is Local Admin -->
+                         <div class="col-12">
+                                    <div class="group-input">
+                            <label for="is_local_admin">Is Local Admin?</label>
+                            <select id="is_local_admin" name="is_local_admin">
+                                <option value="Select">Select</option>
+                                <option value="yes">Yes</option>    
+                                <option value="no">No</option>
+                            </select>
+                             </div>
+                                </div>
+
+                            <!-- Administrator -->
+
+
+                                 <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Production person">Production Person</label>
+                                        <select name="Production_person" id="Production_person">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                     <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Manager">Manager</label>
+                                        <select name="Manager" id="Manager">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                {{-- manager --}}
+
+                             {{-- <div class="col-12">
+                                    <div class="group-input">
+                            <label for="administrator">Administrator</label>
+                            <input type="text" id="administrator" name="administrator">
+                                         </div>
+                                </div> --}}
+
+                                 <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">Requestor/User Comments <span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+                            <!-- Requestor/User Comments -->
+                             
+                            <!-- Training Evidences Required -->
+                             <div class="col-12">
+                                    <div class="group-input">
+                            <label for="training_required">Training Evidences Required?</label>
+                            <select id="training_required" name="training_required">
+                                <option value="Select">Select</option>
+
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select> </div>
+                                </div>
+
+                            <!-- Training Reference Number -->
+                             <div class="col-12">
+                                    <div class="group-input">
+                            <label for="training_reference_number">Training Reference Number</label>
+                            <input type="text" id="training_reference_number" name="training_reference_number">
+                                </div>
+                                </div>
+                            <!-- Reference Attachments -->
+                             
+
+                                 <div class="col-lg-12">
+                                    <div class="group-input">
+                                        <label for="Audit Attachments">Reference Attachments</label>
+                                        <div class="file-attachment-field">
+                                            <div class="file-attachment-list" id="Audit_file"></div>
+                                            <div class="add-btn">
+                                                <div>Add</div>
+                                                <input type="file" id="HOD_Attachments" name="Audit_file[]"
+                                                    oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">No Training Justification<span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">Access Description<span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+
+
+                                {{-- employee page end --}}
+
                         <div class="inner-block-content">
                             <div class="row">
                             <div class="sub-head">
@@ -4942,6 +5811,194 @@ $users = DB::table('users')
                                         <textarea id="Investigation_Summary" name="Investigation_Summary" value="{{ $data->Investigation_Summary }}"  cols="30" ></textarea>
                                     </div>
                                 </div> --}}
+                                {{-- employee page --}}
+                                
+                                <div class="sub-head">
+                                    Employee 
+                                   </div>
+        
+                                        <div class="col-12">
+                                            <div class="group-input">
+                                                
+                                                <label for="Employee Code/NT ID">Employee Code</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>  
+        
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Email ID">Email ID</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>  
+        
+        
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                          <label for="designation">Designation</label>
+                                          <select id="designation" name="designation">
+                                        <option value="Select">Select</option>
+                                        <option value="Administrator">Administrator</option>
+                                        <option value="Quality Assurance (QA) Manager">Quality Assurance (QA) Manager</option>
+                                        <option value="Quality Control (QC) Analyst">Quality Control (QC) Analyst</option>
+                                        <option value="Regulatory Affairs Specialist">Regulatory Affairs Specialist</option>
+                                        <option value="Research & Development (R&D) Scientist">Research & Development (R&D) Scientist</option>
+                                        <option value="Production Supervisor">Production Supervisor</option>
+                                        <option value="Pharmacist">Pharmacist</option>
+                                        <option value="Clinical Research Coordinator">Clinical Research Coordinator</option>
+                                        <option value="Auditor">Auditor</option>
+                                        <option value="Other">Other</option>                                
+                                    </select>
+                                     </div>
+                                        </div> 
+                                    
+                            
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>  
+        
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Emp.Code of Reporting Person">Emp.Code of Reporting Person</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>
+                                         <div class="col-12">
+                                            <div class="group-input">
+                                                <label for="Email ID of Reporting Person">Email ID of Reporting Person</label>                                     
+                                                <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                            </div>
+                                        </div>
+        
+                                     <div class="col-12">
+                                            <div class="group-input">                                
+                                 <label for="is_Help_Desk">Is Help Desk?</label>
+                                    <select id="is_Help_Desk" name="is_Help_Desk">
+                                        <option value="Select">Select</option>
+                                        <option value="yes">Yes</option>    
+                                        <option value="no">No</option>
+                                    </select>
+                                     </div>
+                                        </div>
+                                <!-- Is Local Admin -->
+                                 <div class="col-12">
+                                            <div class="group-input">
+                                    <label for="is_local_admin">Is Local Admin?</label>
+                                    <select id="is_local_admin" name="is_local_admin">
+                                        <option value="Select">Select</option>
+                                        <option value="yes">Yes</option>    
+                                        <option value="no">No</option>
+                                    </select>
+                                     </div>
+                                        </div>
+        
+                                    <!-- Administrator -->
+        
+        
+                                         <div class="col-lg-6">
+                                            <div class="group-input">
+                                                <label for="Production person">Production Person</label>
+                                                <select name="Production_person" id="Production_person">
+                                                    <option value="">-- Select --</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+        
+                                             <div class="col-lg-6">
+                                            <div class="group-input">
+                                                <label for="Manager">Manager</label>
+                                                <select name="Manager" id="Manager">
+                                                    <option value="">-- Select --</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        {{-- manager --}}
+        
+                                     {{-- <div class="col-12">
+                                            <div class="group-input">
+                                    <label for="administrator">Administrator</label>
+                                    <input type="text" id="administrator" name="administrator">
+                                                 </div>
+                                        </div> --}}
+        
+                                         <div class="col-md-12 mb-3">
+                                            <div class="group-input">
+                                                <label for="Requestor/User Comments">Requestor/User Comments <span
+                                                    class="text-danger">*</span></label>
+                                                <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                                <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                            </textarea>
+                                            </div>
+                                        </div>
+                                    <!-- Requestor/User Comments -->
+                                     
+                                    <!-- Training Evidences Required -->
+                                     <div class="col-12">
+                                            <div class="group-input">
+                                    <label for="training_required">Training Evidences Required?</label>
+                                    <select id="training_required" name="training_required">
+                                        <option value="Select">Select</option>
+        
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select> </div>
+                                        </div>
+        
+                                    <!-- Training Reference Number -->
+                                     <div class="col-12">
+                                            <div class="group-input">
+                                    <label for="training_reference_number">Training Reference Number</label>
+                                    <input type="text" id="training_reference_number" name="training_reference_number">
+                                        </div>
+                                        </div>
+                                    <!-- Reference Attachments -->
+                                     
+        
+                                         <div class="col-lg-12">
+                                            <div class="group-input">
+                                                <label for="Audit Attachments">Reference Attachments</label>
+                                                <div class="file-attachment-field">
+                                                    <div class="file-attachment-list" id="Audit_file"></div>
+                                                    <div class="add-btn">
+                                                        <div>Add</div>
+                                                        <input type="file" id="HOD_Attachments" name="Audit_file[]"
+                                                            oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                     
+        
+                                        <div class="col-md-12 mb-3">
+                                            <div class="group-input">
+                                                <label for="Requestor/User Comments">No Training Justification<span
+                                                    class="text-danger">*</span></label>
+                                                <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                                <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                            </textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-12 mb-3">
+                                            <div class="group-input">
+                                                <label for="Requestor/User Comments">Access Description<span
+                                                    class="text-danger">*</span></label>
+                                                <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                                <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                            </textarea>
+                                            </div>
+                                        </div>
+                                        {{-- employee page end --}}
+
                                 <div class="col-md-12">
                                     <div class="group-input">
                                         <label for="Investigation Summary">Investigation Summary</label>
@@ -5152,9 +6209,200 @@ $users = DB::table('users')
                             </div>
                         </div>
                     </div>
+                    
 
                     <!-- QA Final Review -->
                     <div id="CCForm4" class="inner-block cctabcontent">
+                        {{-- empoyee page  --}}
+                        
+                        <div class="sub-head">
+                            Employee 
+                           </div>
+
+                                <div class="col-12">
+                                    <div class="group-input">
+                                        
+                                        <label for="Employee Code/NT ID">Employee Code</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Email ID">Email ID</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                  <label for="designation">Designation</label>
+                                  <select id="designation" name="designation">
+                                <option value="Select">Select</option>
+                                <option value="Administrator">Administrator</option>
+                                <option value="Quality Assurance (QA) Manager">Quality Assurance (QA) Manager</option>
+                                <option value="Quality Control (QC) Analyst">Quality Control (QC) Analyst</option>
+                                <option value="Regulatory Affairs Specialist">Regulatory Affairs Specialist</option>
+                                <option value="Research & Development (R&D) Scientist">Research & Development (R&D) Scientist</option>
+                                <option value="Production Supervisor">Production Supervisor</option>
+                                <option value="Pharmacist">Pharmacist</option>
+                                <option value="Clinical Research Coordinator">Clinical Research Coordinator</option>
+                                <option value="Auditor">Auditor</option>
+                                <option value="Other">Other</option>                                
+                            </select>
+                             </div>
+                                </div> 
+                            
+                    
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Emp.Code of Reporting Person">Emp.Code of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Email ID of Reporting Person">Email ID of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>
+
+                             <div class="col-12">
+                                    <div class="group-input">                                
+                         <label for="is_Help_Desk">Is Help Desk?</label>
+                            <select id="is_Help_Desk" name="is_Help_Desk">
+                                <option value="Select">Select</option>
+                                <option value="yes">Yes</option>    
+                                <option value="no">No</option>
+                            </select>
+                             </div>
+                                </div>
+                        <!-- Is Local Admin -->
+                         <div class="col-12">
+                                    <div class="group-input">
+                            <label for="is_local_admin">Is Local Admin?</label>
+                            <select id="is_local_admin" name="is_local_admin">
+                                <option value="Select">Select</option>
+                                <option value="yes">Yes</option>    
+                                <option value="no">No</option>
+                            </select>
+                             </div>
+                                </div>
+
+                            <!-- Administrator -->
+
+
+                                 <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Production person">Production Person</label>
+                                        <select name="Production_person" id="Production_person">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                     <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Manager">Manager</label>
+                                        <select name="Manager" id="Manager">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                {{-- manager --}}
+
+                             {{-- <div class="col-12">
+                                    <div class="group-input">
+                            <label for="administrator">Administrator</label>
+                            <input type="text" id="administrator" name="administrator">
+                                         </div>
+                                </div> --}}
+
+                                 <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">Requestor/User Comments <span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+                            <!-- Requestor/User Comments -->
+                             
+                            <!-- Training Evidences Required -->
+                             <div class="col-12">
+                                    <div class="group-input">
+                            <label for="training_required">Training Evidences Required?</label>
+                            <select id="training_required" name="training_required">
+                                <option value="Select">Select</option>
+
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select> </div>
+                                </div>
+
+                            <!-- Training Reference Number -->
+                             <div class="col-12">
+                                    <div class="group-input">
+                            <label for="training_reference_number">Training Reference Number</label>
+                            <input type="text" id="training_reference_number" name="training_reference_number">
+                                </div>
+                                </div>
+                            <!-- Reference Attachments -->
+                             
+
+                                 <div class="col-lg-12">
+                                    <div class="group-input">
+                                        <label for="Audit Attachments">Reference Attachments</label>
+                                        <div class="file-attachment-field">
+                                            <div class="file-attachment-list" id="Audit_file"></div>
+                                            <div class="add-btn">
+                                                <div>Add</div>
+                                                <input type="file" id="HOD_Attachments" name="Audit_file[]"
+                                                    oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">No Training Justification<span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">Access Description<span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+
+                                {{-- employee page end --}}
+
+
                         <div class="inner-block-content">
                             <div class="row">
                                 <div class="col-md-12">
@@ -5227,8 +6475,202 @@ $users = DB::table('users')
                         </div>
                     </div>
 
+
+
                     <!-- QAH-->
                     <div id="CCForm5" class="inner-block cctabcontent">
+
+                        {{-- employee page --}}
+
+                        
+                        <div class="sub-head">
+                            Employee 
+                           </div>
+
+                                <div class="col-12">
+                                    <div class="group-input">
+                                        
+                                        <label for="Employee Code/NT ID">Employee Code</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Email ID">Email ID</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                  <label for="designation">Designation</label>
+                                  <select id="designation" name="designation">
+                                <option value="Select">Select</option>
+                                <option value="Administrator">Administrator</option>
+                                <option value="Quality Assurance (QA) Manager">Quality Assurance (QA) Manager</option>
+                                <option value="Quality Control (QC) Analyst">Quality Control (QC) Analyst</option>
+                                <option value="Regulatory Affairs Specialist">Regulatory Affairs Specialist</option>
+                                <option value="Research & Development (R&D) Scientist">Research & Development (R&D) Scientist</option>
+                                <option value="Production Supervisor">Production Supervisor</option>
+                                <option value="Pharmacist">Pharmacist</option>
+                                <option value="Clinical Research Coordinator">Clinical Research Coordinator</option>
+                                <option value="Auditor">Auditor</option>
+                                <option value="Other">Other</option>                                
+                            </select>
+                             </div>
+                                </div> 
+                            
+                    
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Emp.Code of Reporting Person">Emp.Code of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Email ID of Reporting Person">Email ID of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>
+
+                             <div class="col-12">
+                                    <div class="group-input">                                
+                         <label for="is_Help_Desk">Is Help Desk?</label>
+                            <select id="is_Help_Desk" name="is_Help_Desk">
+                                <option value="Select">Select</option>
+                                <option value="yes">Yes</option>    
+                                <option value="no">No</option>
+                            </select>
+                             </div>
+                                </div>
+                        <!-- Is Local Admin -->
+                         <div class="col-12">
+                                    <div class="group-input">
+                            <label for="is_local_admin">Is Local Admin?</label>
+                            <select id="is_local_admin" name="is_local_admin">
+                                <option value="Select">Select</option>
+                                <option value="yes">Yes</option>    
+                                <option value="no">No</option>
+                            </select>
+                             </div>
+                                </div>
+
+                            <!-- Administrator -->
+
+
+                                 <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Production person">Production Person</label>
+                                        <select name="Production_person" id="Production_person">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                     <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Manager">Manager</label>
+                                        <select name="Manager" id="Manager">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                {{-- manager --}}
+
+                             {{-- <div class="col-12">
+                                    <div class="group-input">
+                            <label for="administrator">Administrator</label>
+                            <input type="text" id="administrator" name="administrator">
+                                         </div>
+                                </div> --}}
+
+                                 <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">Requestor/User Comments <span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+                            <!-- Requestor/User Comments -->
+                             
+                            <!-- Training Evidences Required -->
+                             <div class="col-12">
+                                    <div class="group-input">
+                            <label for="training_required">Training Evidences Required?</label>
+                            <select id="training_required" name="training_required">
+                                <option value="Select">Select</option>
+
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select> </div>
+                                </div>
+
+                            <!-- Training Reference Number -->
+                             <div class="col-12">
+                                    <div class="group-input">
+                            <label for="training_reference_number">Training Reference Number</label>
+                            <input type="text" id="training_reference_number" name="training_reference_number">
+                                </div>
+                                </div>
+                            <!-- Reference Attachments -->
+                             
+
+                                 <div class="col-lg-12">
+                                    <div class="group-input">
+                                        <label for="Audit Attachments">Reference Attachments</label>
+                                        <div class="file-attachment-field">
+                                            <div class="file-attachment-list" id="Audit_file"></div>
+                                            <div class="add-btn">
+                                                <div>Add</div>
+                                                <input type="file" id="HOD_Attachments" name="Audit_file[]"
+                                                    oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">No Training Justification<span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">Access Description<span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+
+
+                        {{-- employeee page end --}}
+
                         <div class="inner-block-content">
                             <div class="row">
                                 
@@ -5288,6 +6730,197 @@ $users = DB::table('users')
 
                     <!-- Activity Log content -->
                     <div id="CCForm6" class="inner-block cctabcontent">
+
+                        {{--  employee page--}}
+
+                        
+                        <div class="sub-head">
+                            Employee 
+                           </div>
+
+                                <div class="col-12">
+                                    <div class="group-input">
+                                        
+                                        <label for="Employee Code/NT ID">Employee Code</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Email ID">Email ID</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                  <label for="designation">Designation</label>
+                                  <select id="designation" name="designation">
+                                <option value="Select">Select</option>
+                                <option value="Administrator">Administrator</option>
+                                <option value="Quality Assurance (QA) Manager">Quality Assurance (QA) Manager</option>
+                                <option value="Quality Control (QC) Analyst">Quality Control (QC) Analyst</option>
+                                <option value="Regulatory Affairs Specialist">Regulatory Affairs Specialist</option>
+                                <option value="Research & Development (R&D) Scientist">Research & Development (R&D) Scientist</option>
+                                <option value="Production Supervisor">Production Supervisor</option>
+                                <option value="Pharmacist">Pharmacist</option>
+                                <option value="Clinical Research Coordinator">Clinical Research Coordinator</option>
+                                <option value="Auditor">Auditor</option>
+                                <option value="Other">Other</option>                                
+                            </select>
+                             </div>
+                                </div> 
+                            
+                    
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>  
+
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Emp.Code of Reporting Person">Emp.Code of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>
+                                 <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Email ID of Reporting Person">Email ID of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" required>
+                                    </div>
+                                </div>
+
+                             <div class="col-12">
+                                    <div class="group-input">                                
+                         <label for="is_Help_Desk">Is Help Desk?</label>
+                            <select id="is_Help_Desk" name="is_Help_Desk">
+                                <option value="Select">Select</option>
+                                <option value="yes">Yes</option>    
+                                <option value="no">No</option>
+                            </select>
+                             </div>
+                                </div>
+                        <!-- Is Local Admin -->
+                         <div class="col-12">
+                                    <div class="group-input">
+                            <label for="is_local_admin">Is Local Admin?</label>
+                            <select id="is_local_admin" name="is_local_admin">
+                                <option value="Select">Select</option>
+                                <option value="yes">Yes</option>    
+                                <option value="no">No</option>
+                            </select>
+                             </div>
+                                </div>
+
+                            <!-- Administrator -->
+
+
+                                 <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Production person">Production Person</label>
+                                        <select name="Production_person" id="Production_person">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                     <div class="col-lg-6">
+                                    <div class="group-input">
+                                        <label for="Manager">Manager</label>
+                                        <select name="Manager" id="Manager">
+                                            <option value="">-- Select --</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                {{-- manager --}}
+
+                             {{-- <div class="col-12">
+                                    <div class="group-input">
+                            <label for="administrator">Administrator</label>
+                            <input type="text" id="administrator" name="administrator">
+                                         </div>
+                                </div> --}}
+
+                                 <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">Requestor/User Comments <span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+                            <!-- Requestor/User Comments -->
+                             
+                            <!-- Training Evidences Required -->
+                             <div class="col-12">
+                                    <div class="group-input">
+                            <label for="training_required">Training Evidences Required?</label>
+                            <select id="training_required" name="training_required">
+                                <option value="Select">Select</option>
+
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select> </div>
+                                </div>
+
+                            <!-- Training Reference Number -->
+                             <div class="col-12">
+                                    <div class="group-input">
+                            <label for="training_reference_number">Training Reference Number</label>
+                            <input type="text" id="training_reference_number" name="training_reference_number">
+                                </div>
+                                </div>
+                            <!-- Reference Attachments -->
+                             
+
+                                 <div class="col-lg-12">
+                                    <div class="group-input">
+                                        <label for="Audit Attachments">Reference Attachments</label>
+                                        <div class="file-attachment-field">
+                                            <div class="file-attachment-list" id="Audit_file"></div>
+                                            <div class="add-btn">
+                                                <div>Add</div>
+                                                <input type="file" id="HOD_Attachments" name="Audit_file[]"
+                                                    oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">No Training Justification<span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor/User Comments">Access Description<span
+                                            class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Description_Deviation[]" id="summernote-1" required>
+                                    </textarea>
+                                    </div>
+                                </div>
+
+                                {{-- employee page end --}}
+
                         <div class="inner-block-content">
                             <div class="row">
                                 <div class="sub-head">Submission</div>
@@ -6018,6 +7651,15 @@ location.reload();
             }
         }
     </script>
+    {{-- summernote-1 --}}
+    <script>
+        function removeHtmlTags() {
+            var textarea = document.getElementById("summernote-1");
+            var cleanValue = textarea.value.replace(/<[^>]*>?/gm, ''); // Remove HTML tags
+            textarea.value = cleanValue;
+        }
+    </script>
+    {{-- summernote-1 --}}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const addRowButton = document.getElementById('new-button-icon');

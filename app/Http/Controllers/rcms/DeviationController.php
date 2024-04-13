@@ -91,7 +91,11 @@ class DeviationController extends Controller
         $deviation->Deviation_date = $request->Deviation_date;
         $deviation->deviation_time = $request->deviation_time;
         $deviation->Deviation_reported_date = $request->Deviation_reported_date;
-        $deviation->Facility = implode(',', $request->Facility);
+        if(is_array($request->Facility))
+        {
+            $deviation->Facility=implode(',',$request->Facility);    
+        }
+        // $deviation->Facility = implode(',', $request->Facility);
         // $deviation->Observed_by = $request->Observed_by;
         $deviation->audit_type = implode(',', $request->audit_type);
         $deviation->short_description_required = $request->short_description_required;
@@ -106,8 +110,14 @@ class DeviationController extends Controller
         $deviation->Description_Deviation = implode(',', $request->Description_Deviation);
 
         $deviation->Related_Records1 =  implode(',', $request->related_records);
-        $deviation->Immediate_Action = implode(',', $request->Immediate_Action);
+        if(is_array($request->Immediate_Action))
+        {
+            $deviation->Immediate_Action = implode(',', $request->Immediate_Action);
+        }
+        if(is_array($request->Preliminary_Impact))
+       {
         $deviation->Preliminary_Impact = implode(',', $request->Preliminary_Impact);
+       }
         $deviation->Product_Details_Required = $request->Product_Details_Required;
 
         $deviation->HOD_Remarks = $request->HOD_Remarks;
@@ -3179,7 +3189,7 @@ class DeviationController extends Controller
                 $history->deviation_id = $id;
                 $history->activity_type = 'Activity Log';
                 $history->previous = "";
-                $histor->action='More Information Required';
+                $history->action='More Information Required';
                 $history->current = $deviation->qa_more_info_required_by;
                 $history->comment = $request->comment;
                 $history->user_id = Auth::user()->id;
@@ -3226,7 +3236,7 @@ class DeviationController extends Controller
                 $history->deviation_id = $id;
                 $history->activity_type = 'Activity Log';
                 $history->previous = "";
-                $histor->action='More Information Required';
+                $history->action='More Information Required';
                 $history->current = $deviation->qa_more_info_required_by;
                 $history->comment = $request->comment;
                 $history->user_id = Auth::user()->id;
@@ -3493,7 +3503,7 @@ class DeviationController extends Controller
                 $history->deviation_id = $id;
                 $history->activity_type = 'Activity Log';
                 $history->previous = "";
-                $histor->action='More Information Required';
+                $history->action='More Information Required';
                 $history->current = $deviation->qa_more_info_required_by;
                 $history->comment = $request->comment;
                 $history->user_id = Auth::user()->id;
