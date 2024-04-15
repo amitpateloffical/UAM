@@ -781,6 +781,7 @@ $users = DB::table('users')
                                         </select>
                                     </div>
                                 </div>
+                                {{-- manager --}}
 
                              {{-- <div class="col-12">
                                     <div class="group-input">
@@ -4087,6 +4088,7 @@ $users = DB::table('users')
 
                                  <div class="col-12">
                                     <div class="group-input">
+                                        {{-- employe --}}
                             <label for="Employee">Employee</label>
                             <input type="text" id="Employee" name="Employee">
                                          </div>
