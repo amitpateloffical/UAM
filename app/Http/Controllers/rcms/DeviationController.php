@@ -103,7 +103,16 @@ class DeviationController extends Controller
        // $deviation->https =  implode(',', $request->https);//implode
         $deviation->training_required = $request->training_required;
         $deviation->training_reference_number = $request->training_reference_number;
-        $deviation->no_training_justification = implode(',',$request->no_training_justification) ;//impode
+        // $deviation->no_training_justification = implode(',',$request->no_training_justification) ;//impode
+        // Check if $request->Description_Deviation is already an array
+if(is_array($request->no_training_justification)) {
+    // If it's an array, you can directly implode it
+    $deviation->no_training_justification = implode(',', $request->no_training_justification);
+} else {
+    // If it's not an array, convert it to an array and then implode
+    $deviation->no_training_justification = $request->no_training_justification;
+}
+
          //hod----------------------------------
         $deviation->HOD_Remarks = $request->HOD_Remarks;
         //Qa intial view
