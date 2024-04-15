@@ -474,7 +474,7 @@ $users = DB::table('users')
                                  <div class="col-12">
                                     <div class="group-input">
                             <label for="Assigned_to">Assigned to</label>
-                            <input type="text" id="Assigned_to" name="Assigned_to">
+                            <input type="text" id="Assigned_to" name="assigned_to">
                                          </div>
                                 </div>
 
@@ -608,7 +608,7 @@ $users = DB::table('users')
                                     <div class="group-input">
                                         <label for="deparment"><b>Department</b><span
                                             class="text-danger">*</span></label> 
-                                        <select name="deparment" id="departmentSelect" required>
+                                        <select name="department" id="departmentSelect" required>
                                             <option value="">-- Select --</option>
                                             <option value="CQA" @if (old('deparment') == 'CQA') selected @endif>
                                                 Corporate Quality Assurance</option>

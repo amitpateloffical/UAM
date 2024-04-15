@@ -550,27 +550,25 @@ $users = DB::table('users')
                                     </div>
                                 </div> --}}
 {{-- ========================================================================================================= --}}
-                                <div class="col-12">
-                                    <div class="group-input">
-                                    <label for="salutation">Salutation</label>
-                                    <select id="salutation" name="salutation">
-                                <option value="Select">Select</option>
-                                <option value="Mr">Mr.</option>
-                                <option value="Mrs">Mrs.</option>
-                                <option value="Miss">Miss</option>
+<div class="col-12">
+    <div class="group-input">
+        <label for="salutation">Salutation</label>
+        <select id="salutation" name="Salutation">
+            <option value="Select" {{ $data->Salutation == 'Select' ? 'selected' : '' }}>Select</option>
+            <option value="Mr" {{ $data->Salutation == 'Mr' ? 'selected' : '' }}>Mr.</option>
+            <option value="Mrs" {{ $data->Salutation == 'Mrs' ? 'selected' : '' }}>Mrs.</option>
+            <option value="Miss" {{ $data->Salutation == 'Miss' ? 'selected' : '' }}>Miss</option>
+        </select>
+    </div>
+</div>
 
-                            </select>
-                         </div>
-                             </div> 
 
-
-                             <div class="col-12">
-                                <div class="group-input">
-                        <label for="Assigned_to">Assigned to</label>
-                        <input type="text" id="Assigned_to" name="Assigned_to">
-                                     </div>
-                            </div>
-
+<div class="col-12">
+    <div class="group-input">
+        <label for="Assigned_to">Assigned to</label>
+        <input type="text" id="assigned_to" name="assigned_to" value="{{ $data->assign_to}}">
+    </div>
+</div> 
 
 
 
@@ -625,60 +623,26 @@ $users = DB::table('users')
                                     <div class="group-input">
                                         <label for="Initiator Group"><b>Department</b> <span
                                             class="text-danger">*</span></label>
-                                        <select name="Initiator_Group" {{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}
+                                        <select name="department" {{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}
                                              id="initiator_group">
                                              <option value="">Enter Your Selection Here</option>
-                                            <option value="CQA"
-                                                @if ($data->Initiator_Group == 'CQA') selected @endif>Corporate
-                                                Quality Assurance</option>
-                                            <option value="QAB"
-                                                @if ($data->Initiator_Group == 'QAB') selected @endif>Quality
-                                                Assurance Biopharma</option>
-                                            <option value="CQC"
-                                                @if ($data->Initiator_Group == 'CQC') selected @endif>Central
-                                                Quality Control</option>
-                                            <option value="MANU"
-                                                @if ($data->Initiator_Group == 'MANU') selected @endif>Manufacturing
-                                            </option>
-                                            <option value="PSG"
-                                                @if ($data->Initiator_Group == 'PSG') selected @endif>Plasma
-                                                Sourcing Group</option>
-                                            <option value="CS"
-                                                @if ($data->Initiator_Group == 'CS') selected @endif>Central
-                                                Stores</option>
-                                            <option value="ITG"
-                                                @if ($data->Initiator_Group == 'ITG') selected @endif>Information
-                                                Technology Group</option>
-                                            <option value="MM"
-                                                @if ($data->Initiator_Group == 'MM') selected @endif>Molecular
-                                                Medicine</option>
-                                            <option value="CL"
-                                                @if ($data->Initiator_Group == 'CL') selected @endif>Central
-                                                Laboratory</option>
-                                            <option value="TT"
-                                                @if ($data->Initiator_Group == 'TT') selected @endif>Tech
-                                                team</option>
-                                            <option value="QA"
-                                                @if ($data->Initiator_Group == 'QA') selected @endif>Quality
-                                                Assurance</option>
-                                            <option value="QM"
-                                                @if ($data->Initiator_Group == 'QM') selected @endif>Quality
-                                                Management</option>
-                                            <option value="IA"
-                                                @if ($data->Initiator_Group == 'IA') selected @endif>IT
-                                                Administration</option>
-                                            <option value="ACC"
-                                                @if ($data->Initiator_Group == 'ACC') selected @endif>Accounting
-                                            </option>
-                                            <option value="LOG"
-                                                @if ($data->Initiator_Group == 'LOG') selected @endif>Logistics
-                                            </option>
-                                            <option value="SM"
-                                                @if ($data->Initiator_Group == 'SM') selected @endif>Senior
-                                                Management</option>
-                                            <option value="BA"
-                                                @if ($data->Initiator_Group == 'BA') selected @endif>Business
-                                                Administration</option>
+                                            <option value="CQA" {{ $data->department == 'CQA' ? 'selected' : '' }}>Corporate Quality Assurance</option>
+                                            <option value="QAB" {{ $data->department == 'QAB' ? 'selected' : '' }}>Quality Assurance Biopharma</option>
+                                            <option value="CQC" {{ $data->department == 'CQC' ? 'selected' : '' }}>Central Quality Control</option>
+                                            <option value="MANU" {{ $data->department == 'MANU' ? 'selected' : '' }}>Manufacturing</option>
+                                            <option value="PSG" {{ $data->department == 'PSG' ? 'selected' : '' }}>Plasma Sourcing Group</option>
+                                            <option value="CS" {{ $data->department == 'CS' ? 'selected' : '' }}>Central Stores</option>
+                                            <option value="ITG" {{ $data->department == 'ITG' ? 'selected' : '' }}>Information Technology Group</option>
+                                            <option value="MM" {{ $data->department == 'MM' ? 'selected' : '' }}>Molecular Medicine</option>
+                                            <option value="CL" {{ $data->department == 'CL' ? 'selected' : '' }}>Central Laboratory</option>
+                                            <option value="TT" {{ $data->department == 'TT' ? 'selected' : '' }}>Tech team</option>
+                                            <option value="QA" {{ $data->department == 'QA' ? 'selected' : '' }}>Quality Assurance</option>
+                                            <option value="QM" {{ $data->department == 'QM' ? 'selected' : '' }}>Quality Management</option>
+                                            <option value="IA" {{ $data->department == 'IA' ? 'selected' : '' }}>IT Administration</option>
+                                            <option value="ACC" {{ $data->department == 'ACC' ? 'selected' : '' }}>Accounting</option>
+                                            <option value="LOG" {{ $data->department == 'LOG' ? 'selected' : '' }}>Logistics</option>
+                                            <option value="SM" {{ $data->department == 'SM' ? 'selected' : '' }}>Senior Management</option>
+                                            <option value="BA" {{ $data->department == 'BA' ? 'selected' : '' }}>Business Administration</option>
 
                                         </select>
                                     </div>
@@ -687,7 +651,7 @@ $users = DB::table('users')
                                     <div class="group-input">
                                         <label for="Initiator Group Code">Department Code</label>
                                         <input type="text" name="initiator_group_code"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}
-                                            value="{{ $data->Initiator_Group }}" id="initiator_group_code"
+                                            value="{{ $data->department }}" id="initiator_group_code"
                                             readonly>
 
                                     </div>
@@ -889,76 +853,80 @@ $users = DB::table('users')
                                     <div class="group-input">
                                         
                                         <label for="Employee Code/NT ID">Employee Code</label>                                     
-                                        <input id="docname" type="text" name="employee_Code" maxlength="255" >
+                                        <input id="docname" type="text" name="employee_Code" maxlength="255" value="{{ $data->employee_Code }}" >
                                     </div>
                                 </div>  
 
                                  <div class="col-12">
                                     <div class="group-input">
                                         <label for="Email ID">Email ID</label>                                     
-                                        <input id="docname" type="text" name="email" maxlength="255" >
+                                        <input id="docname" type="text" name="email" maxlength="255" value="{{ $data->email }}">
                                     </div>
                                 </div>  
 
 
-                                 <div class="col-12">
+                                <div class="col-12">
                                     <div class="group-input">
-                                  <label for="designation">Designation</label>
-                                  <select id="designation" name="designation">
-                                <option value="Select">Select</option>
-                                <option value="Administrator">Administrator</option>
-                                <option value="Quality Assurance (QA) Manager">Quality Assurance (QA) Manager</option>
-                                <option value="Quality Control (QC) Analyst">Quality Control (QC) Analyst</option>
-                                <option value="Regulatory Affairs Specialist">Regulatory Affairs Specialist</option>
-                                <option value="Research & Development (R&D) Scientist">Research & Development (R&D) Scientist</option>
-                                <option value="Production Supervisor">Production Supervisor</option>
-                                <option value="Pharmacist">Pharmacist</option>
-                                <option value="Clinical Research Coordinator">Clinical Research Coordinator</option>
-                                <option value="Auditor">Auditor</option>
-                                <option value="Other">Other</option>                                
-                            </select>
-                             </div>
-                                </div> 
-                            
-                    
-                                 <div class="col-12">
-                                    <div class="group-input">
-                                        <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
-                                        <input id="docname" type="text" name="name_reporting_person" maxlength="255">
-                                    </div>
-                                </div>  
-
-                                 <div class="col-12">
-                                    <div class="group-input">
-                                        <label for="employee_Code">Emp.Code of Reporting Person</label>                                     
-                                        <input id="docname" type="text" name="employee_Code_reporting_person" maxlength="255" >
+                                        <label for="designation">Designation</label>
+                                        <select id="designation" name="designation">
+                                            <option value="Select" {{ $data->designation == 'Select' ? 'selected' : '' }}>Select</option>
+                                            <option value="Administrator" {{ $data->designation == 'Administrator' ? 'selected' : '' }}>Administrator</option>
+                                            <option value="Quality Assurance (QA) Manager" {{ $data->designation == 'Quality Assurance (QA) Manager' ? 'selected' : '' }}>Quality Assurance (QA) Manager</option>
+                                            <option value="Quality Control (QC) Analyst" {{ $data->designation == 'Quality Control (QC) Analyst' ? 'selected' : '' }}>Quality Control (QC) Analyst</option>
+                                            <option value="Regulatory Affairs Specialist" {{ $data->designation == 'Regulatory Affairs Specialist' ? 'selected' : '' }}>Regulatory Affairs Specialist</option>
+                                            <option value="Research & Development (R&D) Scientist" {{ $data->designation == 'Research & Development (R&D) Scientist' ? 'selected' : '' }}>Research & Development (R&D) Scientist</option>
+                                            <option value="Production Supervisor" {{ $data->designation == 'Production Supervisor' ? 'selected' : '' }}>Production Supervisor</option>
+                                            <option value="Pharmacist" {{ $data->designation == 'Pharmacist' ? 'selected' : '' }}>Pharmacist</option>
+                                            <option value="Clinical Research Coordinator" {{ $data->designation == 'Clinical Research Coordinator' ? 'selected' : '' }}>Clinical Research Coordinator</option>
+                                            <option value="Auditor" {{ $data->designation == 'Auditor' ? 'selected' : '' }}>Auditor</option>
+                                            <option value="Other" {{ $data->designation == 'Other' ? 'selected' : '' }}>Other</option>
+                                        </select>
                                     </div>
                                 </div>
+                                
+                            
+                    
+                                <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="Name of Reporting Person">Name of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="name_reporting_person" maxlength="255" value="{{ $data->name_reporting_person }}">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="col-12">
+                                    <div class="group-input">
+                                        <label for="employee_Code">Emp.Code of Reporting Person</label>                                     
+                                        <input id="docname" type="text" name="employee_Code_reporting_person" maxlength="255" value="{{ $data->employee_Code_reporting_person }}">
+                                    </div>
+                                </div>
+                                
                                  <div class="col-12">
                                     <div class="group-input">
                                         <label for="name_reporting_person">Email ID of Reporting Person</label>                                     
-                                        <input id="docname" type="text" name="email_reporting_person" maxlength="255">
+                                        <input id="docname" type="text" name="email_reporting_person" maxlength="255" value="{{ $data ->email_reporting_person}}">
                                     </div>
                                 </div>
 
-                             <div class="col-12">
+                                <div class="col-12">
                                     <div class="group-input">                                
-                         <label for="is_help_desk">Is Help Desk?</label>
-                            <select id="is_help_desk    " name="is_help_desk">
-                                <option value="Select">Select</option>
-                                <option value="yes">Yes</option>    
-                                <option value="no">No</option>
-                            </select>
-                             </div>
+                                        <label for="is_help_desk">Is Help Desk?</label>
+                                        <select id="is_help_desk" name="is_help_desk">
+                                            <option value="Select" {{ $data->is_help_desk == 'Select' ? 'selected' : '' }}>Select</option>
+                                            <option value="yes" {{ $data->is_help_desk == 'yes' ? 'selected' : '' }}>Yes</option>    
+                                            <option value="no" {{ $data->is_help_desk == 'no' ? 'selected' : '' }}>No</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                
                         <!-- Is Local Admin -->
                          <div class="col-12">
                                     <div class="group-input">
                             <label for="is_local_admin">Is Local Admin?</label>
                             <select id="is_local_admin" name="is_local_admin">
-                                <option value="Select">Select</option>
-                                <option value="yes">Yes</option>    
-                                <option value="no">No</option>
+                                <option value="Select" {{$data->is_local_admin == 'Select' ? 'selected' : '' }} >Select</option>
+                                <option value="yes" {{ $data->is_local_admin == 'yes' ? 'selected' : ''}}>Yes</option>    
+                                <option value="no" {{ $data->is_local_admin == 'no' ? 'selected' : ''}}>No</option>
                             </select>
                              </div>
                                 </div>
@@ -971,11 +939,12 @@ $users = DB::table('users')
                                         <select name="Production_person" id="Production_person">
                                             <option value="">-- Select --</option>
                                             @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                <option value="{{ $user->id }}" {{ $data->Production_person == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                
 
                                      <div class="col-lg-6">
                                     <div class="group-input">
@@ -1003,7 +972,7 @@ $users = DB::table('users')
                                         </select>
                                     </div>
                                 </div> --}}
-                                <div class="col-md-12 mb-3">
+                                {{-- <div class="col-md-12 mb-3">
                                     <div class="group-input">
                                         <label for="Requestor_User_Comments">Requestor/User Comments <span
                                             class="text-danger">*</span></label>
@@ -1011,7 +980,16 @@ $users = DB::table('users')
                                         <textarea class="summernote" name="Requestor_User_Comments[]" id="summernote-1" required>
                                     </textarea>
                                     </div>
+                                </div> --}}
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="group-input">
+                                        <label for="Requestor_User_Comments">Requestor/User Comments <span class="text-danger">*</span></label>
+                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
+                                        <textarea class="summernote" name="Requestor_User_Comments[]" id="summernote-1" required>{{ isset($requestData) ? $requestData->Requestor_User_Comments : '' }}</textarea>
+                                    </div>
                                 </div>
+                                
                                 
                                 <div class="col-12">
                                     <div class="group-input">
@@ -6985,7 +6963,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // });
     </script>
     <script>
-        document.getElementById('initiator_group').addEventListener('change', function() {
+        document.getElementById('department').addEventListener('change', function() {
             var selectedValue = this.value;
             document.getElementById('initiator_group_code').value = selectedValue;
         });
