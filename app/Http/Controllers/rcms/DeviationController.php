@@ -1347,13 +1347,32 @@ class DeviationController extends Controller
         $deviation->others = $request->others;
         $deviation->Product_Batch = $request->Product_Batch;
 
-        $deviation->Description_Deviation = implode(',', $request->Description_Deviation);
+        // $deviation->Description_Deviation = implode(',', $request->Description_Deviation);
+// Check if $request->Description_Deviation is already an array
+if(is_array($request->Description_Deviation)) {
+    // If it's an array, you can directly implode it
+    $deviation->Description_Deviation = implode(',', $request->Description_Deviation);
+} else {
+    // If it's not an array, convert it to an array and then implode
+    $deviation->Description_Deviation = $request->Description_Deviation;
+}
+
         $deviation->Related_Records1 =  implode(',', $request->related_records);
-        $deviation->Facility = implode(',', $request->Facility);  
+        // $deviation->Facility = implode(',', $request->Facility);  
 
 
-        $deviation->Immediate_Action = implode(',', $request->Immediate_Action);
-        $deviation->Preliminary_Impact = implode(',', $request->Preliminary_Impact);
+        //$deviation->Immediate_Action = implode(',', $request->Immediate_Action);
+
+        // $deviation->Preliminary_Impact = implode(',', $request->Preliminary_Impact);
+// Check if $request->Description_Deviation is already an array
+if(is_array($request->Preliminary_Impac)) {
+    // If it's an array, you can directly implode it
+    $deviation->Preliminary_Impac = implode(',', $request->Preliminary_Impac);
+} else {
+    // If it's not an array, convert it to an array and then implode
+    $deviation->Preliminary_Impac = $request->Preliminary_Impacs;
+}
+
         $deviation->Product_Details_Required = $request->Product_Details_Required;
         
         $deviation->HOD_Remarks = $request->HOD_Remarks;
