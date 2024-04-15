@@ -1092,7 +1092,11 @@ $users = DB::table('users')
 
 
 
+<<<<<<< Updated upstream
                                 {{-- document details required --}}
+=======
+
+>>>>>>> Stashed changes
                                 <div class="col-lg-12">
                                     <div class="group-input">
                                         <label for="Document Details Required">Document Details Required?<span
@@ -1276,7 +1280,7 @@ $users = DB::table('users')
                                                                 <td><input disabled type="text" name="serial[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}
                                                                     value="{{ $key + 1 }}"></td>
                                                                 <td>
-                                                                    <select name="facility_name[]"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }} id="facility_name">
+                                                                    <select name="facility_name[]"{{ $data->stage == 0 || $data->stage == 7 'disabled' : '' }} id="facility_name">
                                                                         @if(isset($grid_data->facility_name))
                                                                              @php
                                                                                 $facility_name = unserialize($grid_data->facility_name);
