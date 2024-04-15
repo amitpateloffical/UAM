@@ -78,7 +78,7 @@ class DeviationController extends Controller
         $deviation->record = ((RecordNumber::first()->value('counter')) + 1);
         $deviation->initiator_id = Auth::user()->id;
 
-        # -------------new-----------
+        # -------------new--------------------------------
         //  $deviation->record_number = $request->record_number;
         $deviation->division_id = $request->division_id;
         $deviation->assign_to = $request->assigned_to;
