@@ -103,16 +103,15 @@ class DeviationController extends Controller
         $deviation->Requestor_User_Comments =  implode(',', $request->Requestor_User_Comments);//implode
         $deviation->training_required = $request->training_required;
         $deviation->training_reference_number = $request->training_reference_number;
-        // $deviation->no_training_justification = implode(',',$request->no_training_justification) ;//impode
         // Check if $request->Description_Deviation is already an array
-if(is_array($request->no_training_justification)) {
-    // If it's an array, you can directly implode it
-    $deviation->no_training_justification = implode(',', $request->no_training_justification);
-} else {
-    // If it's not an array, convert it to an array and then implode
-    $deviation->no_training_justification = $request->no_training_justification;
-}
-
+        if(is_array($request->no_training_justification)) {
+            // If it's an array, you can directly implode it
+            $deviation->no_training_justification = implode(',', $request->no_training_justification);
+        } else {
+            // If it's not an array, convert it to an array and then implode
+            $deviation->no_training_justification = $request->no_training_justification;
+        }
+        $deviation->access_description = $request->access_description;
          //hod----------------------------------
         $deviation->HOD_Remarks = $request->HOD_Remarks;
         //Qa intial view
@@ -337,11 +336,11 @@ if(is_array($request->no_training_justification)) {
                                                             }
                                                         }                            
 
-        if (!empty ($request->Audit_file)) {
+        if (!empty ($request->Audit_file1)) {
             $files = [];
-            if ($request->hasfile('Audit_file')) {
-                foreach ($request->file('Audit_file') as $file) {
-                    $name = $request->name . 'Audit_file' . rand(1, 100) . '.' . $file->getClientOriginalExtension();
+            if ($request->hasfile('Audit_file1')) {
+                foreach ($request->file('Audit_file1') as $file) {
+                    $name = $request->name . 'Audit_file1' . rand(1, 100) . '.' . $file->getClientOriginalExtension();
                     $file->move('upload/', $name);
                     $files[] = $name;
                 }

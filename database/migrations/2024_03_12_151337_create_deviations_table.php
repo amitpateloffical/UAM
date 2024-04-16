@@ -44,6 +44,7 @@ return new class extends Migration
             $table->string('training_reference_number')->nullable();
             $table->string('Audit_file1')->nullable();
             $table->string('no_training_justification')->nullable();
+            $table->string('access_description')->nullable();
             $table->string('document_details_required')->nullable();
 
 

@@ -610,40 +610,40 @@ $users = DB::table('users')
                                             class="text-danger">*</span></label> 
                                         <select name="deparment" id="departmentSelect" required>
                                             <option value="">-- Select --</option>
-                                            <option value="CQA" @if (old('deparment') == 'CQA') selected @endif>
+                                            <option value="CQA" @if (old('department') == 'CQA') selected @endif>
                                                 Corporate Quality Assurance</option>
-                                            <option value="QAB" @if (old('deparment') == 'QAB') selected @endif>Quality
+                                            <option value="QAB" @if (old('department') == 'QAB') selected @endif>Quality
                                                 Assurance Biopharma</option>
-                                            <option value="CQC" @if (old('deparment') == 'CQC') selected @endif>Central
+                                            <option value="CQC" @if (old('department') == 'CQC') selected @endif>Central
                                                 Quality Control</option>
-                                            <option value="MANU" @if (old('deparment') == 'MANU') selected @endif>
+                                            <option value="MANU" @if (old('department') == 'MANU') selected @endif>
                                                 Manufacturing</option>
-                                            <option value="PSG" @if (old('deparment') == 'PSG') selected @endif>Plasma
+                                            <option value="PSG" @if (old('department') == 'PSG') selected @endif>Plasma
                                                 Sourcing Group</option>
-                                            <option value="CS" @if (old('deparment') == 'CS') selected @endif>Central
+                                            <option value="CS" @if (old('department') == 'CS') selected @endif>Central
                                                 Stores</option>
-                                            <option value="ITG" @if (old('deparment') == 'ITG') selected @endif>
+                                            <option value="ITG" @if (old('department') == 'ITG') selected @endif>
                                                 Information Technology Group</option>
-                                            <option value="MM" @if (old('deparment') == 'MM') selected @endif>
+                                            <option value="MM" @if (old('department') == 'MM') selected @endif>
                                                 Molecular Medicine</option>
-                                            <option value="CL" @if (old('deparment') == 'CL') selected @endif>Central
+                                            <option value="CL" @if (old('department') == 'CL') selected @endif>Central
                                                 Laboratory</option>
 
-                                            <option value="TT" @if (old('deparment') == 'TT') selected @endif>Tech
+                                            <option value="TT" @if (old('department') == 'TT') selected @endif>Tech
                                                 team</option>
-                                            <option value="QA" @if (old('deparment') == 'QA') selected @endif>
+                                            <option value="QA" @if (old('department') == 'QA') selected @endif>
                                                 Quality Assurance</option>
-                                            <option value="QM" @if (old('deparment') == 'QM') selected @endif>
+                                            <option value="QM" @if (old('department') == 'QM') selected @endif>
                                                 Quality Management</option>
-                                            <option value="IA" @if (old('deparment') == 'IA') selected @endif>IT
+                                            <option value="IA" @if (old('department') == 'IA') selected @endif>IT
                                                 Administration</option>
-                                            <option value="ACC" @if (old('deparment') == 'ACC') selected @endif>
+                                            <option value="ACC" @if (old('department') == 'ACC') selected @endif>
                                                 Accounting</option>
-                                            <option value="LOG" @if (old('deparment') == 'LOG') selected @endif>
+                                            <option value="LOG" @if (old('department') == 'LOG') selected @endif>
                                                 Logistics</option>
-                                            <option value="SM" @if (old('deparment') == 'SM') selected @endif>
+                                            <option value="SM" @if (old('department') == 'SM') selected @endif>
                                                 Senior Management</option>
-                                            <option value="BA" @if (old('deparment') == 'BA') selected @endif>
+                                            <option value="BA" @if (old('department') == 'BA') selected @endif>
                                                 Business Administration</option>
                                         </select>
                                         @error('Initiator_Group')
@@ -653,8 +653,8 @@ $users = DB::table('users')
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="group-input">
-                                        <label for="deparment">Department Code</label>
-                                        <input type="text" name="deparment" id="deparmentCode"
+                                        <label for="department">Department Code</label>
+                                        <input type="text" name="department" id="deparmentCode"
                                             value="" readonly>
                                     </div>
                                 </div>
@@ -681,7 +681,7 @@ $users = DB::table('users')
                                     <div class="group-input">
                                         
                                         <label for="Employee Code/NT ID">Employee Code</label>                                     
-                                        <input id="docname" type="text" name="employee_Code" maxlength="255" >
+                                        <input id="docname" type="text" name="employee_Code"  value="" maxlength="255" >
                                     </div>
                                 </div>  
 
@@ -774,7 +774,7 @@ $users = DB::table('users')
                                     <div class="group-input">
                                         <label for="Manager">Manager</label>
                                         <select name="Manager" id="Manager">
-                                            <option value="">-- Select --</option>
+                                            <option value=" @if($user->name) selected @endif">-- Select --</option>
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                                             @endforeach
@@ -827,11 +827,11 @@ $users = DB::table('users')
                                     <div class="group-input">
                                         <label for="audit_ttachments">Reference Attachments</label>
                                         <div class="file-attachment-field">
-                                            <div class="file-attachment-list" id="Audit_file"></div>
+                                            <div class="file-attachment-list" id="Audit_file1"></div>
                                             <div class="add-btn">
                                                 <div>Add</div>
-                                                <input type="file" id="HOD_Attachments" name="Audit_file[]"
-                                                    oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                                <input type="file" id="HOD_Attachments" name="Audit_file1[]"
+                                                    oninput="addMultipleFiles(this, 'Audit_file1')" multiple>
                                             </div>
                                         </div>
                                     </div>
@@ -1429,6 +1429,8 @@ $users = DB::table('users')
                                     </a>
                                 <button type="button" class="nextButton" onclick="nextStep()">Next</button>
                                 <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white"> Exit </a> </button>
+
+
                             </div>
                         </div>
                     </div>
