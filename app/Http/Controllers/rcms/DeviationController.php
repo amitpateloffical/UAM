@@ -459,18 +459,22 @@ if(is_array($request->no_training_justification)) {
         }
         $data3->save();
         $data4 = new DeviationGrid();
-        $data4->deviation_grid_id = $deviation->id;
-        $data4->type = "Document ";
-        if (!empty($request->Number)) {
-            $data4->Number = serialize($request->Number);
-        }
-        if (!empty($request->ReferenceDocumentName)) {
-            $data4->ReferenceDocumentName = serialize($request->ReferenceDocumentName);
-        }
+        // $data4->deviation_grid_id = $deviation->id;
+        // $data4->type = "Document ";
+        // if (!empty($request->Number)) {
+        //     $data4->Number = serialize($request->Number);
+        // }
+        // if (!empty($request->ReferenceDocumentName)) {
+        //     $data4->ReferenceDocumentName = serialize($request->ReferenceDocumentName);
+        // }
         
-        if (!empty($request->Document_Remarks)) {
-            $data4->Document_Remarks = serialize($request->Document_Remarks);
-        }
+        // if (!empty($request->Document_Remarks)) {
+        //     $data4->Document_Remarks = serialize($request->Document_Remarks);
+        // }
+        $$data4->deviation_grid_id = $deviation->id;
+        $$data4->Number = serialize($request->Number);
+        $$data4->ReferenceDocumentName = serialize($request->ReferenceDocumentName);
+        $$data4->Document_Remarks = serialize($request->Document_Remarks);
         $data4->save();
         
 
