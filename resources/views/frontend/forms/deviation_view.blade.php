@@ -459,6 +459,7 @@ $users = DB::table('users')
                 <button class="cctablinks" onclick="openCity(event, 'CCForm5')">QAH/Designee Approval</button>
                 <button class="cctablinks" onclick="openCity(event, 'CCForm6')">Activity Log</button>
                 <button class="cctablinks" onclick="openCity(event, 'CCForm09')">Access Matrix</button>
+                <button class="cctablinks" onclick="openCity(event, 'CCForm09')">Access Matrix</button>
 
 
             </div>
@@ -1569,7 +1570,7 @@ $users = DB::table('users')
                                     <div class="group-input">
                                         <label for="QA_Initial_Comments">QA Initial Comments</label>
                                         <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
-                                        <textarea class="QA_Initial_Comments" name="QA_Initial_Comments" id="QA_Initial_Comments">
+                                        <textarea class="QA_Initial_Comments" name="QA_Initial_Comments" id="QA_Initial_Comments">{{$data->QA_Initial_Comments}}
                                     </textarea>
                                     </div>
                                 </div>
@@ -1590,11 +1591,11 @@ $users = DB::table('users')
                                         <label for="QA Initial Attachments">QA Attachments</label>
                                         <div><small class="text-primary">Please Attach all relevant or supporting documents</small></div>
                                         <div class="file-attachment-field">
-                                            <div class="file-attachment-list" id="Initial_attachment"></div>
+                                            <div class="file-attachment-list" id="QA_attachments"></div>
                                             <div class="add-btn">
                                                 <div>Add</div>
-                                                <input type="file" id="myfile" name="Initial_attachment[]"
-                                                    oninput="addMultipleFiles(this, 'Initial_attachment')" multiple>
+                                                <input type="file" id="myfile" name="QA_attachments[]"
+                                                    oninput="addMultipleFiles(this, 'QA_attachments')" multiple>
                                             </div>
                                         </div>
                                     </div>
@@ -1624,7 +1625,7 @@ $users = DB::table('users')
                                             data-search="false" data-silent-initial-value-set="true"
                                             id="related_records">
                                             @foreach ($pre as $prix)
-                                                <option value="{{ $prix->id }}">
+                                                <option value="{{ $prix->id }}" {{$prix->id == $data->related_records ? 'selected' : ''}}>
                                                     {{ Helpers::getDivisionName($prix->division_id) }}/Deviation/{{ Helpers::year($prix->created_at) }}/{{ Helpers::record($prix->record) }}/{{$prix->short_description}}
                                                 </option>
                                             @endforeach
@@ -5183,7 +5184,7 @@ $users = DB::table('users')
                                         <label for="Post Categorization Of Deviation">Post Categorization Of Deviation</label>
                                         <div><small class="text-primary">Please Refer Intial deviation category before updating.</small></div>
                                         <select name="Post_Categorization"{{ $data->stage == 0 || $data->stage == 7 ? 'disabled' : '' }}  id="Post_Categorization" value="Post_Categorization">
-                                        <option value=""> -- Select --</option>
+                                        <option value="0"> -- Select --</option>
                                         <option @if ($data->Post_Categorization == 'major') selected @endif
                                             value="major">Major</option>
                                         <option  @if ($data->Post_Categorization == 'minor') selected @endif 
@@ -5228,7 +5229,7 @@ $users = DB::table('users')
 
                                 <div class="col-12">
                                     <div class="group-input">
-                                        <label for="Investigatiom Attachment">Investigatiom Attachment</label>
+                                        <label for="Investigatiom Attachment">Investigation Attachment</label>
                                         <div><small class="text-primary">Please Attach all relevant or supporting documents</small></div>
                                         <div class="file-attachment-field">
                                             <div disabled class="file-attachment-list" id="Investigation_attachment">
@@ -5239,7 +5240,7 @@ $users = DB::table('users')
                                                     <a href="{{ asset('upload/' . $file) }}" target="_blank"><i class="fa fa-eye text-primary" style="font-size:20px; margin-right:-10px;"></i></a>
                                                     <a  type="button" class="remove-file" data-file-name="{{ $file }}"><i class="fa-solid fa-circle-xmark" style="color:red; font-size:20px;"></i></a>
                                                 </h6>
-                                           @endforeach
+                                           @endforeach 
                                                 @endif
                                             </div>
                                             <div class="add-btn">
