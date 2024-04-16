@@ -74,34 +74,35 @@ class DeviationController extends Controller
         }
 
         $deviation = new Deviation();
-        //$deviation->form_type = "Deviation";
+        $deviation->form_type = "Deviation";
         $deviation->record = ((RecordNumber::first()->value('counter')) + 1);
         $deviation->initiator_id = Auth::user()->id;
 
         # -------------new-----------
-        //  $deviation->record_number = $request->record_number;
+          $deviation->record_number = $request->record_number;
         $deviation->division_id = $request->division_id;
         $deviation->assign_to = $request->assigned_to;
-        //$deviation->due_date = $request->due_date;
+        $deviation->due_date = $request->due_date;
         $deviation->intiation_date = $request->intiation_date;
         //--------------------------------------------------------------
        $deviation->salutation = $request->salutation;
         $deviation->assign_to = $request->Assigned_to;
         $deviation->short_description = $request->short_description;
-        $deviation->department = $request->deparment;
+        $deviation->department = $request->department;
         $deviation->employee_Code = $request->employee_Code;
         $deviation->email = $request->email;
+        $deviation->Initiator_Group = $request->Initiator_Group;
         $deviation->designation = $request->designation;
-        $deviation->name_reporting_person = $request->name_reporting_person;
-        $deviation->employee_Code_reporting_person = $request->employee_Code_reporting_person;
-        $deviation->email_reporting_person = $request->email_reporting_person;
-        $deviation->is_help_desk = $request->is_help_desk;
-        $deviation->is_local_admin = $request->is_local_admin;
+     //   $deviation->name_reporting_person = $request->name_reporting_person;
+      //  $deviation->employee_Code_reporting_person = $request->employee_Code_reporting_person;
+      //  $deviation->email_reporting_person = $request->email_reporting_person;
+      //  $deviation->is_help_desk = $request->is_help_desk;
+       // $deviation->is_local_admin = $request->is_local_admin;
 
         $deviation->Production_person = $request->Production_person;
         $deviation->Manager = $request->Manager;
-        $deviation->https =  implode(',', $request->https);//implode
-        $deviation->training_required = $request->training_required;
+       // $deviation->https =  implode(',', $request->https);//implode
+            $deviation->training_required = $request->training_required;
         $deviation->training_reference_number = $request->training_reference_number;
         $deviation->no_training_justification = implode(',',$request->no_training_justification) ;//impode
          //hod----------------------------------
@@ -156,7 +157,7 @@ class DeviationController extends Controller
         // $deviation->Investigation_Summary = $request->Investigation_Summary;
         // $deviation->Impact_assessment = $request->Impact_assessment;
         // $deviation->Root_cause = $request->Root_cause;
-        // // $deviation->due_date_extension = $request->due_date_extension; 
+       //  $deviation->due_date_extension = $request->due_date_extension; 
         // $deviation->CAPA_Rquired = $request->CAPA_Rquired;
         // $deviation->capa_type = $request->capa_type;
         // $deviation->CAPA_Description = $request->CAPA_Description;
@@ -1330,7 +1331,7 @@ class DeviationController extends Controller
         //$deviation->division_id = $request->division_id;
         //$deviation->text = $request->text;
         $deviation->assign_to = $request->assign_to;
-        //$deviation->due_date = $request->due_date;
+        $deviation->due_date = $request->due_date;
         //$deviation->intiation_date = $request->intiation_date;
         $deviation->Initiator_Group = $request->Initiator_Group;
         //$deviation->due_date = $request->due_date;

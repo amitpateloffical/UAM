@@ -20,21 +20,22 @@ return new class extends Migration
             $table->string('division_id')->nullable();
             $table->string('division_code')->nullable();
             $table->string('initiator_group_code')->nullable();
+            $table->string('Initiator_Group')->nullable();
             $table->date('intiation_date')->nullable();
-          //  $table->string('form_type')->nullable();
+           $table->string('form_type')->nullable();
             $table->integer('record_number')->nullable();
             $table->string('Salutation')->nullable();
-            $table->string('assign_to')->nullable();
+            $table->string('Initiator_to')->nullable();
             $table->longText('short_description')->nullable();
             $table->longText('department')->nullable();
             
-            // $table->text('due_date')->nullable();
+             $table->text('due_date')->nullable();
             $table->string('employee_code')->nullable();
             $table->string('email')->nullable();
             $table->string('designation')->nullable();
-            $table->string('name_reporting_person')->nullable();
-            $table->string('email_reporting_person')->nullable();
-            $table->string('employee_Code_reporting_person')->nullable();
+           // $table->string('name_reporting_person')->nullable();
+          //  $table->string('email_reporting_person')->nullable();
+           // $table->string('employee_Code_reporting_person')->nullable();
             $table->string('is_help_desk')->nullable();
             $table->string('is_local_admin')->nullable();
             $table->string('Production_person')->nullable();

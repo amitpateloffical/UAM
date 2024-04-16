@@ -608,7 +608,7 @@ $users = DB::table('users')
                                     <div class="group-input">
                                         <label for="deparment"><b>Department</b><span
                                             class="text-danger">*</span></label> 
-                                        <select name="deparment" id="departmentSelect" required>
+                                        <select name="department" id="departmentSelect" required>
                                             <option value="">-- Select --</option>
                                             <option value="CQA" @if (old('deparment') == 'CQA') selected @endif>
                                                 Corporate Quality Assurance</option>
@@ -1102,6 +1102,7 @@ $users = DB::table('users')
                                                          <th style="width: 15%">Remarks</th>
                                                     </tr>
                                                 </thead>
+                                                
                                                 <tbody>
                                                 <td><input disabled type="text" name="serial[]" value="1"></td>
                                                 <td> <select  name="facility_name[]" id="facility_name" class="facility-name">  <option value="">-- Select --</option>  <option value="1">Facility</option>  <option value="2"> Equipment</option> <option value="3">Instrument</option></select> </td>

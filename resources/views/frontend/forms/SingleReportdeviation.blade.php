@@ -203,6 +203,7 @@
                         <td class="w-30">  @if($data->Initiator_Group){{ Helpers::getInitiatorGroupFullName($data->Initiator_Group) }} @else Not Applicable @endif</td>
                         <th class="w-20">Department Code</th>
                         <td class="w-30">@if($data->initiator_group_code){{ $data->initiator_group_code }} @else Not Applicable @endif</td>
+     
                     </tr>
                     <tr>
                         <th class="w-20">Site/Location Code</th>
@@ -243,7 +244,7 @@
                         <th class="w-20">Name of Product & Batch No</th>
                         <td class="w-30">@if($data->Product_Batch){{ ($data->Product_Batch) }} @else Not Applicable @endif</td>
                         <th class="w-20">Description of Deviation</th>
-                        <td class="w-30">@if($data->Description_Deviation){{ $data->Description_Deviation }} @else Not Applicable @endif</td>
+                        <td class="w-30">@if($data->Description_Deviation){!! $data->Description_Deviation !!} @else Not Applicable @endif</td>
                     </tr>
                     <tr>
                         <th class="w-20">Short Description</th>
