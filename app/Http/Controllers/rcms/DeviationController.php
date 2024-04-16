@@ -86,9 +86,9 @@ class DeviationController extends Controller
         $deviation->intiation_date = $request->intiation_date;
         //--------------------------------------------------------------
        $deviation->salutation = $request->salutation;
-        $deviation->assign_to = $request->Assigned_to;
+        // $deviation->assign_to = $request->assigned_to;
         $deviation->short_description = $request->short_description;
-        $deviation->department = $request->deparment;
+        $deviation->department = $request->department;
         $deviation->employee_Code = $request->employee_Code;
         $deviation->email = $request->email;
         $deviation->designation = $request->designation;
@@ -1315,7 +1315,7 @@ class DeviationController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**
