@@ -209,165 +209,72 @@ $users = DB::table('users')
                 function generateTableRow(serialNumber) {
                     
                     var html =
-                        '<tr>' +
-                        '<td><input disabled type="text" name="serial[]" value="' + serialNumber +'"></td>' +
-                         '<td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
-                                                <option value="0">-- Select --</option>
-                                                <option value="Temporary">Temporary</option>
-                                                <option value="Permanent">Permanent</option>
-
-                                            </select></td>'+
-                                            '<td><select name="SiteName" id="SiteName">
-                                                <option value="0">-- Select --</option>
-                                                <option value="yes">EU</option>
-                                                <option value="yes">Asia</option>
-                                                <option value="yes">Global</option>
-                                                <option value="yes">HR-Headquarter</option>
-                                                <option value="yes">IT-EMEA</option>
-                                                <option value="yes">QMS-APAC</option>
-                                                <option value="yes">QMS-North America</option>
-                                                <option value="yes">RA-EMEA</option>
-                                                <option value="yes">SQM-EMEA</option>
-
-                                            </select>
-                                       </td>'+
-                                        
-                                             '<td> <select name="Module" id="Module">
-                                                <option value="0">-- Select --</option>
-                                                <option value="QMS">QMS</option>
-                                                <option value="DMS">DMS</option>
-                                                <option value="HRMS">HRMS</option>
-                                                <option value="R&D">R&D</option>
-                                                <option value="IPQA">IPQA</option>
-                                                <option value="Warehouse">Warehouse</option>
-                                                <option value="Manufacturing">Manufacturing</option>
-                                                <option value="SAP">SAP</option>
-                                                <option value="Regulatory Affairs">Regulatory Affairs</option>
-
-                                                <option value="Medical Affairs">Medical Affairs</option>
-
-                                                <option value="Logistics">Logistics</option>
-
-                                                <option value="Marketing and Sales">Marketing and Sales</option>
-                                                <option value="Others">Others</option>
-                                            </select></td>'+
-
-                                       '<td> <input type="text" class="Others" name="Others[]"></td>'+
-
-                                       
-                                    '<td>
-                                     <select multiple name="audit_type[]" id="audit_type">
-                                             <option value="">Enter Your Selection Here</option> 
-                                            <option value="QA">QA</option>
-                                            <option value="QC">QC</option>
-                                            <option value="Manufacturing">Manufacturing</option>
-                                            <option value="R&D">R&D</option>
-                                            <option value="Supervisor">Supervisor</option>
-                                            <option value="HOD">HOD</option>
-                                            <option value="Lead">Lead Auditee</option>
-                                            <option value="Initiator">Initiator</option>
-                                            <option value="Audit">Audit Manager</option>
-                                            <option value="Reviewer">Reviewer</option>
-                                            <option value="Approval">Approval</option>
-                                        </select>
-                                    
-                                    </td>'+
-
-                                        '<td> <input type="text" class="Others" name="Others[]"</td>'+
-
-                                        '<td> <input type="text" class="Processtitle" name="Processtitle[]">  
-                                       </td>'+
-                                      
-                                       
-                                      '<td> <select name="Application" id="Application">
-                                                <option value="0">-- Select --</option>
-                                                <option value="VidyaGxP-QMS">VidyaGxP-QMS</option>
-                                                <option value="VidyaGxP-DMS">VidyaGxP-DMS</option>
-                                                <option value="VidyaGxP--ERP">VidyaGxP-ERP</option>
-                                                <option value="VidyaGxP--TMS">VidyaGxP-TMS</option>
-
-                                                <option value="VidyaGxP-EBMR">VidyaGxP-EBMR</option>
-                                                <option value="VidyaGxP-E-Logbook">VidyaGxP-E-Logbook</option>
-
-                                            
-
-                                            </select>
-                                       </td>'+
-                                       '<td> <select name="Role" id="Role">
-                                                <option value="0">-- Select --</option>
-                                                <option value="QAM">Quality Assurance Manager(QAM)</option>
-                                                <option value="QCA">Quality Control Analyst(QCA)</option>
-                                                <option value="CO">Compilance Officer(CO)</option>
-                                                <option value="RAS">Regulatory Affairs Specialist(RAS)</option>
-                                                <option value="DCS">Document Control Specialist(DCS)</option>
-                                                <option value="DCM">Document Control Manager(DCM)</option>
-                                                <option value="RC">Records Coordinator(RC)</option>
-                                                <option value="IGA">Information Governance Analyst(IGA)</option>
-                                                <option value="TC">Training Coordinator(TC)</option>
-                                                <option value="LMS">Learning Management System (LMS)</option>
-                                                <option value="Administrator">Administrator</option>
-                                                <option value="TM">Training Manager(TM)</option>
-                                                <option value="PO">Production Operator(PO)</option>
-                                                <option value="DIA">Data Integrity Analyst(DIA)</option>
-                                            </select>
-                                       </td>'+
-                                       '<td> <select name="Process_Title" id="Process_Title">
-                                                <option value="0">-- Select --</option>
-                                                <option value="yes">Yes</option>
-                                                <option value="no">No</option>
-
-                                            </select>
-                                       </td>'+
-                                       
-                                       '<td><div class="training_certificate">
-                                                <div class="file-attachment-training_certificate" id="training_certificate"></div>
-                                                <div class="add-btn">
-                                                    
-                                                    <input type="file" id="myfile" name="training_certificate[]"
-                                                        oninput="addMultipleFiles(this, 'training_certificate')" multiple>
-                                                </div></td>'+
-                                        '<td> <select name="Is_tmp_user" id="Is_tmp_user">
-                                                <option value="0">-- Select --</option>
-                                                <option value="yes">Yes</option>
-                                                <option value="no">No</option>
-                                            </select></td>'+
-                                      '<td><input type="date" class="Period" name="Period[]"></td>'+
-                                        
-                                        '<td><div class="col-lg-6">
-                                    <div class="group-input">
-                                        <select name="Acces_provided_by" id="Acces_provided_by[]">
-                                            <option value="">-- Select --</option>
-                                            @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div></td>'+
-
-                                       
-                                 '<td><input type="date" class="Access_provided_on" name="Access_provided_on[]"></td>'+
-                                     '<td><input type="text" class="Remarks" name="Remarks[]"></td>'+
-                                        
-                                    '<td><div class="col-lg-6">
-                                    <div class="group-input">
-                                        <select name="Acces_provided_by" id="Acces_provided_by[]">
-                                            <option value="">-- Select --</option>
-                                            @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div></td>'+
-                                        
-                                      '<td><input type="date" class="Document_Remarks" name="Document_Remarks[]"></td>'+
-                                            '</tr>';
-
-                
+                        '<tr>'+
+                        '<td><input disabled type="text" name="serial[]" value="'+ serialNumber +'"></td>'+
+                        '<td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type"><option value="0">-- Select --</option><option value="Temporary">Temporary</option><option value="Permanent">Permanent</option></select></td>'+
+                        '<td> <select name="SiteName" id="SiteName"><option value="0">-- Select --</option><option value="yes">EU</option><option value="yes">Asia</option><option value="yes">Global</option><option value="yes">HR-Headquarter</option><option value="yes">IT-EMEA</option><option value="yes">QMS-APAC</option><option value="yes">QMS-North America</option><option value="yes">RA-EMEA</option><option value="yes">SQM-EMEA</option></select></td>'+
+                        '<td><select name="Module" id="Module"><option value="0">-- Select --</option><option value="QMS">QMS</option><option value="DMS">DMS</option><option value="HRMS">HRMS</option><option value="R&D">R&D</option><option value="IPQA">IPQA</option><option value="Warehouse">Warehouse</option><option value="Manufacturing">Manufacturing</option><option value="SAP">SAP</option><option value="Regulatory Affairs">Regulatory Affairs</option><option value="Medical Affairs">Medical Affairs</option><option value="Logistics">Logistics</option><option value="Marketing and Sales">Marketing and Sales</option><option value="Others">Others</option></select></td>'+
+                        '<td><input type="text" class="module_Others" name="module_Others[]"></td>'+
+                        '<td><select multiple name="audit_type[]" id="audit_type"><option value="">Enter Your Selection Here</option><option value="QA">QA</option><option value="QC">QC</option><option value="Manufacturing">Manufacturing</option><option value="R&D">R&D</option><option value="Supervisor">Supervisor</option><option value="HOD">HOD</option><option value="Lead">Lead Auditee</option><option value="Initiator">Initiator</option><option value="Audit">Audit Manager</option><option value="Reviewer">Reviewer</option><option value="Approval">Approval</option></select></td>'+
+                        '<td><input type="text" class="Others" name="Others[]"></td>'+
+                        '<td> <input type="text" class="Processtitle" name="Processtitle[]"></td>'+
+                        '<td><select name="Application" id="Application"><option value="0">-- Select --</option><option value="VidyaGxP-QMS">VidyaGxP-QMS</option><option value="VidyaGxP-DMS">VidyaGxP-DMS</option><option value="VidyaGxP--ERP">VidyaGxP-ERP</option><option value="VidyaGxP--TMS">VidyaGxP-TMS</option><option value="VidyaGxP-EBMR">VidyaGxP-EBMR</option><option value="VidyaGxP-E-Logbook">VidyaGxP-E-Logbook</option></select></td>'+
+                        '<td> <select name="Role" id="Role"><option value="0">-- Select --</option><option value="QAM">Quality Assurance Manager(QAM)</option><option value="QCA">Quality Control Analyst(QCA)</option><option value="CO">Compilance Officer(CO)</option><option value="RAS">Regulatory Affairs Specialist(RAS)</option><option value="DCS">Document Control Specialist(DCS)</option><option value="DCM">Document Control Manager(DCM)</option><option value="RC">Records Coordinator(RC)</option><option value="IGA">Information Governance Analyst(IGA)</option><option value="TC">Training Coordinator(TC)</option><option value="LMS">Learning Management System (LMS)</option><option value="Administrator">Administrator</option><option value="TM">Training Manager(TM)</option><option value="PO">Production Operator(PO)</option><option value="DIA">Data Integrity Analyst(DIA)</option></select></td>'+
+                        '<td><select name="Training_completed" id="Training_completed"><option value="0">-- Select --</option><option value="yes">Yes</option><option value="no">No</option></select></td>'+
+                        // '<td><div class="training_certificate"><div class="file-attachment-training_certificate" id="training_certificate"></div><div class="add-btn"><input type="file" id="myfile" name="training_certificate[]" oninput="addMultipleFiles(this, 'training_certificate')" multiple></div></td>'+
+                        '<td> <select name="Is_tmp_user" id="Is_tmp_user"><option value="0">-- Select --</option><option value="yes">Yes</option><option value="no">No</option></select></td>'+
+                        '<td><input type="date" class="Period" name="Period[]"></td>'+
+                        '<td><input type="date" class="Period" name="Period[]"></td>'+
+                        '<td><div class="col-lg-6"><div class="group-input  "><select name="Acces_provided_by" id="Acces_provided_by[]"><option value="">-- Select --</option>@foreach ($users as $user)<option value="{{ $user->id }}">{{ $user->name }}</option>@endforeach</select></div></div></td>'+
+                        '<td><input type="date" class="Access_provided_on" name="Access_provided_on[]"></td>'+
+                        '<td><div class="col-lg-6"><div class="group-input"><select name="Acces_revoked_by" id="Acces_revoked_by[]"><option value="">-- Select --</option>@foreach ($users as $user)<option value="{{ $user->id }}">{{ $user->name }}</option>@endforeach</select></div></div></td>'+
+                        '<td><input type="date" class="Access_revoked_on" name="Access_revoked_on[]"></td>'+                           '<td><input type="text" class="Remarks" name="Remarks[]"></td>'+
+                        '</tr>'               
                  
                     return html;
                 }
 
                 var tableBody = $('#Access_Matrix_Details_Details tbody');
+                var rowCount = tableBody.children('tr').length;
+                var newRow = generateTableRow(rowCount + 1);
+                tableBody.append(newRow);
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#Assests_Details').click(function(e) {
+                function generateTableRow(serialNumber) {
+                    
+                    var html =
+                        '<tr>'+
+                        '<td><input disabled type="text" name="serial[]" value="' + serialNumber +'"></td>'+
+                        '<td><select name="laptop" id="laptop"><option value="0">-- Select --</option><option value="No">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Desktop_Computer" id="Desktop_Computer"><option value="0">-- Select --</option><option value="No">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Tablet" id="Tablet"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Smartphone" id="Smartphone"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Monitor" id="Monitor"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Keyboard" id="Keyboard"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Mouse" id="Mouse"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Printer" id="Printer"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Scanner" id="Scanner"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Headset" id="Headset"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Projector" id="Projector"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Server" id="Server"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Network_Switch" id="Network_Switch"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="External_Hard_Drive" id="External_Hard_Drive"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="USB_Flash_Drive" id="USB_Flash_Drive"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Software_Licenses" id="Software_Licenses"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Access_Card_Badge" id="Access_Card_Badge"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Security_Key_Token" id="Security_Key_Token"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Desk_Phone" id="Desk_Phone"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '<td><select name="Company_Vehicle" id="Company_Vehicle"><option value="0">-- Select --</option><option value="Yes">Yes</option><option value="No">No</option></select></td>'+
+                        '</tr>';                 
+                    return html;
+                }
+
+                var tableBody = $('#Assets_Details_Details tbody');
                 var rowCount = tableBody.children('tr').length;
                 var newRow = generateTableRow(rowCount + 1);
                 tableBody.append(newRow);
@@ -825,13 +732,13 @@ $users = DB::table('users')
 
                                  <div class="col-lg-12">
                                     <div class="group-input">
-                                        <label for="audit_ttachments">Reference Attachments</label>
+                                        <label for="reference_attachment">Reference Attachments</label>
                                         <div class="file-attachment-field">
-                                            <div class="file-attachment-list" id="Audit_file"></div>
+                                            <div class="file-attachment-list" id="reference_attachment"></div>
                                             <div class="add-btn">
                                                 <div>Add</div>
-                                                <input type="file" id="HOD_Attachments" name="Audit_file[]"
-                                                    oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                                <input type="file" id="reference_attachment" name="reference_attachment[]"
+                                                    oninput="addMultipleFiles(this, 'reference_attachment')" multiple>
                                             </div>
                                         </div>
                                     </div>
@@ -1116,7 +1023,7 @@ $users = DB::table('users')
                                     <script> 
 
                                         document.addEventListener('DOMContentLoaded', function () {
-                                            var selectField = document.getElementById('Facility_Equipment');
+                                            var selectField = document.getElementById('Customer_notification');
                                             var inputsToToggle = [];
 
                                             // Add elements with class 'facility-name' to inputsToToggle
@@ -1407,14 +1314,14 @@ $users = DB::table('users')
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="group-input">
-                                        <label for="Audit Attachments">HOD Attachments</label>
+                                        <label for="HOD Attachments">HOD Attachments</label>
                                         <div><small class="text-primary">Please Attach all relevant or supporting documents</small></div>
                                         <div class="file-attachment-field">
-                                            <div class="file-attachment-list" id="Audit_file"></div>
+                                            <div class="file-attachment-list" id="HOD_Attachments"></div>
                                             <div class="add-btn">
                                                 <div>Add</div>
-                                                <input type="file" id="HOD_Attachments" name="Audit_file[]"
-                                                    oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                                <input type="file" id="HOD_Attachments" name="HOD_Attachments[]"
+                                                    oninput="addMultipleFiles(this, 'HOD_Attachments')" multiple>
                                             </div>
                                         </div>
                                     </div>
@@ -1432,6 +1339,7 @@ $users = DB::table('users')
                             </div>
                         </div>
                     </div>
+                
                        <!-- QA Initial reVIEW -->
                        <div id="CCForm2" class="inner-block cctabcontent">
                         <div class="inner-block-content">
@@ -1445,21 +1353,23 @@ $users = DB::table('users')
                                     </textarea>
                                     </div>
                                 </div>
+ 
 
                                  <div class="col-lg-12">
                                     <div class="group-input">
                                         <label for="QA Initial Attachments">QA Attachments</label>
                                         <div><small class="text-primary">Please Attach all relevant or supporting documents</small></div>
                                         <div class="file-attachment-field">
-                                            <div class="file-attachment-list" id="Initial_attachment"></div>
+                                            <div class="file-attachment-list" id="QA_attachment"></div>
                                             <div class="add-btn">
                                                 <div>Add</div>
-                                                <input type="file" id="myfile" name="Initial_attachment[]"
-                                                    oninput="addMultipleFiles(this, 'Initial_attachment')" multiple>
+                                                <input type="file" id="myfile" name="QA_attachment[]"
+                                                    oninput="addMultipleFiles(this, 'QA_attachment')" multiple>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                
 
                                    
                                 
@@ -1518,53 +1428,6 @@ $users = DB::table('users')
                                     </div>
                                 </div>
                                 
-                                {{-- <div class="col-lg-6">
-                                    <div class="group-input">
-                                        <label for="Customer notification">Assets Required ?</label>
-                                        <select name="Customer_notification" id="Customer_notification">
-                                            <option value="0">-- Select --</option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
-                                            <option value="na">NA</option>
-                                        </select>
-                                    </div>  
-                                </div>
-                                <div class="col-5">
-                                    <div class="group-input" id="customer_option">
-                                        @php
-                                            $customers = DB::table('customer-details')->get();
-                                        @endphp
-                                        <label for="Assets">Assets<span class="text-danger">*</span></label>
-                                        <select name="Assets" id="Assets">
-                                            <option value="0"> -- Select --</option>
-                                            @foreach ($customers as $data)
-                                            <option value="{{ $data->id }}">{{ $data->customer_name }}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="group-input">
-                                        <!-- <label for="Comments(If Any)">Customers</label> -->
-                                        <button style="margin-top: 21px; border: 1px solid gray; background: #6f81dd; color: #fff;" type="button" class="btn b" data-bs-toggle="modal" data-bs-target="#myModal">
-                                              Asset
-                                    </button>
-                                    </div>
-                                </div> --}}
-
-                                {{-- <div class="col-12">
-                                    <div class="group-input"> 
-                                        <label for="related_records">Related Records</label>
-                                        <select multiple name="related_records[]" placeholder="Select Reference Records"
-                                            data-search="false" data-silent-initial-value-set="true" id="related_records">
-                                            @foreach ($pre as $prix)
-                                                <option value="{{ $prix->id }}">
-                                                    {{ Helpers::getDivisionName($prix->division_id) }}/Change-Control/{{ Helpers::year($prix->created_at) }}/{{ Helpers::record($prix->record) }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div> --}}
                                 
                                 <div class="col-12">
                                     <div class="group-input">
@@ -1581,12 +1444,7 @@ $users = DB::table('users')
                                         </select>
                                     </div>
                                 </div>
-                                {{-- <div class="col-12">
-                                    <div class="group-input">
-                                        <label for="Comments(If Any)">QA Initial Remarks</label>
-                                      <textarea class="summernote" name="QAInitialRemark" id="" cols="30" ></textarea>
-                                    </div>
-                                </div> --}}
+                              
                                 <div class="col-md-12 mb-3">
                                     <div class="group-input">
                                         <label for="QAInitialRemark">QA Initial Remarks</label>
@@ -1595,21 +1453,26 @@ $users = DB::table('users')
                                     </textarea>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+
+                                
+
+                                 <div class="col-lg-12">
                                     <div class="group-input">
                                         <label for="QA Initial Attachments">QA Initial Attachments</label>
                                         <div><small class="text-primary">Please Attach all relevant or supporting documents</small></div>
                                         <div class="file-attachment-field">
-                                            <div class="file-attachment-list" id="Initial_attachment"></div>
+                                            <div class="file-attachment-list" id="QA_initial_attachment"></div>
                                             <div class="add-btn">
                                                 <div>Add</div>
-                                                <input type="file" id="myfile" name="Initial_attachments[]"
-                                                    oninput="addMultipleFiles(this, 'Initial_attachment')" multiple>
+                                                <input type="file" id="myfile" name="QA_initial_attachment[]"
+                                                    oninput="addMultipleFiles(this, 'QA_initial_attachment')" multiple>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+
                             <div class="button-block">
                                 <button type="submit" class="saveButton">Save</button>
                                     <a href="/rcms/qms-dashboard">
@@ -3526,7 +3389,8 @@ $users = DB::table('users')
 <a href="/rcms/qms-dashboard">
                                         <button type="button" class="backButton">Back</button>
                                     </a>
-                                <button type="button" class="nextButton" onclick="nextStep()">Next</button>
+                                {{-- <button type="button" class="nextButton" onclick="nextStep()">Next</button> --}}
+                                 <button type="button"  onclick="nextStep()">Next</button>
                                 <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white">
                                         Exit </a> </button>
                             </div>
@@ -3636,7 +3500,7 @@ $users = DB::table('users')
                                                 <option value="Others">Others</option>
                                             </select></td>
 
-                                        <td> <input type="text" class="Others" name="Others[]">   </td>
+                                        <td> <input type="text" class="module_Others" name="module_Others[]">   </td>
 
                                        
                                     <td>
@@ -3695,7 +3559,7 @@ $users = DB::table('users')
                                                 <option value="DIA">Data Integrity Analyst(DIA)</option>
                                             </select>
                                        </td>
-                                        <td> <select name="Process_Title" id="Process_Title">
+                                        <td> <select name="Training_completed" id="Training_completed">
                                                 <option value="0">-- Select --</option>
                                                 <option value="yes">Yes</option>
                                                 <option value="no">No</option>
@@ -3733,7 +3597,7 @@ $users = DB::table('users')
                                         
                                      <td><div class="col-lg-6">
                                     <div class="group-input">
-                                        <select name="Acces_provided_by" id="Acces_provided_by[]">
+                                        <select name="Acces_revoked_by" id="Acces_revoked_by[]">
                                             <option value="">-- Select --</option>
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -3743,7 +3607,7 @@ $users = DB::table('users')
                                 </div>
                             </td>
                                         
-                                        <td><input type="date" class="Document_Remarks" name="Document_Remarks[]"></td>
+                                        <td><input type="date" class="Access_revoked_on" name="Access_revoked_on[]"></td>
                                      <td><input type="text" class="Remarks" name="Remarks[]"></td>
 
                                         </tbody></table>
@@ -3793,9 +3657,273 @@ $users = DB::table('users')
                                     </script>
 
                         
+                                    {{-- Requirements --}}
+
+                                    {{-- <div class="col-lg-12">
+                                    <div class="group-input">
+                                        <label for="Facility/Equipment"> Facility/ Equipment/ Instrument/ System Details Required?</label>
+                                        <select name="Facility_Equipment" id="Facility_Equipment"required>
+                                            <option value="">--Select --</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+
+                                        </select>
+                                    </div> --}}
+
+                                    <div class="col-lg-12">
+                                    <div class="group-input">
+                                        <label for="Customer notification">Assets Required ?</label>
+                                        <select name="Customer_notification" id="Customer_notification" required>
+                                            <option value="0">-- Select --</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                            <option value="na">NA</option>
+                                        </select>
+                                  
+                                    </div>
+                                </div>
+
+
+                                    @error('Customer_notification')
+                                        <div class="text-danger">{{  $message  }}</div>
+                                    @enderror
+                                </div> 
+                                <div class="group-input" id="AssestsRow" style="display: none">
+                                        {{-- <label for="audit-agenda-grid">
+                                        Facility/ Equipment/ Instrument/ System Details 
+                                            <button type="button" name="audit-agenda-grid"
+                                                id="ObservationAdd">+</button>
+                                            <span class="text-primary" data-bs-toggle="modal"
+                                                data-bs-target="#observation-field-instruction-modal"
+                                                style="font-size: 0.8rem; font-weight: 400; cursor: pointer;">
+                                                (Launch Instruction)
+                                            </span>
+                                        </label> --}}
+
+                                         <label for="audit-agenda-grid">
+                                         Assets
+                                             <span id="asteriskInviDetails" style="display: none" class="text-danger">*</span>
+                                            <button type="button" name="audit-agenda-grid"
+                                                id="Assests_Details">+</button>
+                                            <span class="text-primary" data-bs-toggle="modal"
+                                                data-bs-target="#document-details-field-instruction-modal"
+                                                style="font-size: 0.8rem; font-weight: 400; cursor: pointer;">
+                                                
+                                            </span>
+                                        </label>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="Assets_Details_Details"
+                                                >
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 5%">Row#</th>
+                                                        {{-- <th style="width: 12%">Name</th>
+                                                        <th style="width: 16%"> ID Number</th>
+                                                         <th style="width: 15%">Remarks</th>  --}}
+
+
+                                                         <th style="">Laptop</th>
+                                                            <th style="">Desktop Computer</th>
+                                                            <th style="">Tablet</th>
+                                                            <th style="">Smartphone</th>
+                                                            <th style="">Monitor</th>
+                                                            <th style="">Keyboard</th>
+                                                            <th style="">Mouse</th>
+                                                            <th style="">Printer</th>
+                                                            <th style="">Scanner</th>
+                                                            <th style="">Headset</th>
+                                                            <th style="">Projector</th>
+                                                            <th style="">Server</th>
+                                                            <th style="">Network Switch</th>
+                                                            <th style="">External Hard Drive</th>
+                                                            <th style="">USB Flash Drive</th>
+                                                            <th style="">Software Licenses</th>
+                                                            <th style="">Access Card/Badge</th>
+                                                            <th style="">Security Key/Token</th>
+                                                            <th style="">Desk Phone</th>
+                                                            <th style="">Company Vehicle</th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <td><input disabled type="text" name="serial[]" value="1"></td>
+                                                {{-- <td> <select  name="facility_name[]" id="facility_name" class="facility-name">  <option value="">-- Select --</option>  <option value="Facility">Facility</option>  <option value="Equipment"> Equipment</option> <option value="Instrument">Instrument</option></select> </td> --}}
+                                                
+
+                                            <td><select name="laptop" id="laptop">
+                                                <option value="0">-- Select --</option>
+                                                <option value="No">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Desktop_Computer" id="Desktop_Computer">
+                                                <option value="0">-- Select --</option>
+                                               <option value="No">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Tablet" id="Tablet">
+                                                <option value="0">-- Select --</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Smartphone" id="Smartphone">
+                                                <option value="0">-- Select --</option>
+                                                 <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Monitor" id="Monitor">
+                                                <option value="0">-- Select --</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Keyboard" id="Keyboard">
+                                                <option value="0">-- Select --</option>
+                                                 <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Mouse" id="Mouse">
+                                                <option value="0">-- Select --</option>
+                                                 <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                        <td><select name="Printer" id="Printer">
+                                                <option value="0">-- Select --</option>
+                                                 <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Scanner" id="Scanner">
+                                                <option value="0">-- Select --</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Headset" id="Headset">
+                                                <option value="0">-- Select --</option>
+                                                 <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Projector" id="Projector">
+                                                <option value="0">-- Select --</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Server" id="Server">
+                                                <option value="0">-- Select --</option>
+                                                 <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Network_Switch" id="Network_Switch">
+                                                <option value="0">-- Select --</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="External_Hard_Drive" id="External_Hard_Drive">
+                                                <option value="0">-- Select --</option>
+                                                 <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="USB_Flash_Drive" id="USB_Flash_Drive">
+                                                <option value="0">-- Select --</option>
+                                                 <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Software_Licenses" id="Software_Licenses">
+                                                <option value="0">-- Select --</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Access_Card_Badge" id="Access_Card_Badge">
+                                                <option value="0">-- Select --</option>
+                                                 <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Security_Key_Token" id="Security_Key_Token">
+                                                <option value="0">-- Select --</option>
+                                                 <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Desk_Phone" id="Desk_Phone">
+                                                <option value="0">-- Select --</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                            <td><select name="Company_Vehicle" id="Company_Vehicle">
+                                                <option value="0">-- Select --</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select></td>
+
+                                                {{-- <td><input type="text" name="IDnumber[]" class="id-number"></td>
+                                                <td><input type="text" name="Remarks[]" class="remarks"></td> --}}
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <script>
+
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            var selectField = document.getElementById('Customer_notification');
+                                            var inputsToToggle = [];
+
+                                            // Add elements with class 'facility-name' to inputsToToggle
+                                            var facilityNameInputs = document.getElementsByClassName('facility-name');
+                                            for (var i = 0; i < facilityNameInputs.length; i++) {
+                                                inputsToToggle.push(facilityNameInputs[i]);
+                                            }
+
+                                            // Add elements with class 'id-number' to inputsToToggle
+                                            var idNumberInputs = document.getElementsByClassName('id-number');
+                                            for (var j = 0; j < idNumberInputs.length; j++) {
+                                                inputsToToggle.push(idNumberInputs[j]);
+                                            }
+
+                                            // Add elements with class 'remarks' to inputsToToggle
+                                            var remarksInputs = document.getElementsByClassName('remarks');
+                                            for (var k = 0; k < remarksInputs.length; k++) {
+                                                inputsToToggle.push(remarksInputs[k]);
+                                            }
+
+                                                                            
+                                            selectField.addEventListener('change', function () {
+                                                var isRequired = this.value === 'yes';
+                                                console.log(this.value, isRequired, 'value');
+
+                                                inputsToToggle.forEach(function (input) {
+                                                    input.required = isRequired;
+                                                    console.log(input.required, isRequired, 'input req');
+                                                });
+
+                                                document.getElementById('AssestsRow').style.display = isRequired ? 'block' : 'none';
+                                                // Show or hide the asterisk icon based on the selected value
+                                                var asteriskIcon = document.getElementById('asteriskInvi');
+                                                asteriskIcon.style.display = isRequired ? 'inline' : 'none';
+                                            });
+                                        });
+                                    </script>
+
 
                                       
-                                <div class="col-lg-6">
+                                {{-- <div class="col-lg-6">
                                     <div class="group-input">
                                         <label for="Customer notification">Assets Required ?</label>
                                         <select name="Customer_notification" id="Customer_notification">
@@ -3817,7 +3945,7 @@ $users = DB::table('users')
                                          Assets
                                              <span id="asteriskInviDetails" style="display: none" class="text-danger">*</span>
                                             <button type="button" name="audit-agenda-grid"
-                                                id="Access_Matrix_Details">+</button>
+                                                id="Assests_Details">+</button>
                                             <span class="text-primary" data-bs-toggle="modal"
                                                 data-bs-target="#document-details-field-instruction-modal"
                                                 style="font-size: 0.8rem; font-weight: 400; cursor: pointer;">
@@ -3825,7 +3953,7 @@ $users = DB::table('users')
                                             </span>
                                         </label>
                                         <div class="table-responsive">
-                                            <table class="table table-bordered" id="Access_Matrix_Details_Details"
+                                            <table class="table table-bordered" id="Assets_Details_Details"
                                                 style="width: 100%;">
                                                 <thead>
                                                     <tr>
@@ -3859,121 +3987,121 @@ $users = DB::table('users')
                                                 </thead>
                                                 <tbody>
                                         <td><input disabled type="text" name="serial[]" value="1"></td>
-                                        <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                        <td><select name="laptop" id="laptop">
                                                 <option value="0">-- Select --</option>
                                                 <option value="No">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Desktop_Computer" id="Desktop_Computer">
                                                 <option value="0">-- Select --</option>
                                                <option value="No">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Tablet" id="Tablet">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Smartphone" id="Smartphone">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Monitor" id="Monitor">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Keyboard" id="Keyboard">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Mouse" id="Mouse">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                        <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                        <td><select name="Printer" id="Printer">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Scanner" id="Scanner">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Headset" id="Headset">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Projector" id="Projector">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Server" id="Server">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Network_Switch" id="Network_Switch">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="External_Hard_Drive" id="External_Hard_Drive">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="USB_Flash_Drive" id="USB_Flash_Drive">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Software_Licenses" id="Software_Licenses">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Access_Card_Badge" id="Access_Card_Badge">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Security_Key_Token" id="Security_Key_Token">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Desk_Phone" id="Desk_Phone">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Company_Vehicle" id="Company_Vehicle">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
@@ -3981,7 +4109,7 @@ $users = DB::table('users')
                                            
                                         </tbody></table>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <script>
 
                                         document.addEventListener('DOMContentLoaded', function () {
@@ -4113,20 +4241,20 @@ $users = DB::table('users')
                                     
                                      <div class="col-lg-12">
                                     <div class="group-input">
-                                        <label for="Audit Attachments">Supporting Documents</label>
+                                        <label for="supporting_document">Supporting Documents </label>
+                                        <div><small class="text-primary">Please Attach all relevant or supporting documents</small></div>
                                         <div class="file-attachment-field">
-                                            <div class="file-attachment-list" id="Audit_file"></div>
+                                            <div class="file-attachment-list" id="supporting_document"></div>
                                             <div class="add-btn">
                                                 <div>Add</div>
-                                                <input type="file" id="HOD_Attachments" name="Audit_file[]"
-                                                    oninput="addMultipleFiles(this, 'Audit_file')" multiple>
+                                                <input type="file" id="myfile" name="supporting_document[]"
+                                                    oninput="addMultipleFiles(this, 'supporting_document')" multiple>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-
-                                
+                                                                    
 
                                 {{-- <div style="margin-bottom: 0px;" class="col-lg-12 new-date-data-field ">
                                     <div class="group-input input-date">
@@ -4264,12 +4392,14 @@ $users = DB::table('users')
                                             <a href="/rcms/qms-dashboard">
                                         <button type="button" class="backButton">Back</button>
                                     </a>
-                                <button type="button" class="nextButton" onclick="nextStep()">Next</button>
+                                {{-- <button type="button" class="nextButton" onclick="nextStep()">Next</button> --}}
+                                <button type="button"  onclick="nextStep()">Next</button>
+
                                 <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white"> Exit </a> </button>
                             </div>
                         </div>
                     </div>
-                    </div>
+                    
                                 
                     <!-- Activity Log content -->
                     <div id="CCForm6" class="inner-block cctabcontent">
