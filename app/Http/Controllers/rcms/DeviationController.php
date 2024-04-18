@@ -12,6 +12,8 @@ use App\Models\Deviation;
 use App\Models\Extension;
 use App\Models\DeviationAuditTrail;
 use App\Models\DeviationGrid;
+
+use App\Models\accessMatrix;
 use App\Models\DeviationHistory;
 use App\Models\DeviationCft;
 use App\Models\UserRole;
@@ -432,7 +434,42 @@ if(is_array($request->no_training_justification)) {
 
             $deviation->closure_attachment = json_encode($files);
         }
-       
+
+        //-----------------------------Access matrix--------------------------------------------------------
+
+        $access  = new accessMatrix();
+
+        $access->Membership_allocation_type=$request->Membership_allocation_type;
+        $access->SiteName=$request->SiteName;
+        $access->Module=$request->Module;
+        $access->Module_others=$request->Module_others;
+        $access->User_roles_group_category=$request->User_roles_group_category;//implode
+        $access->Others=$request->Others;
+        $access->Process_title=$request->Process_title;
+        $access->Application=$request->Application;
+        $access->Role=$request->Role;
+        $access->Training_completed=$request->Training_completed;
+        $access->training_certificate=$request->training_certificate;//implode
+        $access->Is_tmp_user=$request->Is_tmp_user;
+        $access->period_from=$request->period_from;
+        $access->Period_to=$request->Period_to;
+        $access->Acces_provided_by=$request->Acces_provided_by;
+        $access->Access_provided_on=$request->Access_provided_on;
+        $access->Access_revoked_by=$request->Access_revoked_by;
+        $access->Access_revoked_on=$request->Access_revoked_on;
+        $access->Remarks=$request->Remarks;
+
+
+        $access->Assets_required=$request->Assets_required;
+
+        
+
+
+
+
+
+
+
         $record = RecordNumber::first();
         $record->counter = ((RecordNumber::first()->value('counter')) + 1);
         $record->update(); 
@@ -1284,6 +1321,13 @@ if(is_array($request->no_training_justification)) {
         toastr()->success("Record is created Successfully");
         return redirect(url('rcms/qms-dashboard'));
     }
+
+
+
+
+
+
+
 
     /**
      * Display the specified resource.

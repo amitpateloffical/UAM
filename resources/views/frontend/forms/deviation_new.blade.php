@@ -3541,8 +3541,6 @@ $users = DB::table('users')
                                  <div class="sub-head">
                             Access Rights Details
                            </div>
-                               
-                                    
                                         <div class="group-input">
                                         <label for="audit-agenda-grid">
                                          Access Matrix
@@ -3595,7 +3593,7 @@ $users = DB::table('users')
                                                 </thead>
                                                 <tbody>
                                         <td><input disabled type="text" name="serial[]" value="1"></td>
-                                        <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                        <td><select name="Membership_allocation_type" id="Membership_Allocation_Type">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Temporary">Temporary</option>
                                                 <option value="Permanent">Permanent</option>
@@ -3603,15 +3601,15 @@ $users = DB::table('users')
                                             </select></td>
                                             <td> <select name="SiteName" id="SiteName">
                                                 <option value="0">-- Select --</option>
-                                                <option value="yes">EU</option>
-                                                <option value="yes">Asia</option>
-                                                <option value="yes">Global</option>
-                                                <option value="yes">HR-Headquarter</option>
-                                                <option value="yes">IT-EMEA</option>
-                                                <option value="yes">QMS-APAC</option>
-                                                <option value="yes">QMS-North America</option>
-                                                <option value="yes">RA-EMEA</option>
-                                                <option value="yes">SQM-EMEA</option>
+                                                <option value="EU">EU</option>
+                                                <option value="Asia">Asia</option>
+                                                <option value="global">Global</option>
+                                                <option value="hr_Headquater">HR-Headquarter</option>
+                                                <option value="it_Emea">IT-EMEA</option>
+                                                <option value="qms_Apac">QMS-APAC</option>
+                                                <option value="qms_N_America">QMS-North America</option>
+                                                <option value="ra_Emea">RA-EMEA</option>
+                                                <option value="sqm_Emea">SQM-EMEA</option>
 
                                             </select>
                                        </td> 
@@ -3626,7 +3624,7 @@ $users = DB::table('users')
                                                 <option value="Warehouse">Warehouse</option>
                                                 <option value="Manufacturing">Manufacturing</option>
                                                 <option value="SAP">SAP</option>
-                                                <option value="Regulatory Affairs">Regulatory Affairs</option>
+                                                <option value="Regulatory_Affairs">Regulatory Affairs</option>
 
                                                 <option value="Medical Affairs">Medical Affairs</option>
 
@@ -3636,11 +3634,11 @@ $users = DB::table('users')
                                                 <option value="Others">Others</option>
                                             </select></td>
 
-                                        <td> <input type="text" class="Others" name="Others[]">   </td>
+                                        <td> <input type="text" class="Others" name="Module_others">   </td>
 
                                        
                                     <td>
-                                     <select multiple name="audit_type[]" id="audit_type">
+                                     <select multiple name="User_roles_group_category[]" id="audit_type">
                                              <option value="">Enter Your Selection Here</option> 
                                             <option value="QA">QA</option>
                                             <option value="QC">QC</option>
@@ -3657,21 +3655,21 @@ $users = DB::table('users')
                                     
                                     </td>
 
-                                        <td> <input type="text" class="Others" name="Others[]">   </td>
+                                        <td> <input type="text" class="Others" name="Others">   </td>
 
-                                        <td> <input type="text" class="Processtitle" name="Processtitle[]">  
+                                        <td> <input type="text" class="Processtitle" name="Process_title">  
                                        </td>
                                       
                                        
                                        <td> <select name="Application" id="Application">
                                                 <option value="0">-- Select --</option>
-                                                <option value="VidyaGxP-QMS">VidyaGxP-QMS</option>
-                                                <option value="VidyaGxP-DMS">VidyaGxP-DMS</option>
-                                                <option value="VidyaGxP--ERP">VidyaGxP-ERP</option>
-                                                <option value="VidyaGxP--TMS">VidyaGxP-TMS</option>
+                                                <option value="VidyaGxP_QMS">VidyaGxP-QMS</option>
+                                                <option value="VidyaGxP_DMS">VidyaGxP-DMS</option>
+                                                <option value="VidyaGxP_ERP">VidyaGxP-ERP</option>
+                                                <option value="VidyaGxP_TMS">VidyaGxP-TMS</option>
 
                                                 <option value="VidyaGxP-EBMR">VidyaGxP-EBMR</option>
-                                                <option value="VidyaGxP-E-Logbook">VidyaGxP-E-Logbook</option>
+                                                <option value="VidyaGxP_E_Logbook">VidyaGxP-E-Logbook</option>
 
                                             
 
@@ -3695,7 +3693,7 @@ $users = DB::table('users')
                                                 <option value="DIA">Data Integrity Analyst(DIA)</option>
                                             </select>
                                        </td>
-                                        <td> <select name="Process_Title" id="Process_Title">
+                                        <td> <select name="Training_completed" id="Training_completed">
                                                 <option value="0">-- Select --</option>
                                                 <option value="yes">Yes</option>
                                                 <option value="no">No</option>
@@ -3715,8 +3713,8 @@ $users = DB::table('users')
                                                 <option value="yes">Yes</option>
                                                 <option value="no">No</option>
                                             </select></td>
-                                        <td><input type="date" class="Period" name="Period[]"></td>
-                                        <td><input type="date" class="Period" name="Period[]"></td>
+                                        <td><input type="date" class="Period" name="period_from"></td>
+                                        <td><input type="date" class="Period" name="Period_to"></td>
                                         <td><div class="col-lg-6">
                                     <div class="group-input">
                                         <select name="Acces_provided_by" id="Acces_provided_by[]">
@@ -3729,11 +3727,11 @@ $users = DB::table('users')
                                 </div></td>
 
                                        
-                                 <td><input type="date" class="Access_provided_on" name="Access_provided_on[]"></td>
+                                 <td><input type="date" class="Access_provided_on" name="Access_provided_on"></td>
                                         
                                      <td><div class="col-lg-6">
                                     <div class="group-input">
-                                        <select name="Acces_provided_by" id="Acces_provided_by[]">
+                                        <select name="Access_revoked_by" id="Access_revoked_by">
                                             <option value="">-- Select --</option>
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -3743,8 +3741,8 @@ $users = DB::table('users')
                                 </div>
                             </td>
                                         
-                                        <td><input type="date" class="Document_Remarks" name="Document_Remarks[]"></td>
-                                     <td><input type="text" class="Remarks" name="Remarks[]"></td>
+                                        <td><input type="date" class="Access_revoked_on" name="Access_revoked_on"></td>
+                                     <td><input type="text" class="Remarks" name="Remarks"></td>
 
                                         </tbody></table>
                                         </div>
@@ -3797,8 +3795,8 @@ $users = DB::table('users')
                                       
                                 <div class="col-lg-6">
                                     <div class="group-input">
-                                        <label for="Customer notification">Assets Required ?</label>
-                                        <select name="Customer_notification" id="Customer_notification">
+                                        <label for="Assets_required">Assets Required ?</label>
+                                        <select name="Assets_required" id="Assets_required">
                                             <option value="0">-- Select --</option>
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
@@ -3832,7 +3830,7 @@ $users = DB::table('users')
                                                         <th style="width: 4%">Row#</th>
 
                                                         
-                                                     <th style="">Laptop</th>
+                                                            <th style="">Laptop</th>
                                                             <th style="">Desktop Computer</th>
                                                             <th style="">Tablet</th>
                                                             <th style="">Smartphone</th>
@@ -3859,121 +3857,121 @@ $users = DB::table('users')
                                                 </thead>
                                                 <tbody>
                                         <td><input disabled type="text" name="serial[]" value="1"></td>
-                                        <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                       <td><select name="laptop" id="laptop">
                                                 <option value="0">-- Select --</option>
                                                 <option value="No">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Desktop_Computer" id="Desktop_Computer">
                                                 <option value="0">-- Select --</option>
                                                <option value="No">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Tablet" id="Tablet">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Smartphone" id="Smartphone">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Monitor" id="Monitor">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Keyboard" id="Keyboard">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Mouse" id="Mouse">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                        <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                        <td><select name="Printer" id="Printer">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Scanner" id="Scanner">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Headset" id="Headset">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Projector" id="Projector">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Server" id="Server">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Network_Switch" id="Network_Switch">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="External_Hard_Drive" id="External_Hard_Drive">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="USB_Flash_Drive" id="USB_Flash_Drive">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Software_Licenses" id="Software_Licenses">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Access_Card_Badge" id="Access_Card_Badge">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Security_Key_Token" id="Security_Key_Token">
                                                 <option value="0">-- Select --</option>
                                                  <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Desk_Phone" id="Desk_Phone">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select></td>
 
-                                            <td><select name="Membership_Allocation_Type" id="Membership_Allocation_Type">
+                                            <td><select name="Company_Vehicle" id="Company_Vehicle">
                                                 <option value="0">-- Select --</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
