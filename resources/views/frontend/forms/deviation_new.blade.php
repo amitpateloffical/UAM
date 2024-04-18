@@ -561,7 +561,7 @@ $users = DB::table('users')
                                 <div class="col-lg-6">
                                     <div class="group-input">
                                         <label for="deparment">Department Code</label>
-                                        <input type="text" name="deparment" id="deparmentCode"
+                                        <input type="text" name="deparmentCode" id="deparmentCode"
                                             value="" readonly>
                                     </div>
                                 </div>
@@ -1331,9 +1331,9 @@ $users = DB::table('users')
                             </div>
                             <div class="button-block">
                                 <button type="submit" class="saveButton">Save</button>
-                                    <a href="/rcms/qms-dashboard">
-                                        <button type="button" class="backButton">Back</button>
-                                    </a>
+                                    {{-- <a href="/rcms/qms-dashboard"> --}}
+                                        <button type="button" class="backButton" onclick="previousStep()" >Back</button>
+                                    {{-- </a> --}}
                                 <button type="button" class="nextButton" onclick="nextStep()">Next</button>
                                 <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white"> Exit </a> </button>
                             </div>
@@ -1475,9 +1475,9 @@ $users = DB::table('users')
 
                             <div class="button-block">
                                 <button type="submit" class="saveButton">Save</button>
-                                    <a href="/rcms/qms-dashboard">
-                                        <button type="button" class="backButton">Back</button>
-                                    </a>
+                                    {{-- <a href="/rcms/qms-dashboard"> --}}
+                                        <button type="button" class="backButton" onclick="previousStep()" >Back</button>
+                                    {{-- </a> --}}
                                 <button type="button" class="nextButton" onclick="nextStep()">Next</button>
                                 <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white"> Exit </a> </button>
                             </div>
@@ -3104,9 +3104,9 @@ $users = DB::table('users')
                                 </div>
                                 <div class="button-block">
                                     <button type="submit" id="ChangesaveButton" class="saveButton">Save</button>
-                                        <a href="/rcms/qms-dashboard">
-                                        <button type="button" class="backButton">Back</button>
-                                    </a>
+                                        {{-- <a href="/rcms/qms-dashboard"> --}}
+                                        <button type="button" class="backButton" onclick="previousStep()" >Back</button>
+                                    {{-- </a> --}}
                                     <button type="button" id="ChangeNextButton" class="nextButton" onclick="nextStep()">Next</button>
                                     <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white">
                                             Exit </a> </button>
@@ -3290,9 +3290,9 @@ $users = DB::table('users')
                             
                             <div class="button-block">
                                 <button type="submit" class="saveButton">Save</button>
-                                        <a href="/rcms/qms-dashboard">
-                                        <button type="button" class="backButton">Back</button>
-                                    </a>
+                                        {{-- <a href="/rcms/qms-dashboard"> --}}
+                                        <button type="button" class="backButton" onclick="previousStep()" >Back</button>
+                                    {{-- </a> --}}
                                 <button type="button" class="nextButton" onclick="nextStep()">Next</button>
                                 <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white">
                                         Exit </a> </button>
@@ -3339,9 +3339,9 @@ $users = DB::table('users')
                             </div>
                             <div class="button-block">
                                 <button type="submit" class="saveButton">Save</button>
-                                        <a href="/rcms/qms-dashboard">
-                                        <button type="button" class="backButton">Back</button>
-                                    </a>
+                                        {{-- <a href="/rcms/qms-dashboard"> --}}
+                                        <button type="button" class="backButton" onclick="previousStep()" >Back</button>
+                                    {{-- </a> --}}
                                 <button type="button"  onclick="nextStep()">Next</button>
                                 <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white">
                                         Exit </a> </button>
@@ -3350,55 +3350,8 @@ $users = DB::table('users')
                     </div>
 
                     <!-- QAH-->
-                    <div id="CCForm5" class="inner-block cctabcontent">
-                        <div class="inner-block-content">
-                            <div class="row">
-                                
-                                <div class="col-12">
-                                    <div class="group-input">
-                                        <label  class="mt-4" for="Remarks">Closure Comments</label>
-                                        <textarea class="summernote" name="Closure_Comments" id="summernote-15"></textarea>
-                                    </div>
-                                </div>
-                                {{-- <div class="col-12">
-                                    <div class="group-input">
-                                        <label class="mt-4"  for="Audit Comments">Disposition of Batch</label>
-                                        <textarea class="summernote" name="Disposition_Batch" id="summernote-16"></textarea>
-                                    </div>
-                                </div> --}}
-                                <div class="col-12">
-                                    <div class="group-input">
-                                        <label for="closure attachment">Closure Attachments </label>
-                                        <div><small class="text-primary">Please Attach all relevant or supporting
-                                                documents</small>
-                                            </div>
-                                        <div class="file-attachment-field">
-                                            <div class="file-attachment-list" id="closure_attachment"></div>
-                                            <div class="add-btn">
-                                                <div>Add</div>
-                                                <input type="file" id="myfile" name="closure_attachment[]"
-                                                    oninput="addMultipleFiles(this, 'closure_attachment')" multiple>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="button-block">
-                                <button type="submit" class="saveButton">Save</button>
-<a href="/rcms/qms-dashboard">
-                                        <button type="button" class="backButton">Back</button>
-                                    </a>
-                                {{-- <button type="button" class="nextButton" onclick="nextStep()">Next</button> --}}
-                                 <button type="button"  onclick="nextStep()">Next</button>
-                                <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white">
-                                        Exit </a> </button>
-                            </div>
-                        </div>
-                    </div>
-
-
- {{--    //////////////////Access Matrix///////////////// --}}
+                   
+                             {{--    //////////////////Access Matrix///////////////// --}}
                      <div id="CCForm09" class="inner-block cctabcontent">
                         <div class="inner-block-content">
                             <div class="row">
@@ -4256,142 +4209,17 @@ $users = DB::table('users')
 
                                                                     
 
-                                {{-- <div style="margin-bottom: 0px;" class="col-lg-12 new-date-data-field ">
-                                    <div class="group-input input-date">
-                                        <label for="Deviation category">Initial Deviation Category</label>
-                                        <select name="Deviation_category" id="Deviation_category">
-                                            <option value="0">-- Select -- </option>
-                                            <option value="minor">Minor </option>
-                                            <option value="major">Major </option>
-                                            <option value="critical">Critical </option>
-                                        </select>
-
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="col-lg-12 new-date-data-field">
-                                    <div class="group-input input-date">
-                                        <label class="mt-4"  for="Audit Schedule End Date">Justification for Categorization</label>
-                                        <textarea class="summernote" name="Justification_for_categorization" id="" cols="30" ></textarea>
-
-                                    </div>
-                                </div> --}}
                                
-                                
-                                {{-- <div class="col-lg-12">
-                                    <div class="group-input">
-                                        <label for="Investigation required">Investigation  Required ?</label>
-                                        <select name="Investigation_required" id="Investigation_required">
-                                            <option value="0">-- Select --</option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
-                                        </select>
-                                  
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="col-lg-6">
-                                    <div class="group-input">
-                                        <label for="Product/Material Name">Investigation Details </label>
-                                        <textarea class="summernote" name="Investigation_Details" id="" cols="30" ></textarea>
-                                  
-                                    </div>
-                                </div> --}}
-                              
-                                {{-- <div class="col-lg-6">
-                                    <div class="group-input">
-                                        <label for="Customer notification">Customer Notification Required ?</label>
-                                        <select name="Customer_notification" id="Customer_notification">
-                                            <option value="0">-- Select --</option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
-                                            <option value="na">NA</option>
-                                        </select>
-                                  
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="col-5">
-                                    <div class="group-input" id="customer_option">
-                                        @php
-                                            $customers = DB::table('customer-details')->get();
-                                        @endphp
-                                        <label for="customers">Customers<span class="text-danger">*</span></label>
-                                        <select name="customers" id="customers">
-                                            <option value="0"> -- Select --</option>
-                                            @foreach ($customers as $data)
-                                            <option value="{{ $data->id }}">{{ $data->customer_name }}</option>
-                                        @endforeach
-                                        </select>
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="col-1">
-                                    <div class="group-input">
-                                        <!-- <label for="Comments(If Any)">Customers</label> -->
-                                        <button style="margin-top: 21px; border: 1px solid gray; background: #6f81dd; color: #fff;" type="button" class="btn b" data-bs-toggle="modal" data-bs-target="#myModal">
-                                              Customer
-                                    </button>
-                                    </div>
-                                </div> --}}
-
-                                {{-- <div class="col-12">
-                                    <div class="group-input"> 
-                                        <label for="related_records">Related Records</label>
-                                        <select multiple name="related_records[]" placeholder="Select Reference Records"
-                                            data-search="false" data-silent-initial-value-set="true" id="related_records">
-                                            @foreach ($pre as $prix)
-                                                <option value="{{ $prix->id }}">
-                                                    {{ Helpers::getDivisionName($prix->division_id) }}/Change-Control/{{ Helpers::year($prix->created_at) }}/{{ Helpers::record($prix->record) }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div> --}}
-                                
-                                {{-- <div class="col-12">
-                                    <div class="group-input">
-                                        <label for="related_records">Related Records</label>
-
-                                        <select multiple name="related_records[]" placeholder="Select Reference Records"
-                                            data-search="false" data-silent-initial-value-set="true"
-                                            id="related_records">
-                                            @foreach ($pre as $prix)
-                                                <option value="{{ $prix->id }}">
-                                                    {{ Helpers::getDivisionName($prix->division_id) }}/Deviation/{{ Helpers::year($prix->created_at) }}/{{ Helpers::record($prix->record) }}/{{$prix->short_description}}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="col-12">
-                                    <div class="group-input">
-                                        <label for="Comments(If Any)">QA Initial Remarks</label>
-                                      <textarea class="summernote" name="QAInitialRemark" id="" cols="30" ></textarea>
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="col-md-12 mb-3">
-                                    <div class="group-input">
-                                        <label for="QAInitialRemark">QA Initial Remarks</label>
-                                        <div><small class="text-primary">Please insert "NA" in the data field if it does not require completion</small></div>
-                                        <textarea class="summernote" name="QAInitialRemark" id="summernote-7">
-                                    </textarea>
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="col-lg-12">
-                                    <div class="group-input">
-                                       
-                                        
-                                        <div class="file-attachment-field">
-                                            <div class="file-attachment-list" id="Initial_attachment"></div>
-                                            <div class="add-btn">
-                                                
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
                             </div>
                             <div class="button-block">
-                                <button type="submit" class="saveButton">Save</button>
-                                            <a href="/rcms/qms-dashboard">
-                                        <button type="button" class="backButton">Back</button>
-                                    </a>
+                                <button type="submit" id="ChangesaveButton009" onclick="handleClick009()" class="saveButton">Save</button>
+
+                                {{-- <button type="submit" class="saveButton">Save</button> --}}
+                                            {{-- <a href="/rcms/qms-dashboard"> --}}
+                                        <button type="button" class="backButton" onclick="previousStep()" >Back</button>
+                                        
+
+                                    {{-- </a> --}}
                                 {{-- <button type="button" class="nextButton" onclick="nextStep()">Next</button> --}}
                                 <button type="button"  onclick="nextStep()">Next</button>
 
@@ -4400,6 +4228,58 @@ $users = DB::table('users')
                         </div>
                     </div>
                     
+    {{-- QAH Designee --}}
+           
+
+                              <div id="CCForm5" class="inner-block cctabcontent">
+                            <div class="inner-block-content">
+                                <div class="row">
+                                    
+                                    <div class="col-12">
+                                        <div class="group-input">
+                                            <label  class="mt-4" for="Remarks">Closure Comments</label>
+                                            <textarea class="summernote" name="Closure_Comments" id="summernote-15"></textarea>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="col-12">
+                                        <div class="group-input">
+                                            <label class="mt-4"  for="Audit Comments">Disposition of Batch</label>
+                                            <textarea class="summernote" name="Disposition_Batch" id="summernote-16"></textarea>
+                                        </div>
+                                    </div> --}}
+                                    <div class="col-12">
+                                        <div class="group-input">
+                                            <label for="closure attachment">Closure Attachments </label>
+                                            <div><small class="text-primary">Please Attach all relevant or supporting
+                                                    documents</small>
+                                                </div>
+                                            <div class="file-attachment-field">
+                                                <div class="file-attachment-list" id="closure_attachment"></div>
+                                                <div class="add-btn">
+                                                    <div>Add</div>
+                                                    <input type="file" id="myfile" name="closure_attachment[]"
+                                                        oninput="addMultipleFiles(this, 'closure_attachment')" multiple>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            <div class="button-block">
+                                <button type="submit" class="saveButton">Save</button>
+{{-- <a href="/rcms/qms-dashboard"> --}}
+                                        <button type="button" class="backButton" onclick="previousStep()" >Back</button>
+                                    {{-- </a> --}}
+                                {{-- <button type="button" class="nextButton" onclick="nextStep()">Next</button> --}}
+                                 <button type="button"  onclick="nextStep()">Next</button>
+                                <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white">
+                                        Exit </a> </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                                 
                     <!-- Activity Log content -->
                     <div id="CCForm6" class="inner-block cctabcontent">
@@ -4531,9 +4411,9 @@ $users = DB::table('users')
                             </div>
                             <div class="button-block">
                                 <button type="submit" class="saveButton">Save</button>
-                                        <a href="/rcms/qms-dashboard">
-                                        <button type="button" class="backButton">Back</button>
-                                    </a>
+                                        <button type="button" class="backButton" onclick="previousStep()" >Back</button>
+                                        {{-- <a href="/rcms/qms-dashboard"> --}}
+                                    {{-- </a> --}}
                                 <button type="submit">Submit</button>
                                 <button type="button"> <a href="{{ url('rcms/qms-dashboard') }}" class="text-white">
                                         Exit </a> </button>
@@ -4637,81 +4517,7 @@ $users = DB::table('users')
                                         </div>
                                         <span id="customer_name_error" class="text-danger validationClass"></span>
                                     </div>
-                                     {{-- <div class="col-8">
-                                        <div class="Activity-type">
-                                            <label  style="font-weight: bold;"  for="customer_name">Warranty Information<span class="text-danger">*</span> :</label>
-                                            <input type="text" id="customer_name" name="customer_name"> 
-                                        </div>
-                                        <span id="customer_name_error" class="text-danger validationClass"></span>
-                                    </div> --}}
-
-
-                                    {{-- <div class="col-4">
-                                        <div class="Activity-type">
-                                            <label  style="font-weight: bold;"  for="customer_name">History<span class="text-danger">*</span> :</label>
-                                            <input type="text" id="customer_name" name="customer_name"> 
-                                        </div>
-                                        <span id="customer_name_error" class="text-danger validationClass"></span>
-                                    </div>
-                                </div>
-                                </div> --}}
-
-                               {{-- <div class="right-box">
-                                    <!-- Customer Name -->
-                                    
-                                    <!-- Contact No -->
-                                    <div class="Activity-type">
-                                        <label style="font-weight: bold; margin-left: 36px;" for="contact_no">Asset Id<span class="text-danger">*</span> :</label>
-                                        <input type="text" id="contact_no" name="contact_no">
-                                    </div>
-                                    <span id="contact_no_error" class="text-danger validationClass"></span>
-                                    <!-- Industry -->
-                                    <div class="Activity-type">
-                                        <label style="font-weight: bold; margin-left: 57px;" for="industry">Manufacturer<span class="text-danger">*</span> :</label>
-                                        <input type="text" id="industry" name="industry">
-                                    </div>
-                                    <span id="industry_error" class="text-danger validationClass"></span>
-                                    <!-- Region -->
-                                    <div class="Activity-type">
-                                        <label style="font-weight: bold; margin-left: 66px; " for="region">Location<span class="text-danger">*</span> :</label>
-                                        <input type="text" id="region" name="region">
-                                    </div>
-                                      <div class="Activity-type">
-                                        <label style="font-weight: bold; margin-left: 66px; " for="region">Condition<span class="text-danger">*</span> :</label>
-                                        <input type="text" id="region" name="region">
-                                    </div>
-                   <span id="region_id_error" class="text-danger validationClass"></span>
-                                </div> --}}
-                                <!-- Right box -->
-
-                                
-
-                                {{-- <div class="right-box">
-                                    <!-- Customer Name -->
-                                    
-                                    <!-- Contact No -->
-                                    <div class="Activity-type">
-                                        <label style="font-weight: bold; margin-left: 36px;" for="contact_no">Warranty<span class="text-danger">*</span> :</label>
-                                        <input type="text" id="contact_no" name="contact_no">
-                                    </div>
-                                    <span id="contact_no_error" class="text-danger validationClass"></span>
-                                    <!-- Industry -->
-                                    <div class="Activity-type">
-                                        <label style="font-weight: bold; margin-left: 57px;" for="industry">Assigned User<span class="text-danger">*</span> :</label>
-                                        <input type="text" id="industry" name="industry">
-                                    </div>
-                                    <span id="industry_error" class="text-danger validationClass"></span>
-                                    <!-- Region -->
-                                    <div class="Activity-type">
-                                        <label style="font-weight: bold; margin-left: 66px; " for="region">Depreciation<span class="text-danger">*</span> :</label>
-                                        <input type="text" id="region" name="region">
-                                    </div>
-                                    <div class="Activity-type">
-                                        <label style="font-weight: bold; margin-left: 66px; " for="region">Disposition<span class="text-danger">*</span> :</label>
-                                        <input type="text" id="region" name="region">
-                                    </div>
-                <span id="region_id_error" class="text-danger validationClass"></span>
-                                </div> --}}
+                                     
                             
                         <!-- Remarks -->
                         <div class="Activity-type">
@@ -4826,280 +4632,8 @@ $users = DB::table('users')
                         $customers = DB::table('customer-details')->get();
                     @endphp
                     <!-- Customer grid view -->
-                    {{-- <div class="table-responsive">
-                        <h5>Stored Customers</h5>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                    <th>Contact No</th>
-                                    <th>Industry</th>
-                                    <th>Region</th>
-                                    <th>Remarks</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Check if customers array is empty or null -->
-                                @if($customers && count($customers) > 0)
-                                <!-- Iterate over stored customers and display them -->
-                                    @foreach($customers as $customer)
-                                    <tr>
-                                        <td>{{ $customer->customer_id }}</td>
-                                        <td>{{ $customer->customer_name }}</td>
-                                        <td>{{ $customer->email }}</td>
-                                        <td>{{ $customer->customer_type }}</td>
-                                        <td>{{ $customer->status }}</td>
-                                        <td>{{ $customer->contact_no }}</td>
-                                        <td>{{ $customer->industry }}</td>
-                                        <td>{{ $customer->region }}</td>
-                                        <td>{{ $customer->remarks }}</td>
-                                    </tr>
-                                    @endforeach
-                                @else
-                                    <tr>
-                                        <td colspan="9">No results available</td>
-                                    </tr>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div> --}}
-                </div>
-            </div>
-        </div>
-    </div>
-
-{{-- working form  --}}
-{{-- <form method="POST" action="{{ route('customers.store') }}">
-    @csrf
-
-    <div class="modal" id="myModal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div style="background: #f7f2f" class="modal-header">
-                    <h4 class="modal-title">Customers</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div style="background: #e9e2e2;" class="modal-sub-head">
-                        <div class="sub-main-head">
-
-                            <div class="left-box">
-
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold;" for="customer_id">Customer ID :</label>
-                                    <input type="text" id="customer_id" name="customer_id">
-                                </div>
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: 30px;" for="email">Email ID :</label>
-                                    <input type="text" id="email" name="email">
-                                </div>
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: -20px;" for="customer_type">Customer Type :</label>
-                                    <input type="text" id="customer_type" name="customer_type">
-                                </div>
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: 42px;" for="status">Status :</label>
-                                    <input type="text" id="status" name="status">
-                                </div>
-                            </div>
-
-                            <div class="right-box">
-
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold;" for="customer_name">Customer Name :</label>
-                                    <input type="text" id="customer_name" name="customer_name">
-                                </div>
-
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: 36px;" for="contact_no">Contact No :</label>
-                                    <input type="text" id="contact_no" name="contact_no">
-                                </div>
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: 57px;" for="industry">Industry :</label>
-                                    <input type="text" id="industry" name="industry">
-                                </div>
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: 66px; " for="region">Region :</label>
-                                    <input type="text" id="region" name="region">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="Activity-type">
-                        <textarea style="margin-left: 126px; margin-top: 15px; width: 79%;" placeholder="Remarks" name="remarks" id="remarks" cols="30"></textarea>
-                    </div>
-                </div>
-                <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-                    <button type="submit" class="saveButton">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form> --}}
-
-
-{{-- grid modal  --}}
-{{-- <div class="modal" id="myModal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div style="background: #f7f2f" class="modal-header">
-                <h4 class="modal-title">Customers</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <!-- Form for adding new customer -->
-                 <form method="POST" id="customerForm"> 
-                    @csrf
-
-                    <div class="modal-sub-head">
-                        <div class="sub-main-head">
-                            <!-- Customer input fields -->
-                            <!-- Left box -->
-                            <div class="left-box">
-                                <!-- Customer ID -->
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold;" for="customer_id">Customer ID :</label>
-                                    <input type="text" id="customer_id" name="customer_id">
-                                </div>
-                                <!-- Email -->
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: 30px;" for="email">Email ID :</label>
-                                    <input type="text" id="email" name="email">
-                                </div>
-                                <!-- Customer Type -->
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: -20px;" for="customer_type">Customer Type :</label>
-                                    <input type="text" id="customer_type" name="customer_type">
-                                </div>
-                                <!-- Status -->
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: 42px;" for="status">Status :</label>
-                                    <input type="text" id="status" name="status">
-                                </div>
-                            </div>
-
-                            <!-- Right box -->
-                            <div class="right-box">
-                                <!-- Customer Name -->
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold;" for="customer_name">Customer Name :</label>
-                                    <input type="text" id="customer_name" name="customer_name">
-                                </div>
-                                <!-- Contact No -->
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: 36px;" for="contact_no">Contact No :</label>
-                                    <input type="text" id="contact_no" name="contact_no">
-                                </div>
-                                <!-- Industry -->
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: 57px;" for="industry">Industry :</label>
-                                    <input type="text" id="industry" name="industry">
-                                </div>
-                                <!-- Region -->
-                                <div class="Activity-type">
-                                    <label style="font-weight: bold; margin-left: 66px; " for="region">Region :</label>
-                                    <input type="text" id="region" name="region">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Remarks -->
-                    <div class="Activity-type">
-                        <textarea style="margin-left: 126px; margin-top: 15px; width: 79%;" placeholder="Remarks" name="remarks" id="remarks" cols="30"></textarea>
-                    </div>
-                    <!-- Save button -->
-                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-                        <button type="button" onclick="submitForm()" class="saveButton">Save</button>
-                    </div>
-                </form>
-                <script>
-                    function submitForm() {
-                        var formData = new FormData(document.getElementById('customerForm'));
-                
-                        // Send POST request to server
-                        fetch("{{ route('customers.store') }}", {
-                            method: "POST",
-                            body: formData
-                        })
-                        .then(response => {
-                            if (response.ok) {
-                                // Clear the form fields
-                                document.getElementById('customerForm').reset();
-                                
-                                // Hide the modal
-                                var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-                                myModal.hide();
-                            } else {
-                                console.error('Failed to create customer');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                    }
-                </script>
-                @php
-                    $customers = DB::table('customer-details')->get();
-                @endphp
-                <!-- Customer grid view -->
-                <div class="table-responsive">
-                    <h5>Stored Customers</h5>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                                <th>Contact No</th>
-                                <th>Industry</th>
-                                <th>Region</th>
-                                <th>Remarks</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Iterate over stored customers and display them -->
-                            @foreach($customers as $customer)
-                            <tr>
-                                <td>{{ $customer->customer_id }}</td>
-                                <td>{{ $customer->customer_name }}</td>
-                                <td>{{ $customer->email }}</td>
-                                <td>{{ $customer->customer_type }}</td>
-                                <td>{{ $customer->status }}</td>
-                                <td>{{ $customer->contact_no }}</td>
-                                <td>{{ $customer->industry }}</td>
-                                <td>{{ $customer->region }}</td>
-                                <td>{{ $customer->remarks }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
-
-
-
-
-
-<!-- -----------------------------------------------------end---------------------- -->
+           
+                   <!-- -----------------------------------------------------end------------------------>
     <style>
         #step-form>div {
             display: none
@@ -5148,6 +4682,49 @@ const saveButton = document.getElementById("ChangeSaveButton001");
             }
         });
     </script>
+
+            {{-- this is Access Matrix_saves --}}
+
+     <script>
+
+const saveButton = document.getElementById("ChangeSaveButton009");
+
+    // Add a click event listener to the button
+    saveButton.addEventListener("click", function() {
+    // Handle the click event here
+    document.getElementById("ChangesaveButton009").disabled = true;
+    console.log("Save Changes button clicked");
+ 
+});
+
+            function handleClick009() {
+                // Disable the button to prevent multiple clicks
+                document.getElementById("ChangesaveButton009").disabled = true;
+
+                .then(() => {
+                    // Re-enable the button after the action is completed
+                    document.getElementById("ChangesaveButton009").disabled = false;
+                })
+                .catch(error => {
+                    // Re-enable the button if an error occurs
+                    document.getElementById("ChangesaveButton009").disabled = false;
+                    console.error('An error occurred:', error);
+                });
+            }  
+
+        document.getElementById('myfile').addEventListener('change', function() {
+            var fileListDiv = document.querySelector('.file-list');
+            fileListDiv.innerHTML = ''; // Clear previous entries
+
+            for (var i = 0; i < this.files.length; i++) {
+                var file = this.files[i];
+                var listItem = document.createElement('div');
+                listItem.textContent = file.name;
+                fileListDiv.appendChild(listItem);
+            }
+        });
+    </script>
+
 
  <script>
         VirtualSelect.init({
